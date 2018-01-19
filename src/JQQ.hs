@@ -16,15 +16,19 @@ java = QuasiQuoter {
         in dataToExpQ (const Nothing) c
     , quotePat  = \str ->
         let Right c = parser stmt str
-        in dataToPatQ (const Nothing `extQ` metaPat (fvStmt c)) c
+        in dataToPatQ (const Nothing `extQ` antiExprPat) c
     , quoteType = undefined
     , quoteDec  = undefined
     }
 
-metaPat :: Set String -> Ident -> Maybe PatQ
-metaPat fvs (Ident x) | x `Set.member` fvs = Just (varP (mkName x))
-metaPat _ _ = Nothing
+antiExprPat :: Ident -> Maybe (Q Pat)
+antiExprPat (EMetaVar v) = Just $ varP (mkName v)
+antiExprPat _ = Nothing
 
-fvStmt :: Language.Java.Syntax.Stmt -> Set String
-fvStmt (ExpStmt (Assign (NameLhs (Name [Ident x])) EqualA (Lit (Int 1)))) = Set.singleton x
-fvStmt _ = Set.empty
+-- metaPat :: Set String -> Ident -> Maybe PatQ
+-- metaPat fvs (Ident x) | x `Set.member` fvs = Just (varP (mkName x))
+-- metaPat _ _ = Nothing
+-- 
+-- fvStmt :: Language.Java.Syntax.Stmt -> Set String
+-- fvStmt (ExpStmt (Assign (NameLhs (Name [Ident x])) EqualA (Lit (Int 1)))) = Set.singleton x
+-- fvStmt _ = Set.empty
