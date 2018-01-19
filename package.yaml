@@ -24,6 +24,12 @@ dependencies:
 
 library:
   source-dirs: src
+  dependencies: 
+  - language-java
+  - template-haskell
+  - parsec
+  - containers
+  - syb
 
 executables:
   joogle-exe:
@@ -35,6 +41,7 @@ executables:
     - -with-rtsopts=-N
     dependencies: 
     - joogle
+    - language-java
 
 tests:
   joogle-test:
