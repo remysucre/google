@@ -30,6 +30,7 @@ library:
   - parsec
   - containers
   - syb
+  - uniplate
 
 executables:
   joogle-exe:

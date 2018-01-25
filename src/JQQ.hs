@@ -12,11 +12,11 @@ import Data.Generics (extQ)
 java :: QuasiQuoter
 java = QuasiQuoter {
       quoteExp = \str ->
-        let Right c = parser stmt str
+        let Right c = parser compilationUnit str
         in dataToExpQ (const Nothing) c
     , quotePat  = \str ->
         let Right c = parser stmt str
-        in dataToPatQ (const Nothing `extQ` antiExprPat) c
+        in dataToPatQ (const Nothing `extQ` antiExprPat `extQ` antiStmtPat) c
     , quoteType = undefined
     , quoteDec  = undefined
     }
@@ -24,6 +24,10 @@ java = QuasiQuoter {
 antiExprPat :: Ident -> Maybe (Q Pat)
 antiExprPat (EMetaVar v) = Just $ varP (mkName v)
 antiExprPat _ = Nothing
+
+antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Pat)
+antiStmtPat (EMetaStmt s) = Just $ varP (mkName s)
+antiStmtPat _ = Nothing
 
 -- metaPat :: Set String -> Ident -> Maybe PatQ
 -- metaPat fvs (Ident x) | x `Set.member` fvs = Just (varP (mkName x))
