@@ -1,0 +1,3 @@
+[submodule "language-java"]
+	path = language-java
+	url = https://github.com/remysucre/language-java.git
