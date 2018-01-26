@@ -18,17 +18,28 @@ public class HelloWorld
 	}
 }|]
 
--- pullall :: Language.Java.Syntax.CompilationUnit -> [Language.Java.Syntax.Stmt]
-pullall :: Language.Java.Syntax.CompilationUnit -> [String]
-pullall p = [ prettyPrint (pull x) | x <- universeBi p ]
--- pullall p = [ pull x | x <- universeBi p ]
+-- GREP
+-- just like linux grep, this function takes a program (prog) and a pattern (match)
+-- and returns a list of statements each of which matches the pattern
 
-pull :: Language.Java.Syntax.Stmt -> Language.Java.Syntax.Stmt
--- pull [java| while ( 1 ) {`xx} |] = xx -- _ in while ( _ ) { @ }
--- pull n@[java| while ( 1 ) {`x} |] = case x of [java| x = 9; |] -> n
---                                               _ -> Empty
--- pull n = case [ x | x@[java| x = 9; |] <- universe n ] of [] -> Empty
---                                                           _ -> n
-pull n = case n of [java| x = 9; |] -> Empty
+grep :: Language.Java.Syntax.CompilationUnit -> (Language.Java.Syntax.Stmt -> Language.Java.Syntax.Stmt) -> [Language.Java.Syntax.Stmt]
+grep prog match = [ match x | x <- universeBi prog ]
+
+---- PATTERNS
+
+-- ![statement| x = 9 |]
+pnot :: Language.Java.Syntax.Stmt -> Language.Java.Syntax.Stmt
+pnot n = case n of [java| x = 9; |] -> Empty
                    _ -> n
-pull x = Empty
+
+-- in [statement| while ( 1 ) { @ } |]
+pctxt [java| while ( 1 ) {`xx} |] = xx
+
+
+-- [java| while ( 1 ) { _ } |]
+hole n@[java| while ( 1 ) {`x} |] = n
+hole _ = Empty
+
+-- ... [java| x = 9; |] ...
+pctnt n = case [ x | x@[java| x = 9; |] <- universe n ] of [] -> Empty
+                                                           _ -> n
