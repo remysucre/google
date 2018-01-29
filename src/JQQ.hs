@@ -32,7 +32,7 @@ antiStmtPat _ = Nothing
 -- metaPat :: Set String -> Ident -> Maybe PatQ
 -- metaPat fvs (Ident x) | x `Set.member` fvs = Just (varP (mkName x))
 -- metaPat _ _ = Nothing
--- 
+--
 -- fvStmt :: Language.Java.Syntax.Stmt -> Set String
 -- fvStmt (ExpStmt (Assign (NameLhs (Name [Ident x])) EqualA (Lit (Int 1)))) = Set.singleton x
 -- fvStmt _ = Set.empty

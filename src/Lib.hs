@@ -1,4 +1,5 @@
 {-# LANGUAGE QuasiQuotes #-}
+{-# LANGUAGE TemplateHaskell #-}
 
 module Lib where
 
@@ -26,38 +27,64 @@ grep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
 
 type Context = Stmt -> CompilationUnit
 
--- ![statement| x = 9 |]
-pnot :: Stmt -> Bool
-pnot n = case n
-           of [java| x = 9; |] -> True
-              _ -> False
+-- _
+anyctnt :: Stmt -> Bool
+anyctnt n = case n
+            of [java| `_ |] -> True
 
--- in [statement| while ( 1 ) { @ } |]
--- TODO replace Empty with some crazy identifier
-ctxt :: Context -> Bool
-ctxt c = case [ x | x@[java| while (1) {} |] <- universeBi (c Empty)]
-           of [] -> False
-              _ -> True
+-- in _
+anycntxt :: Context -> Bool
+anycntxt c = case c Empty
+             of [java| `_ |] -> True
 
--- [java| while ( 1 ) { _ } |] == [java| while ( 1 ) { $( X ) } |]
+-- [statement| x = 9 |]
 ctnt :: Stmt -> Bool
 ctnt n = case n
-           of [java| while ( 1 ) {`_} |] -> True
-              _ -> False
+         of [java| x = 9; |] -> True
+            _ -> False
 
--- ... [java| x = 9; |] ...
-phas :: Stmt -> Bool
-phas n = case [ x | x@[java| x = 9; |] <- universe n ]
-           of [] -> False
-              _ -> True
+-- * [java| x = 9] *
+has :: Stmt -> Bool
+has n = case [ x | x <- universeBi n, ctnt x]
+          of [] -> False
+             _ -> True
+
+-- in * while (1) {@} *
+inhas :: Context -> Bool
+inhas c = case [ x | x@[java| while (1) {}|] <- universeBi $ c Empty]
+            of [] -> False
+               _ -> True
+
+-- in * while (1) { * while (1) {@} * }*
+
+innested :: Context -> Bool
+innested c = case [xx | [java| while (1) { `xx }; |] <- universeBi $ c Empty, hasit xx]
+             of [] -> False
+                _ -> True
+  where hasit n = case [x | x@[java| while (1) {}|] <- universeBi n]
+                    of [] -> False
+                       _ -> True
+
+-- ![statement| x = 9 |]
+pnot :: Stmt -> Bool
+pnot n = not $ ctnt n
+
+-- in !* [java| while (1) {@} ] *
+notin :: Context -> Bool
+notin c = not $ inhas c
+
+{-
+try :: TH.Q TH.Pat -> Stmt -> IO Bool
+try p s = $(runQ [| case s of {$(p) -> True; _ -> False}|])
+-}
 
 -- ![statement| x = 9 |] && in [statement| while ( 1 ) { @ } |]
 pand :: Stmt -> Context -> Bool
-pand a b = pnot a && ctxt b
+pand a b = pnot a && inhas b
 
 -- ![statement| x = 9 |] || in [statement| while ( 1 ) { @ } |]
 por :: Stmt -> Context -> Bool
-por a b = pnot a && ctxt b
+por a b = pnot a || inhas b
 
 ---- PATTERNS COMBINATIONS
 
