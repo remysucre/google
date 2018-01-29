@@ -2,72 +2,74 @@
 
 module Lib where
 
-import JQQ 
+import JQQ
 import Language.Java.Syntax
 import Data.Generics.Uniplate.Data
-import Language.Java.Pretty
 
--- prog1 :: Language.Java.Syntax.Stmt
+prog1 :: CompilationUnit
 prog1 = [java|
 public class HelloWorld
 {
-	public static void main(String[] args) {
-		System.out.println("Hello World!");
-		while (1) { x = 9; };
-		while (1) { x++; };
-	}
+        public static void main(String[] args) {
+                System.out.println("Hello World!");
+                while (1) { x = 9; };
+                while (1) { x++; };
+        }
 }|]
 
 -- GREP
 -- just like linux grep, this function takes a program (prog) and a pattern (match)
 -- and returns a list of statements each of which matches the pattern
 
-grep :: Language.Java.Syntax.CompilationUnit -> (Language.Java.Syntax.Stmt -> Language.Java.Syntax.Stmt) -> [Language.Java.Syntax.Stmt]
-grep prog match = [ match x | x <- universeBi prog ]
+grep :: CompilationUnit -> (Stmt -> Bool) -> ((Stmt -> CompilationUnit) -> Bool) -> [(Stmt, Stmt -> CompilationUnit)]
+grep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
+
+type Context = Stmt -> CompilationUnit
 
 -- ![statement| x = 9 |]
-pnot n = case n 
-           of [java| x = 9; |] -> Empty
-              _ -> n
+pnot :: Stmt -> Bool
+pnot n = case n
+           of [java| x = 9; |] -> True
+              _ -> False
 
 -- in [statement| while ( 1 ) { @ } |]
-ctxt n = case n 
-           of [java| while ( 1 ) {`xx} |] -> xx
-              _ -> Empty
+-- TODO replace Empty with some crazy identifier
+ctxt :: Context -> Bool
+ctxt c = case [ x | x@[java| while (1) {} |] <- universeBi (c Empty)]
+           of [] -> False
+              _ -> True
 
 -- [java| while ( 1 ) { _ } |] == [java| while ( 1 ) { $( X ) } |]
-ctnt n = case n 
-           of [java| while ( 1 ) {`x} |] -> n
-              _ -> Empty
+ctnt :: Stmt -> Bool
+ctnt n = case n
+           of [java| while ( 1 ) {`_} |] -> True
+              _ -> False
 
 -- ... [java| x = 9; |] ...
-phas n = case [ x | x@[java| x = 9; |] <- universe n ] 
-           of [] -> Empty
-              _ -> n
+phas :: Stmt -> Bool
+phas n = case [ x | x@[java| x = 9; |] <- universe n ]
+           of [] -> False
+              _ -> True
 
 -- ![statement| x = 9 |] && in [statement| while ( 1 ) { @ } |]
-pand n = case pnot n 
-           of Empty -> Empty
-              _ -> case ctxt n
-                     of Empty -> Empty
-                        _ -> n
+pand :: Stmt -> Context -> Bool
+pand a b = pnot a && ctxt b
 
 -- ![statement| x = 9 |] || in [statement| while ( 1 ) { @ } |]
-por n = case (pnot n, ctxt n) 
-          of (Empty, Empty) -> Empty
-             _ -> n
+por :: Stmt -> Context -> Bool
+por a b = pnot a && ctxt b
 
 ---- PATTERNS COMBINATIONS
 
 -- NOT and friends
 
-{-- ! ... [| x = 9 |] ... 
-nothas n = case [ x | x@[java| x = 9 |] <- universe n] 
+{-- ! ... [| x = 9 |] ...
+nothas n = case [ x | x@[java| x = 9 |] <- universe n]
              of [] -> n
                 _ -> Empty --}
 
 {-- ... ! [| x = 9 |] ...
-hasnot n = case [ case x of [java| x = 9 |] -> Empty; _ -> x | x <- universe n] 
+hasnot n = case [ case x of [java| x = 9 |] -> Empty; _ -> x | x <- universe n]
              of [] -> Empty
                 _ -> n --}
 
@@ -77,9 +79,9 @@ notctnt n = case n of [| while (1) {`x} |] -> Empty
 
 {-- [| while (1) { $( ! q ) } |]
 -- q = [| x = 9 |]
-ctntnot n = case n 
-              of while (1) { `x } -> case x 
-                                       of [|x=9|] = Empty 
+ctntnot n = case n
+              of while (1) { `x } -> case x
+                                       of [|x=9|] = Empty
                                           _ = x
                  _ -> Empty --}
 
@@ -94,7 +96,7 @@ notin n = case n of [statement| while ( 1 ) { `x } |] -> Empty
 
 -- notand n = case n of [|x = 9|] -> case n of [||]
 
-in [|while (@) { $( ) }|]
+-- in [|while (@) { $( ) }|]
 
 -- !([statement| x = 9 |] || in [statement| while ( 1 ) { @ } |])
 
@@ -133,4 +135,3 @@ in [|while (@) { $( ) }|]
 -- AND and friends
 
 -- while (1) {_} && (while (_) {1} || while (_) {2})
-
