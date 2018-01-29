@@ -35,7 +35,7 @@ anyctnt n = case n
 -- in _
 anycntxt :: Context -> Bool
 anycntxt c = case c Empty
-             of [java| `_ |] -> True
+             of _ -> True
 
 -- [statement| x = 9 |]
 ctnt :: Stmt -> Bool
@@ -49,22 +49,36 @@ has n = case [ x | x <- universeBi n, ctnt x]
           of [] -> False
              _ -> True
 
--- in * while (1) {@} *
+-- * while (1) {* x = 9 *} *
+hasnested :: Stmt -> Bool
+hasnested n = case [x | x <- universeBi n, has x]
+              of [] -> False
+                 _ -> True
+
+-- in while (1) {@}
+hasit :: Stmt -> Bool
+hasit n = case n
+          of [java| while (1) {}|] -> True
+             _ -> False
+
 inhas :: Context -> Bool
-inhas c = case [ x | x@[java| while (1) {}|] <- universeBi $ c Empty]
+inhas c = case [ x | x <- universeBi $ c Empty, hasit x]
             of [] -> False
                _ -> True
+-- in while (1) { * while (1) {@} * }
+hasitstar :: Stmt -> Bool
+hasitstar n =
+  case n
+  of [java| while (1) { `m }|]
+       -> case [x | x <- universeBi m, hasit x]
+          of [] -> False
+             _ -> True
+     _ -> False
 
--- in * while (1) { * while (1) {@} * }*
-
-innested :: Context -> Bool
-innested c = case [xx | [java| while (1) { `xx }; |] <- universeBi $ c Empty, hasit xx]
-             of [] -> False
-                _ -> True
-  where hasit n = case [x | x@[java| while (1) {}|] <- universeBi n]
-                    of [] -> False
-                       _ -> True
-
+innested' :: Context -> Bool
+innested' c = case [ x | x <- universeBi $ c Empty, hasitstar x]
+            of [] -> False
+               _ -> True
 -- ![statement| x = 9 |]
 pnot :: Stmt -> Bool
 pnot n = not $ ctnt n
