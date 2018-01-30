@@ -6,6 +6,7 @@ module Lib where
 import JQQ
 import Language.Java.Syntax
 import Data.Generics.Uniplate.Data
+import qualified Language.Haskell.TH as TH
 
 prog1 :: CompilationUnit
 prog1 = [java|
@@ -87,10 +88,14 @@ pnot n = not $ ctnt n
 notin :: Context -> Bool
 notin c = not $ inhas c
 
-{-
-try :: TH.Q TH.Pat -> Stmt -> IO Bool
-try p s = $(runQ [| case s of {$(p) -> True; _ -> False}|])
--}
+try :: TH.Q TH.Pat -> TH.Q [TH.Dec]
+try p = TH.runQ [d|f s = case s of {$(p) -> True; _ -> False}|]
+
+trypat :: TH.Q TH.Pat
+trypat = [p| [java| `x = 9|] |]
+
+runpat :: TH.Q [TH.Dec]
+runpat = try trypat
 
 -- ![statement| x = 9 |] && in [statement| while ( 1 ) { @ } |]
 pand :: Stmt -> Context -> Bool
