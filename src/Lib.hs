@@ -26,6 +26,9 @@ public class HelloWorld
 grep :: CompilationUnit -> (Stmt -> Bool) -> ((Stmt -> CompilationUnit) -> Bool) -> [(Stmt, Stmt -> CompilationUnit)]
 grep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
 
+jrep :: CompilationUnit -> (Exp -> Bool) -> ((Exp -> CompilationUnit) -> Bool) -> [(Exp, Exp -> CompilationUnit)]
+jrep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
+
 type Context = Stmt -> CompilationUnit
 
 -- _
@@ -49,6 +52,13 @@ has :: Stmt -> Bool
 has n = case [ x | x <- universeBi n, ctnt x]
           of [] -> False
              _ -> True
+
+anyexp :: (Exp -> CompilationUnit) -> Bool
+anyexp _ = True
+
+exp :: Exp -> Bool
+exp e = case e of [jexp| 9 |] -> True
+                  _ -> False
 
 -- * while (1) {* x = 9 *} *
 hasnested :: Stmt -> Bool
