@@ -28,14 +28,10 @@ java = QuasiQuoter {
         in dataToExpQ (const Nothing) c
     , quotePat  = \str ->
         let Right c = parser stmt str
-        in dataToPatQ (const Nothing `extQ` antiVarPat `extQ` antiStmtPat) c
+        in dataToPatQ (const Nothing `extQ` antiStmtPat) c
     , quoteType = undefined
     , quoteDec  = undefined
     }
-
-antiVarPat :: Ident -> Maybe (Q Pat)
-antiVarPat (EMetaVar v) = Just $ varP (mkName v)
-antiVarPat _ = Nothing
 
 antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Pat)
 antiStmtPat (EMetaStmt s) = Just $ varP (mkName s)
