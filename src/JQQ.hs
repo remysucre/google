@@ -34,7 +34,7 @@ java = QuasiQuoter {
     }
 
 antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Pat)
-antiStmtPat (EMetaStmt s) = Just $ varP (mkName s)
+antiStmtPat (MetaStmt s) = Just $ varP (mkName s)
 antiStmtPat _ = Nothing
 
 antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Pat)
