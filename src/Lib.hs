@@ -14,8 +14,14 @@ type Context = Stmt -> CompilationUnit
 -- just like linux grep, this function takes a program (prog) and a pattern (match)
 -- and returns a list of statements each of which matches the pattern
 
-grep :: CompilationUnit -> (Stmt -> Bool) -> ((Stmt -> CompilationUnit) -> Bool) -> [(Stmt, Stmt -> CompilationUnit)]
-grep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
+grep :: [Stmt]
+grep = [r | r@[java| if (1) {}; |] <- universeBi prog1]
+
+erep :: [Exp]
+erep = [e | e@[java| 9 |] <- universeBi prog1]
+
+srep :: CompilationUnit -> (Stmt -> Bool) -> ((Stmt -> CompilationUnit) -> Bool) -> [(Stmt, Stmt -> CompilationUnit)]
+srep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
 
 jrep :: CompilationUnit -> (Exp -> Bool) -> ((Exp -> CompilationUnit) -> Bool) -> [(Exp, Exp -> CompilationUnit)]
 jrep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
@@ -24,7 +30,7 @@ repe :: CompilationUnit -> (Exp -> Bool) -> [Exp]
 repe prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
 reps :: CompilationUnit -> (Stmt -> Bool) -> [Stmt]
-reps prog pctnt = [ a | a@[jstmt| `x = 9 |] <- universeBi prog, pctnt a]
+reps prog pctnt = [ a | a@[jstmt| `_ = 9 |] <- universeBi prog, pctnt a]
 
 -- generate haskell code
 

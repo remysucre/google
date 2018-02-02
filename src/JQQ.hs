@@ -16,6 +16,19 @@ jprog = QuasiQuoter {
     , quoteDec  = undefined
     }
 
+-- general java patterns
+
+java :: QuasiQuoter
+java = QuasiQuoter {
+      quoteExp = undefined
+    , quotePat  = \str ->
+        let Right c = parser pat str
+        in case c of EP e -> dataToPatQ (const Nothing `extQ` antiExpPat) e
+                     SP s -> dataToPatQ (const Nothing `extQ` antiStmtPat) s
+    , quoteType = undefined
+    , quoteDec  = undefined
+    }
+
 -- quoting java expressions
 
 jexp :: QuasiQuoter
@@ -28,7 +41,7 @@ jexp = QuasiQuoter {
     , quoteDec  = undefined
     }
 
-antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Pat)
+antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
 antiExpPat (MetaExp s) = Just $ varP (mkName s)
 antiExpPat _ = Nothing
 
@@ -44,6 +57,6 @@ jstmt = QuasiQuoter {
     , quoteDec  = undefined
     }
 
-antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Pat)
+antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 antiStmtPat (MetaStmt s) = Just $ varP (mkName s)
 antiStmtPat _ = Nothing
