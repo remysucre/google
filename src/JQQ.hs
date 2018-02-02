@@ -6,17 +6,8 @@ import Language.Haskell.TH
 import Language.Haskell.TH.Quote
 import Data.Generics (extQ)
 
-jprog :: QuasiQuoter
-jprog = QuasiQuoter {
-      quoteExp = \str ->
-        let Right c = parser compilationUnit str
-        in dataToExpQ (const Nothing) c
-    , quotePat  = undefined
-    , quoteType = undefined
-    , quoteDec  = undefined
-    }
-
--- general java patterns
+-- general java patterns. in a minimal implementation, this is the only
+-- necessary part
 
 java :: QuasiQuoter
 java = QuasiQuoter {
@@ -60,3 +51,15 @@ jstmt = QuasiQuoter {
 antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 antiStmtPat (MetaStmt s) = Just $ varP (mkName s)
 antiStmtPat _ = Nothing
+
+-- this pattern is just for easily making programs
+
+jprog :: QuasiQuoter
+jprog = QuasiQuoter {
+      quoteExp = \str ->
+        let Right c = parser compilationUnit str
+        in dataToExpQ (const Nothing) c
+    , quotePat  = undefined
+    , quoteType = undefined
+    , quoteDec  = undefined
+    }
