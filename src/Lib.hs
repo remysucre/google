@@ -29,25 +29,25 @@ jrep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
 repe :: CompilationUnit -> (Exp -> Bool) -> [Exp]
 repe prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
-reps :: CompilationUnit -> (Stmt -> Bool) -> [Stmt]
-reps prog pctnt = [ a | a@[jstmt| `_ = 9 |] <- universeBi prog, pctnt a]
+reps :: CompilationUnit -> (Exp -> Bool) -> [Exp]
+reps prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
 -- generate haskell code
 
-runp :: TH.Q TH.Pat -> TH.Q [TH.Dec]
-runp p = [d|f s = case s of {$(p) -> True; _ -> False}|]
-
 matchs :: TH.Q [TH.Dec]
-matchs = runp pstmt
+matchs = [d|f s = case s of {[jexp| x + `_ |] -> True; _ -> False}|]
 
-matche :: TH.Q [TH.Dec]
-matche = runp pexp
+
+test :: [Exp]
+test = repe prog1 pat
+  where pat [jexp| x + `_ |] = True
+        pat _ = False
 
 pstmt :: TH.Q TH.Pat
-pstmt = [p| [jstmt| `x = 9|] |]
+pstmt = [p| [java| x + `_ |] |]
 
 pexp :: TH.Q TH.Pat
-pexp = [p| [jexp| `_ + 9|] |]
+pexp = [p| [jexp| x + `_|] |]
 
 prog1 :: CompilationUnit
 prog1 = [jprog|
@@ -57,6 +57,7 @@ public class HelloWorld
                 System.out.println("Hello World!");
                 while (1) { x = 9; };
                 while (1) { y = x + 9; };
+                while (1) { y = x + 10; };
                 while (1) { x++; };
         }
 }|]
