@@ -7,7 +7,8 @@ import Language.Java.Pretty
 
 main :: IO ()
 main = do
-  print test
+  print teste
+  print tests
   -- print prog1
   -- print "pretty print"
   -- putStrLn $ prettyPrint prog1

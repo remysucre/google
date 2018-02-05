@@ -29,7 +29,7 @@ jexp = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
         let Right c = traceShowId $ parser (Language.Java.Parser.exp <* eof) str
-        in dataToPatQ (const Nothing `extQ` antiExpPat) c
+        in dataToPatQ (const Nothing `extQ` antiStmtPat `extQ` antiExpPat) c
     , quoteType = undefined
     , quoteDec  = undefined
     }
@@ -44,8 +44,8 @@ jstmt :: QuasiQuoter
 jstmt = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
-        let Right c = parser stmt str
-        in dataToPatQ (const Nothing `extQ` antiStmtPat) c
+        let Right c = traceShowId $ parser (stmt <* eof) str
+        in dataToPatQ (const Nothing `extQ` antiStmtPat `extQ` antiExpPat) c
     , quoteType = undefined
     , quoteDec  = undefined
     }
