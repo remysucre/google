@@ -7,6 +7,7 @@ import JQQ
 import Language.Java.Syntax
 import Data.Generics.Uniplate.Data
 import qualified Language.Haskell.TH as TH
+import qualified Language.Haskell.TH.Lib as TL
 
 type Context = Stmt -> CompilationUnit
 
@@ -35,19 +36,24 @@ reps prog pctnt = [ a | a <- universeBi prog, pctnt a]
 -- generate haskell code
 
 matchs :: TH.Q [TH.Dec]
-matchs = [d|f s = case s of {[jexp| x + `_ |] -> True; _ -> False}|]
+matchs = [d|f s = case s of {[jexp| `x + `_ |] -> True; _ -> False}|]
 
 
 test :: [Exp]
 test = repe prog1 pat
-  where pat [jexp| x + `_ |] = True
-        pat _ = False
+  where pat [jexp| `x + 9 |] = True
+        pat [jexp| x + `y |] = False
+        pat [jexp| `x + `y |] = False
+        pat [jexp| `x |] = False
 
 pstmt :: TH.Q TH.Pat
-pstmt = [p| [java| x + `_ |] |]
+pstmt = [p| [java| w + 9 |] |]
 
 pexp :: TH.Q TH.Pat
-pexp = [p| [jexp| x + `_|] |]
+pexp = [p| [jexp| x + 9|] |]
+
+w :: TH.Q TH.Pat
+w = TL.wildP
 
 prog1 :: CompilationUnit
 prog1 = [jprog|
