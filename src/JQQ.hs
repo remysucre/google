@@ -5,6 +5,8 @@ import Language.Java.Syntax
 import Language.Haskell.TH
 import Language.Haskell.TH.Quote
 import Data.Generics (extQ)
+import Debug.Trace
+import Text.Parsec.Combinator
 
 -- general java patterns. in a minimal implementation, this is the only
 -- necessary part
@@ -26,7 +28,7 @@ jexp :: QuasiQuoter
 jexp = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
-        let Right c = parser Language.Java.Parser.exp str
+        let Right c = traceShowId $ parser (Language.Java.Parser.exp <* eof) str
         in dataToPatQ (const Nothing `extQ` antiExpPat) c
     , quoteType = undefined
     , quoteDec  = undefined
