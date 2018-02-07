@@ -7,10 +7,10 @@ import Language.Java.Pretty
 
 main :: IO ()
 main = do
-  -- print . map prettyPrint $ teste
-  print . map prettyPrint $ tests
-  print $ length tests
-  print tests
+  print . map prettyPrint $ teste
+  -- print . map prettyPrint $ tests
+  -- print $ length tests
+  -- print tests
   -- print prog1 
   -- print "pretty print"
   -- putStrLn $ prettyPrint prog1

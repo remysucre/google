@@ -31,11 +31,12 @@ grepj = undefined
 teste :: [Exp]
 teste = grepe prog1 pat
   where pat [jexp| `_ != null |] = True -- <- NOTE: add your patter here
+        pat [jexp| x + `y |] = True
+        pat [jexp| `x + `y |] = True
+        pat [jexp| `x |] = True
         pat _ = False
-        -- pat [jexp| x + `y |] = True
-        -- pat [jexp| `x + `y |] = True
-        -- pat [jexp| `x |] = True
 
+{-
 tests :: [Stmt]
 tests = greps prog1 pat
   where pat [jstmt|
@@ -44,7 +45,7 @@ tests = greps prog1 pat
                         `y
                         `n } |] = True
         pat _ = False
-
+-}
 -- TODO Pat test
 
 --------------------
