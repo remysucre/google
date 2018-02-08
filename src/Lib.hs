@@ -34,6 +34,7 @@ teste = grepe prog1 pat
         pat [jexp| x + `y |] = True
         pat [jexp| `x + `y |] = True
         pat [jexp| `x |] = True
+        pat [jexp| if ( `s != null)  `n |] = True
         pat _ = False
 
 {-
