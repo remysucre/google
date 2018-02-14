@@ -17,6 +17,7 @@
     | p ; p                    # conjunction
 
     | [ p ]                    # a sequence of patterns
+    | & ana p = res &          # flow analysis
 ```
 
 `_` matches any parseable unit
@@ -32,3 +33,5 @@
 `p1 ; p2` matches any unit that both `p1` and `p2` match
 
 `[p]` matches a unit that is a sequence of units, each of which `p` matches
+
+`& ana p = res &` asserts the analysis `ana` on node `p` returns result `res`. An example is `& alias for _ _ = null &` matches any for loop that contains no aliases. 
