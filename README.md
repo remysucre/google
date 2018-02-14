@@ -17,6 +17,7 @@
     | p ; p                    # conjunction
 
     | [ p ]                    # a sequence of patterns
+    
     | & ana p = res &          # flow analysis
 ```
 
