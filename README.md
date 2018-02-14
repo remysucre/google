@@ -5,8 +5,8 @@
   p extends grammar
    := _                        # any unit
 
-    | * p *                    # any unit that has p in it.
-                               # have to have a pair of matching *
+    | ... p ...                # any unit that has p in it.
+                               # have to have a pair of matching ...
 
     | @ | in p                 # this is the context
                                # @ itself is meaningless and works 
@@ -21,7 +21,7 @@
 
 `_` matches any parseable unit
 
-`* p *` matches any unit that contains a unit that p matches. In other words, it matches any of `p`'s ancestors
+`... p ...` matches any unit that contains a unit that p matches. In other words, it matches any of `p`'s ancestors
 
 `in c` matches any unit `u` such that `c[u/@]` has a match. In other words, it matches any unit `u` whose ancestor matches `c[u/@]`
 
