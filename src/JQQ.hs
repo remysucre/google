@@ -1,3 +1,5 @@
+{-# Language ViewPatterns, TemplateHaskell #-}
+
 module JQQ where
 
 import Language.Java.Parser
@@ -11,16 +13,30 @@ import Text.Parsec.Combinator
 -- general java patterns. in a minimal implementation, this is the only
 -- necessary part
 
+-- TODO probably wont work if pnot is nested
+
 java :: QuasiQuoter
 java = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
-        let Right c = parser pat str
-        in case c of EP e -> dataToPatQ (const Nothing `extQ` antiExpPat) e
-                     SP s -> dataToPatQ (const Nothing `extQ` antiStmtPat) s
+        let Right c = traceShowId $ parser pat str
+            expand (EP e) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) e
+            expand (SP s) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) s
+            expand (PNot p) = viewP (lamCaseE [c1, c2]) [p|True|]
+                       where c1 = match p_ (normalB [e| False |]) []
+                             c2 = match wildP (normalB [e| True |]) []
+                             p_ = expand p
+        in expand c
     , quoteType = undefined
     , quoteDec  = undefined
     }
+
+negatePat :: Language.Java.Syntax.Pat -> Maybe (Q Language.Haskell.TH.Pat)
+negatePat (PNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
+  where c1 = match p_ ( normalB [e| False |]) []
+        c2 = match wildP ( normalB [e| True |]) []
+        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` negatePat) p
+negatePat _ = Nothing
 
 -- quoting java expressions
 

@@ -1,5 +1,6 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE ViewPatterns #-}
 
 module Lib where
 
@@ -19,14 +20,18 @@ grepe prog pctnt = [ a | a <- universeBi prog, pctnt a]
 greps :: CompilationUnit -> (Stmt -> Bool) -> [Stmt]
 greps prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
-grepj :: CompilationUnit -> (Pat -> Bool) -> [Stmt]
-grepj = undefined
+grepj :: CompilationUnit -> (Exp -> Bool) -> [Exp]
+grepj prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
 -- TODO transformation engine
 
 --------------------
 -- patterns here ---
 --------------------
+testj :: [Exp]
+testj = grepj prog1 pat
+  where pat [java| `! 1 |] = True
+        pat _ = False
 
 teste :: [Exp]
 teste = grepe prog1 pat
@@ -54,6 +59,17 @@ tests = greps prog1 pat
 
 prog1 :: CompilationUnit
 prog1 = [jprog|
+public class HelloWorld
+{
+        public static void main(String[] args) {
+                System.out.println("Hello World!");
+                while (1) { x = 9; };
+                while (1) { x++; };
+        }
+}|]
+
+prog2 :: CompilationUnit
+prog2 = [jprog|
 /*******************************************************************************
  * Copyright (c) 2004 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
