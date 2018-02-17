@@ -20,23 +20,27 @@ java = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
         let Right c = traceShowId $ parser pat str
-            expand (EP e) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) e
-            expand (SP s) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) s
-            expand (PNot p) = viewP (lamCaseE [c1, c2]) [p|True|]
-                       where c1 = match p_ (normalB [e| False |]) []
-                             c2 = match wildP (normalB [e| True |]) []
-                             p_ = expand p
+            expand (EP e) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` enot `extQ` snot) e
+            expand (SP s) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` enot `extQ` snot) s
         in expand c
     , quoteType = undefined
     , quoteDec  = undefined
     }
 
-negatePat :: Language.Java.Syntax.Pat -> Maybe (Q Language.Haskell.TH.Pat)
-negatePat (PNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
+enot :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
+enot (ENot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
   where c1 = match p_ ( normalB [e| False |]) []
         c2 = match wildP ( normalB [e| True |]) []
-        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` negatePat) p
-negatePat _ = Nothing
+        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot `extQ` enot) p
+enot _ = Nothing
+
+
+snot :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
+snot (SNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
+  where c1 = match p_ ( normalB [e| False |]) []
+        c2 = match wildP ( normalB [e| True |]) []
+        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot `extQ` enot) p
+snot _ = Nothing
 
 -- quoting java expressions
 
