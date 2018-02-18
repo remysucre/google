@@ -34,13 +34,27 @@ enot (ENot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
         p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot `extQ` enot) p
 enot _ = Nothing
 
-
 snot :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 snot (SNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
-  where c1 = match p_ ( normalB [e| False |]) []
-        c2 = match wildP ( normalB [e| True |]) []
+  where c1 = match p_ ( normalB [| False |]) []
+        c2 = match wildP ( normalB [| True |]) []
         p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot `extQ` enot) p
 snot _ = Nothing
+
+shass :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
+shass (SHasS p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
+  where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
+        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot `extQ` enot) p
+shass _ = Nothing
+
+shase :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
+shase = undefined
+
+ehass :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
+ehass = undefined
+
+ehase :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
+ehase = undefined
 
 -- quoting java expressions
 
