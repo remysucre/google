@@ -30,7 +30,7 @@ grepj prog pctnt = [ a | a <- universeBi prog, pctnt a]
 --------------------
 testj :: [Exp]
 testj = grepj prog1 pat
-  where pat [java| `! 1 |] = True
+  where pat [java| `x + `x + `x + `x |] = True
         pat _ = False
 
 teste :: [Exp]
@@ -64,6 +64,7 @@ public class HelloWorld
         public static void main(String[] args) {
                 System.out.println("Hello World!");
                 while (1) { x = 9; };
+                while (1) { x = 9 + 9; };
                 while (1) { x++; };
         }
 }|]
@@ -698,6 +699,10 @@ srep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
 jrep :: CompilationUnit -> (Exp -> Bool) -> ((Exp -> CompilationUnit) -> Bool) -> [(Exp, Exp -> CompilationUnit)]
 jrep prog pctnt pctxt = [ r | r@(a, b) <- contextsBi prog, pctnt a && pctxt b]
 
-
+g = $(do
+  nm1 <- TH.newName "x"
+  let nm2 = TH.mkName "x"
+  return (TH.LamE [TH.VarP nm1] (TH.LamE [TH.VarP nm2] (TH.VarE nm1)))
+ )
 
 type Context = Stmt -> CompilationUnit

@@ -20,31 +20,25 @@ java = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
         let Right c = traceShowId $ parser pat str
-            expand (EP e) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` enot `extQ` snot) e
-            expand (SP s) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` enot `extQ` snot) s
+            -- expand (EP e) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot) e
+            expand (EP e) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) e
+            expand (SP s) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) s
         in expand c
     , quoteType = undefined
     , quoteDec  = undefined
     }
 
-enot :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
-enot (ENot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
-  where c1 = match p_ ( normalB [e| False |]) []
-        c2 = match wildP ( normalB [e| True |]) []
-        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot `extQ` enot) p
-enot _ = Nothing
-
 snot :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 snot (SNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
   where c1 = match p_ ( normalB [| False |]) []
         c2 = match wildP ( normalB [| True |]) []
-        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot `extQ` enot) p
+        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot ) p
 snot _ = Nothing
 
 shass :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 shass (SHasS p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
   where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
-        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot `extQ` enot) p
+        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot ) p
 shass _ = Nothing
 
 shase :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
@@ -69,7 +63,17 @@ jexp = QuasiQuoter {
     }
 
 antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
-antiExpPat (MetaExp s) = Just $ varP (mkName s)
+antiExpPat (MetaExp s) = Just (do b <- lookupValueName s
+                                  let n0 = mkName s
+                                      p0 = VarP n0
+                                  p1 <- (viewP [|(== $(varE n0))|] [p|True|])
+                                  let res = case b of Nothing -> p0
+                                                      _ -> p1
+                                  return res)
+antiExpPat (ENot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
+  where c1 = match p_ ( normalB [e| False |]) []
+        c2 = match wildP ( normalB [e| True |]) []
+        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) p
 antiExpPat _ = Nothing
 
 -- quoting java statements
