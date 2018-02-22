@@ -5,8 +5,10 @@ module JQQ where
 import Language.Java.Parser
 import Language.Java.Syntax
 import Language.Haskell.TH
+import Language.Haskell.TH.Syntax (showName)
 import Language.Haskell.TH.Quote
 import Data.Generics (extQ)
+import Data.Generics.Uniplate.Data
 import Debug.Trace
 import Text.Parsec.Combinator
 
@@ -20,12 +22,24 @@ java = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
         let Right c = traceShowId $ parser pat str
-            expand (EP e) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) e
-            expand (SP s) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) s
+            expand (EP e) = do
+              p0 <- dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) e
+              let p1 = rename p0
+              return p0
+            expand (SP s) = do
+              p0 <- dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) s
+              let p1 = rename p0
+              return p0
         in expand c
     , quoteType = undefined
     , quoteDec  = undefined
     }
+
+
+rename :: Language.Haskell.TH.Pat -> Language.Haskell.TH.Pat
+rename p = transformBi rnvar p
+  where rnvar (VarP n) = (ViewP (AppE (VarE $ mkName "==") (VarE . mkName . showName $ n)) (ConP (mkName "True") []))-- [p|((== n) -> True)|]-- (viewP (== x) [p|True|])
+        rnvar x = x
 
 shass :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 shass (SHasS p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
