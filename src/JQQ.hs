@@ -20,7 +20,6 @@ java = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
         let Right c = traceShowId $ parser pat str
-            -- expand (EP e) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot) e
             expand (EP e) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) e
             expand (SP s) = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) s
         in expand c
@@ -28,17 +27,10 @@ java = QuasiQuoter {
     , quoteDec  = undefined
     }
 
-snot :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
-snot (SNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
-  where c1 = match p_ ( normalB [| False |]) []
-        c2 = match wildP ( normalB [| True |]) []
-        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot ) p
-snot _ = Nothing
-
 shass :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 shass (SHasS p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
   where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
-        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` snot ) p
+        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) p
 shass _ = Nothing
 
 shase :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
@@ -84,6 +76,19 @@ jstmt = QuasiQuoter {
 
 antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 antiStmtPat (MetaStmt s) = Just $ varP (mkName s)
+antiStmtPat (StmtBlock (Block [BlockStmt h, BlockStmt (Seq pseq)])) = Just p
+  {- [p| StmtBlock (Block (p: (\ns -> all (\case {ps -> True; _ -> False}) ns)))|]-}
+  where p = conP (mkName "StmtBlock") [conP (mkName "Block") [ infixP (conP (mkName "BlockStmt") [h_]) (mkName ":") ps_]]
+        h_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) h
+        ps_ = [p|((\ns -> all $(matchps) ns) -> True)|]
+        matchps = lamCaseE [c1, c2]
+        c1 = match (conP (mkName "BlockStmt") [pseq_]) (normalB [|True|]) []
+        c2 = match wildP (normalB [|False|]) []
+        pseq_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) pseq
+antiStmtPat (SNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
+  where c1 = match p_ ( normalB [| False |]) []
+        c2 = match wildP ( normalB [| True |]) []
+        p_ = dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) p
 antiStmtPat _ = Nothing
 
 -- this pattern is just for easily making programs

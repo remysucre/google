@@ -20,7 +20,7 @@ grepe prog pctnt = [ a | a <- universeBi prog, pctnt a]
 greps :: CompilationUnit -> (Stmt -> Bool) -> [Stmt]
 greps prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
-grepj :: CompilationUnit -> (Exp -> Bool) -> [Exp]
+grepj :: CompilationUnit -> (Stmt -> Bool) -> [Stmt]
 grepj prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
 -- TODO transformation engine
@@ -28,9 +28,9 @@ grepj prog pctnt = [ a | a <- universeBi prog, pctnt a]
 --------------------
 -- patterns here ---
 --------------------
-testj :: [Exp]
+testj :: [Stmt]
 testj = grepj prog1 pat
-  where pat [java| `x + `y |] = True
+  where pat [java| while (1) { x = 9 + 9; `[ x = 9 + 9; `]} |] = True
         pat _ = False
 
 teste :: [Exp]
@@ -65,6 +65,7 @@ public class HelloWorld
                 System.out.println("Hello World!");
                 while (1) { x = 9; };
                 while (1) { x = 9 + 9; };
+                while (1) { x = 9 + 9; x = 9 + 9; x = 9 + 9; };
                 while (1) { x++; };
         }
 }|]

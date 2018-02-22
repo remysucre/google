@@ -10,7 +10,7 @@ main = do
   -- print . map prettyPrint $ teste
   -- print . map prettyPrint $ testj
   print testj
-  print $ g 1 2
+  print $ length testj
   -- print . map prettyPrint $ tests
   -- print $ length tests
   -- print tests
