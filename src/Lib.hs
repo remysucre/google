@@ -30,7 +30,7 @@ grepj prog pctnt = [ a | a <- universeBi prog, pctnt a]
 --------------------
 testj :: [Exp]
 testj = grepj prog1 pat
-  where pat [java| `x + `x + `x + `x |] = True
+  where pat [java| `x + `y |] = True
         pat _ = False
 
 teste :: [Exp]

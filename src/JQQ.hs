@@ -63,13 +63,7 @@ jexp = QuasiQuoter {
     }
 
 antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
-antiExpPat (MetaExp s) = Just (do b <- lookupValueName s
-                                  let n0 = mkName s
-                                      p0 = VarP n0
-                                  p1 <- (viewP [|(== $(varE n0))|] [p|True|])
-                                  let res = case b of Nothing -> p0
-                                                      _ -> p1
-                                  return res)
+antiExpPat (MetaExp s) = Just $ varP (mkName s)
 antiExpPat (ENot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
   where c1 = match p_ ( normalB [e| False |]) []
         c2 = match wildP ( normalB [e| True |]) []
