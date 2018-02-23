@@ -8,8 +8,8 @@ import Language.Java.Pretty
 main :: IO ()
 main = do
   -- print . map prettyPrint $ teste
-  -- print . map prettyPrint $ testj
-  print testj
+  putStr . concatMap ((++ "haha \n") . prettyPrint) $ testj
+  -- print testj
   print $ length testj
   -- print . map prettyPrint $ tests
   -- print $ length tests
