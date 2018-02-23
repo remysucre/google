@@ -1,16 +1,17 @@
-{-# Language ViewPatterns, TemplateHaskell #-}
+{-# Language ViewPatterns, TemplateHaskell, FlexibleContexts #-}
 
 module JQQ where
 
 import Language.Java.Parser
 import Language.Java.Syntax
 import Language.Haskell.TH
-import Language.Haskell.TH.Syntax (showName)
 import Language.Haskell.TH.Quote
 import Data.Generics (extQ)
 import Data.Generics.Uniplate.Data
 import Debug.Trace
 import Text.Parsec.Combinator
+import Control.Monad.State.Lazy
+import qualified Data.Set as DS
 
 -- general java patterns. in a minimal implementation, this is the only
 -- necessary part
@@ -22,24 +23,20 @@ java = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
         let Right c = traceShowId $ parser pat str
-            expand (EP e) = do
-              p0 <- dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) e
-              let p1 = rename p0
-              return p0
-            expand (SP s) = do
-              p0 <- dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) s
-              let p1 = rename p0
-              return p0
-        in expand c
+        in case c of (EP e) -> dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) e
+                     (SP s) -> dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) (evalState (rename s) DS.empty)
     , quoteType = undefined
     , quoteDec  = undefined
     }
 
 
-rename :: Language.Haskell.TH.Pat -> Language.Haskell.TH.Pat
-rename p = transformBi rnvar p
-  where rnvar (VarP n) = (ViewP (AppE (VarE $ mkName "==") (VarE . mkName . showName $ n)) (ConP (mkName "True") []))-- [p|((== n) -> True)|]-- (viewP (== x) [p|True|])
-        rnvar x = x
+rename :: Language.Java.Syntax.Stmt -> State (DS.Set String) Language.Java.Syntax.Stmt
+rename p = transformM rnvar p
+  where rnvar (MetaStmt n) = do s <- get
+                                let res = if DS.member n s then (SAssertEq n) else (MetaStmt n)
+                                put (DS.insert n s)
+                                return res
+        rnvar x = return x
 
 shass :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 shass (SHasS p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
@@ -90,6 +87,7 @@ jstmt = QuasiQuoter {
 
 antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 antiStmtPat (MetaStmt s) = Just $ varP (mkName s)
+antiStmtPat (SAssertEq s) = Just $ viewP [|(== $(varE . mkName $ s))|] [p|True|]
 antiStmtPat (StmtBlock (Block [BlockStmt h, BlockStmt (Seq pseq)])) = Just p
   {- [p| StmtBlock (Block (p: (\ns -> all (\case {ps -> True; _ -> False}) ns)))|]-}
   where p = conP (mkName "StmtBlock") [conP (mkName "Block") [ infixP (conP (mkName "BlockStmt") [h_]) (mkName ":") ps_]]
