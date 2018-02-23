@@ -24,7 +24,7 @@ java = QuasiQuoter {
     , quotePat  = \str ->
         let Right c = traceShowId $ parser pat str
         in case c of (EP e) -> dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) e
-                     (SP s) -> dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat) (evalState (rename s) DS.empty)
+                     (SP s) -> dataToPatQ (const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` antiVar) (evalState (rename s) DS.empty)
     , quoteType = undefined
     , quoteDec  = undefined
     }
@@ -64,6 +64,10 @@ jexp = QuasiQuoter {
     , quoteType = undefined
     , quoteDec  = undefined
     }
+
+antiVar :: Language.Java.Syntax.Lhs -> Maybe (Q Language.Haskell.TH.Pat)
+antiVar (MetaVar s) = Just $ varP (mkName s)
+antiVar _ = Nothing
 
 antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
 antiExpPat (MetaExp s) = Just $ varP (mkName s)

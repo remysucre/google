@@ -31,8 +31,8 @@ grepj prog pctnt = [ a | a <- universeBi prog, pctnt a]
 testj :: [Stmt]
 testj = grepj prog1 pat
   where -- pat [java| while (1) { x = 9 + 9; `[ x = 9 + 9; `]} |] = True
-        pat [java| { `x while (1) { `x `x } } |] = True
-        pat [java| x = 9; |] = True
+        -- pat [java| { `x while (1) { `x `x } } |] = True
+        pat [java| `x = 9; |] = True
         pat _ = False
 
 teste :: [Exp]
