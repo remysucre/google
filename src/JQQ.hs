@@ -25,19 +25,30 @@ java = QuasiQuoter {
     , quotePat  = \str ->
         let Right c = traceShowId $ parser pat str
         in case c of (EP e) -> dataToPatQ exts e
-                     (SP s) -> dataToPatQ exts (evalState (rename s) DS.empty)
+                     (SP s) -> dataToPatQ exts (evalState ((rename s) >>= reid) DS.empty)
     , quoteType = undefined
     , quoteDec  = undefined
     }
 
 exts :: Data b => b -> Maybe (Q Language.Haskell.TH.Pat)
-exts = const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` antiVar
+exts = const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` antiId `extQ` antiVar
 
 rename :: Language.Java.Syntax.Stmt -> State (DS.Set String) Language.Java.Syntax.Stmt
 rename p = transformM rnvar p
-  where rnvar (MetaStmt n) =
+  where rnvar x@(MetaStmt "_") = return x
+        rnvar (MetaStmt n) =
           do s <- get
              let res = if DS.member n s then (SAssertEq n) else (MetaStmt n)
+             put (DS.insert n s)
+             return res
+        rnvar x = return x
+
+reid :: Language.Java.Syntax.Stmt -> State (DS.Set String) Language.Java.Syntax.Stmt
+reid p = transformBiM rnvar p
+  where rnvar x@(MetaId "_") = return x
+        rnvar (MetaId n) =
+          do s <- get
+             let res = if DS.member n s then (IAssertEq n) else (MetaId n)
              put (DS.insert n s)
              return res
         rnvar x = return x
@@ -54,11 +65,19 @@ jexp = QuasiQuoter {
     , quoteDec  = undefined
     }
 
+antiId :: Language.Java.Syntax.Ident -> Maybe (Q Language.Haskell.TH.Pat)
+antiId (MetaId "_") = Just $ wildP
+antiId (MetaId s) = Just $ varP (mkName s)
+antiId (IAssertEq s) = Just $ viewP [|(== $(varE . mkName $ s))|] [p|True|]
+antiId _ = Nothing
+
 antiVar :: Language.Java.Syntax.Lhs -> Maybe (Q Language.Haskell.TH.Pat)
+antiVar (MetaVar "_") = Just $ wildP
 antiVar (MetaVar s) = Just $ varP (mkName s)
 antiVar _ = Nothing
 
 antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
+antiExpPat (MetaExp "_") = Just $ wildP
 antiExpPat (MetaExp s) = Just $ varP (mkName s)
 antiExpPat (ENot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
   where c1 = match p_ ( normalB [e| False |]) []
@@ -85,15 +104,16 @@ jstmt = QuasiQuoter {
     }
 
 antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
+antiStmtPat (MetaStmt "_") = Just $ wildP
 antiStmtPat (MetaStmt s) = Just $ varP (mkName s)
 antiStmtPat (SAssertEq s) = Just $ viewP [|(== $(varE . mkName $ s))|] [p|True|]
-antiStmtPat (StmtBlock (Block [BlockStmt h, BlockStmt (Seq pseq)])) = Just p
+antiStmtPat (StmtBlock (Block [h, BlockStmt (Seq pseq)])) = Just p
   {- [p| StmtBlock (Block (p: (\ns -> all (\case {ps -> True; _ -> False}) ns)))|]-}
-  where p = conP (mkName "StmtBlock") [conP (mkName "Block") [ infixP (conP (mkName "BlockStmt") [h_]) (mkName ":") ps_]]
+  where p = conP (mkName "StmtBlock") [conP (mkName "Block") [ infixP h_ (mkName ":") ps_]]
         h_ = dataToPatQ exts h
         ps_ = [p|((\ns -> all $(matchps) ns) -> True)|]
         matchps = lamCaseE [c1, c2]
-        c1 = match (conP (mkName "BlockStmt") [pseq_]) (normalB [|True|]) []
+        c1 = match (conP (mkName "BlockStmt") [pseq_]) (normalB [|True|]) [] -- TODO come here if things break
         c2 = match wildP (normalB [|False|]) []
         pseq_ = dataToPatQ exts pseq
 antiStmtPat (SNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])

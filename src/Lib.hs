@@ -33,10 +33,9 @@ testj = grepj prog1 pat
   where -- pat [java| while (1) { x = 9 + 9; `[ x = 9 + 9; `]} |] = True
         -- pat [java| { `x while (1) { `x `x } } |] = True
         -- pat [java| `x = 9; |] = True
-        pat [java| for (Iterator<Invariant> i = `_; i.hasNext(); ) {
-                     Invariant mine = i.next();
-                     if (`_2)
-                       return `x;
+        pat [java| for (#_<#_> #i = `_; #i.#_(); ) {
+                     #_ #_ = #i.next();
+                     `[`_`]
                    } |] = True
         pat _ = False
 
