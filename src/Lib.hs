@@ -40,7 +40,7 @@ for (#_<#_> #x = `_ ; #x.hasNext() ;)
 
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog pat
-  where pat [java| for (#_<#_> #i = `_; #i.#_(); ) {
+  where pat [java| for (#_<#_> #i = `_; #i.#_(); ) { -- PATTERN HERE
                      #_ #_ = #i.next();
                      `[ `! `*( #i `)* `]
                    } |] = True
