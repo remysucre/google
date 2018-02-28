@@ -124,7 +124,10 @@ antiStmtPat (SHasS p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out f
   where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
         p_ = dataToPatQ exts p
 antiStmtPat (SHasE p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
-  where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
+  where body = compE [bindS p_ [|universeBi n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
+        p_ = dataToPatQ exts p
+antiStmtPat (SHasI p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
+  where body = compE [bindS p_ [|universeBi n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
         p_ = dataToPatQ exts p
 antiStmtPat _ = Nothing
 
