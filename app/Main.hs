@@ -2,15 +2,21 @@ module Main where
 
 import Lib
 import Language.Java.Pretty
+import Language.Java.Parser
+import System.Environment
 
 -- $(matchs)
 
 main :: IO ()
 main = do
   -- print . map prettyPrint $ teste
-  putStr . concatMap ((++ "haha \n") . prettyPrint) $ testj
-  -- print testj
-  print $ length testj
+  [fn] <- getArgs
+  fc <- readFile fn
+  let Right java = parser compilationUnit fc
+      res = testj java
+  putStr . concatMap ((++ "haha \n") . prettyPrint) $ res
+  -- print 
+  print $ length res
   -- print . map prettyPrint $ tests
   -- print $ length tests
   -- print tests
