@@ -38,17 +38,13 @@ for (#_<#_> #x = `_ ; #x.hasNext() ;)
 }
 -}
 
+-- Pattern for Patch 7 (File: DataSet/Patch7/OLD_CARBON16738/Eclipse_SWT/gtk/org/eclipse/swt/widgets/Spinner.java)
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog pat
-  where pat _ = True -- pat [java| for (#_<#_> #i = `_; #i.#_(); ) { // PATTERN HERE
-        --              #_ #_ = #i.next();
-        --              `[ `! `*( #i `)* `]
-        --            } |] = True
+  where pat [java|
+		for(int i = 0; i < digits; i++) adjustment.#x *= 10; return (int) (adjustment.#x + 0.5);
+		|] = True
         pat _ = False
-
-        -- pat [java| while (1) { x = 9 + 9; `[ x = 9 + 9; `]} |] = True
-        -- pat [java| { `x while (1) { `x `x } } |] = True
-        -- pat [java| `x = 9; |] = True
 
 teste :: [Exp]
 teste = grepe prog1 pat
