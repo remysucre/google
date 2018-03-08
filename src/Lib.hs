@@ -45,20 +45,25 @@ testj prog = grepj prog pat
 /////////////////////
 //     Patch 1     //
 /////////////////////
+//
 // if (this.#x != null) {
 //  int[] range = (int[]) this.#x.get(node);
 //  `[ `_ `] }
+//
 /////////////////////
 //   Patch 2 & 3   //
 /////////////////////
+//
 // if (`*(
 // (( this.currentCharacter =
 // this.source [this.currentPosition++])
 // == '\\')
 // `)*) `*( (c1 = Character.getNumericValue(`_)) > 15 `)*
+//
 /////////////////////
 //     Patch 4     //
 /////////////////////
+//
 // switch (`_) {
 //   case SWT.LINE_DOT:
 //   case SWT.LINE_DASH:
@@ -66,17 +71,34 @@ testj prog = grepj prog pat
 //   case SWT.LINE_DASHDOTDOT:
 //     data.state &= ~LINE_STYLE;
 // }
+//
+/////////////////////
+//     Patch 5     // 
+/////////////////////
+//
+// if (`*( focusIndex `)*) `*( redraw `)*
+//
+/////////////////////
+//     Patch 6     // 
+/////////////////////
+//
+// if (control instanceof Tree) { `*( TreeDragAndDropEffect `)* } else `_
+//
 /////////////////////
 //     Patch 7     // 
 /////////////////////
+//
 // for (int i = 0; i < digits; i++) adjustment.#x *= 10;
+//
 /////////////////////
 //     Daikon      //
 /////////////////////
+//
 // for (#_<#_> #i = `_; #i.#_(); ) { // PATTERN HERE
 //   #_ #_ = #i.next();
 //   `[ `! `*( #i `)* `]
 // } 
+//
 |] = True
         pat _ = False
 
