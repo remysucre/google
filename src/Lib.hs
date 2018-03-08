@@ -41,9 +41,43 @@ for (#_<#_> #x = `_ ; #x.hasNext() ;)
 -- Pattern for Patch 7 (File: DataSet/Patch7/OLD_CARBON16738/Eclipse_SWT/gtk/org/eclipse/swt/widgets/Spinner.java)
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog pat
-  where pat [java|
-		for(int i = 0; i < digits; i++) adjustment.#x *= 10; return (int) (adjustment.#x + 0.5);
-		|] = True
+  where pat [java| 
+/////////////////////
+//     Patch 1     //
+/////////////////////
+// if (this.#x != null) {
+//  int[] range = (int[]) this.#x.get(node);
+//  `[ `_ `] }
+/////////////////////
+//   Patch 2 & 3   //
+/////////////////////
+// if (`*(
+// (( this.currentCharacter =
+// this.source [this.currentPosition++])
+// == '\\')
+// `)*) `*( (c1 = Character.getNumericValue(`_)) > 15 `)*
+/////////////////////
+//     Patch 4     //
+/////////////////////
+// switch (`_) {
+//   case SWT.LINE_DOT:
+//   case SWT.LINE_DASH:
+//   case SWT.LINE_DASHDOT:
+//   case SWT.LINE_DASHDOTDOT:
+//     data.state &= ~LINE_STYLE;
+// }
+/////////////////////
+//     Patch 7     // 
+/////////////////////
+// for (int i = 0; i < digits; i++) adjustment.#x *= 10;
+/////////////////////
+//     Daikon      //
+/////////////////////
+// for (#_<#_> #i = `_; #i.#_(); ) { // PATTERN HERE
+//   #_ #_ = #i.next();
+//   `[ `! `*( #i `)* `]
+// } 
+|] = True
         pat _ = False
 
 teste :: [Exp]
@@ -94,7 +128,7 @@ matchs = [d|f s = case s of {[jexp| `x + `_ |] -> True; _ -> False}|]
 -- and returns a list of statements each of which matches the pattern
 
 grep :: [Stmt]
-grep = [r | r@[java| if (2) {}; |] <- universeBi prog1]
+grep = [r | r@[java| if (2) {} |] <- universeBi prog1]
 
 erep :: [Exp]
 erep = [e | e@[java| 9 |] <- universeBi prog1]

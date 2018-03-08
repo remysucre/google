@@ -23,7 +23,7 @@ java :: QuasiQuoter
 java = QuasiQuoter {
       quoteExp = undefined
     , quotePat  = \str ->
-        let Right c = traceShowId $ parser pat str
+        let Right c = traceShowId $ parser (pat <* eof) str
         in case c of (EP e) -> dataToPatQ exts e
                      (SP s) -> dataToPatQ exts (evalState ((rename s) >>= reid) DS.empty)
     , quoteType = undefined

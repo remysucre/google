@@ -14,9 +14,11 @@ main = do
   fc <- readFile fn
   let Right java = parser compilationUnit fc
       res = testj java
-  putStr . concatMap ((++ "haha \n") . prettyPrint) $ res
+      ms = concatMap ((++ "haha \n") . prettyPrint) $ res
+      out = fn ++ "\n" ++ ms ++ (show $ length res) ++ "\n"
   -- print 
-  print $ length res
+  if length res > 0 then putStr out else return ()
+  -- print $ length res
   -- print . map prettyPrint $ tests
   -- print $ length tests
   -- print tests
