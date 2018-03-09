@@ -1,0 +1,118 @@
+/Users/remywang/daikon//java/utilMDE/WeakIdentityHashMap.java
+for (Iterator<? extends Map.Entry<? extends K, ? extends V>> i = m.entrySet().iterator() ; i.hasNext() ;)
+{
+  Map.Entry<? extends K, ? extends V> e = i.next();
+  put(e.getKey(), e.getValue());
+}haha 
+matches1
+/Users/remywang/daikon//java/utilMDE/WeakHasherMap.java
+for (Iterator<Map.Entry<WeakKey, V>> i = hashEntrySet.iterator() ; i.hasNext() ;)
+{
+  Map.Entry<WeakKey, V> ent = i.next();
+  WeakKey wk = ent.getKey();
+  Object v;
+  if (wk == null)
+    continue;
+  h += wk.hashCode() ^ (v = ent.getValue() == null ? 0 : v.hashCode());
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptTopLevel.java
+for (Iterator<Invariant> _invs = all.iterator() ; _invs.hasNext() ;)
+{
+  Invariant inv = _invs.next();
+  if (test.include(inv))
+  {
+    String fmt = inv.format_using(OutputFormat.SIMPLIFY);
+    if (!format_simplify_problem(fmt))
+    {
+      printing.add(inv);
+    }
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/diff/Diff.java
+for (Iterator<String> i = manip.nameStringSet().iterator() ; i.hasNext() ;)
+{
+  String somePptName = i.next();
+  if (targ.equals(somePptName))
+  {
+    PptTopLevel repl = manip.get(somePptName);
+    return repl.getInvariants();
+  }
+}haha 
+for (Iterator<String> i = manip.nameStringSet().iterator() ; i.hasNext() ;)
+{
+  String somePptName = i.next();
+  if (targetName.equals(somePptName))
+  {
+    PptTopLevel repl = manip.get(somePptName);
+    return UtilMDE.sortList(repl.getInvariants(), PptTopLevel.icfp);
+  }
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/chicory/Instrument.java
+for (Iterator<InstructionHandle> ii = (Iterator<InstructionHandle>) il.iterator() ; ii.hasNext() ;)
+{
+  InstructionHandle ih = ii.next();
+  foundLine = false;
+  if (ih.hasTargeters())
+  {
+    for (InstructionTargeter it : ih.getTargeters()) {
+                                                       if (it instanceof LineNumberGen)
+                                                       {
+                                                         LineNumberGen lng = (LineNumberGen) it;
+                                                         line_number = lng.getSourceLine();
+                                                         foundLine = true;
+                                                       }
+                                                     }
+  }
+  switch (ih.getInstruction().getOpcode())
+  {
+    case Constants.ARETURN:
+    case Constants.DRETURN:
+    case Constants.FRETURN:
+    case Constants.IRETURN:
+    case Constants.LRETURN:
+    case Constants.RETURN:
+      if (line_number == last_line_number && foundLine == false)
+      {
+        line_number++;
+      }
+      last_line_number = line_number;
+      if (!shouldFilter(class_info.class_name, mgen.getName(), DaikonWriter.methodExitName(class_info.class_name, getArgTypes(mgen), mgen.toString(), mgen.getName(), line_number)))
+      {
+        shouldInclude = true;
+        exit_locs.add(new Integer(line_number));
+        isIncluded.add(true);
+      }
+      else
+        isIncluded.add(false);
+      break;
+    default:
+      break;
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptSplitter.java
+for (OrderedPairIterator<Invariant> opi = new OrderedPairIterator<Invariant>(ss1.iterator(), ss2.iterator(), icfp) ; opi.hasNext() ;)
+{
+  Pair<Invariant, Invariant> pair = opi.next();
+  if (pair.a == null || pair.b == null)
+  {
+    result.add(new Invariant[] {
+                                 pair.a,
+                                 pair.b,
+                               });
+  }
+}haha 
+for (OrderedPairIterator<Invariant> opi = new OrderedPairIterator<Invariant>(ss1.iterator(), ss2.iterator(), icfp) ; opi.hasNext() ;)
+{
+  Pair pair = opi.next();
+  if (pair.a != null && pair.b != null)
+  {
+    Invariant inv1 = (Invariant) pair.a;
+    Invariant inv2 = (Invariant) pair.b;
+    result.add(inv1);
+  }
+}haha 
+matches2

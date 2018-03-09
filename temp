@@ -1,6 +1,18 @@
-/Users/remywang/daikon//java/daikon/VarInfoName.java
-for (Iterator<VarInfoName> i = o.args.iterator() ; i.hasNext() ;)
+/Users/remywang/daikon//java/utilMDE/WeakIdentityHashMap.java
+for (Iterator<? extends Map.Entry<? extends K, ? extends V>> i = m.entrySet().iterator() ; i.hasNext() ;)
 {
-  VarInfoName vin = i.next();
-  NoReturnValue retval = vin.accept(this);
+  Map.Entry<? extends K, ? extends V> e = i.next();
+  put(e.getKey(), e.getValue());
 }haha 
+matches1
+/Users/remywang/daikon//java/utilMDE/WeakHasherMap.java
+for (Iterator<Map.Entry<WeakKey, V>> i = hashEntrySet.iterator() ; i.hasNext() ;)
+{
+  Map.Entry<WeakKey, V> ent = i.next();
+  WeakKey wk = ent.getKey();
+  Object v;
+  if (wk == null)
+    continue;
+  h += wk.hashCode() ^ (v = ent.getValue() == null ? 0 : v.hashCode());
+}haha 
+matches1
