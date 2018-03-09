@@ -1,0 +1,169 @@
+/Users/remywang/daikon//java/daikon/inv/filter/InvariantFilters.java
+for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext() ;)
+{
+  VariableFilter vf = iter.next();
+  if (vf.getVariable().equals(variable))
+  {
+    iter.remove();
+    foundOnce = true;
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptTopLevel.java
+for (Iterator<PptSlice> itor = slices_vector.iterator() ; itor.hasNext() ;)
+{
+  PptSlice slice = itor.next();
+  if (slice.invs.size() == 0)
+  {
+    itor.remove();
+  }
+}haha 
+for (Iterator<VarInfo.Pair> j = emap.keySet().iterator() ; j.hasNext() ;)
+{
+  VarInfo.Pair curpair = j.next();
+  VarInfo.Pair newpair = eq_new.get(curpair);
+  if (newpair == null)
+    j.remove();
+  else
+    curpair.samples += newpair.samples;
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant orig_inv = j.next();
+  Invariant inv = orig_inv.clone_and_permute(permute);
+  Invariant pinv = pslice.find_inv_exact(inv);
+  if (pinv != null)
+  {
+    j.remove();
+  }
+}haha 
+matches3
+/Users/remywang/daikon//java/daikon/DynamicConstants.java
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (inv.is_false())
+  {
+    j.remove();
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/Daikon.java
+for (Iterator<String> i = ppts.iterator() ; i.hasNext() ;)
+{
+  String ppt_name = i.next();
+  if (--ppt_cnt <= 0)
+  {
+    String last_ppt_name = ppt_name;
+    while (i.hasNext())
+    {
+      ppt_name = i.next();
+      if (last_ppt_name.indexOf("EXIT") != -1 && ppt_name.indexOf("EXIT") == -1)
+        return last_ppt_name;
+      last_ppt_name = ppt_name;
+    }
+    return ppt_name;
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/suppress/NIS.java
+for (Iterator<Invariant> i = new_invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  if (inv.is_ni_suppressed())
+  {
+    still_suppressed_cnt++;
+    inv.log("removed, still suppressed in second pass");
+    inv.ppt.invs.remove(inv);
+    i.remove();
+  }
+}haha 
+for (Iterator<Antecedents> i = comp_ants.values().iterator() ; i.hasNext() ;)
+{
+  Antecedents ants = i.next();
+  if (ants.false_cnt == 0)
+    i.remove();
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (inv.is_ni_suppressed())
+  {
+    inv.log(("Removed because suppressed " + inv.format()));
+    j.remove();
+  }
+}haha 
+matches3
+/Users/remywang/daikon//java/daikon/PptSplitter.java
+for (Iterator<Invariant[]> ii = different_invs_vec.iterator() ; ii.hasNext() ;)
+{
+  Invariant[] diff_invs = ii.next();
+  if (diff_invs[0] != null)
+  {
+    Assert.assertTrue((diff_invs[1] == null));
+    for (Iterator<Invariant[]> jj = exclusive_invs_vec.iterator() ; jj.hasNext() ;)
+    {
+      Invariant[] ex_invs = jj.next();
+      if (ex_invs[0] == diff_invs[0])
+      {
+        debug.fine(("removed exclusive invariant " + ex_invs[0]));
+        ii.remove();
+        break;
+      }
+    }
+  }
+  else
+  {
+    Assert.assertTrue((diff_invs[1] != null));
+    for (Iterator<Invariant[]> jj = exclusive_invs_vec.iterator() ; jj.hasNext() ;)
+    {
+      Invariant[] ex_invs = jj.next();
+      if (ex_invs[1] == diff_invs[1])
+      {
+        debug.fine(("removed exclusive invariant " + ex_invs[1]));
+        ii.remove();
+        break;
+      }
+    }
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/VarInfoName.java
+for (Iterator<VarInfoName> i = o.args.iterator() ; i.hasNext() ;)
+{
+  VarInfoName vin = i.next();
+  NoReturnValue retval = vin.accept(this);
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/MergeInvariants.java
+for (Iterator<PptRelation> j = ppt.children.iterator() ; j.hasNext() ;)
+{
+  PptRelation rel = j.next();
+  if (rel.getRelationType() == PptRelation.PPT_PPTCOND)
+    j.remove();
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptSlice.java
+for (Iterator<Invariant> iFalsified = invs.iterator() ; iFalsified.hasNext() ;)
+{
+  Invariant inv = iFalsified.next();
+  if (inv.is_false())
+  {
+    iFalsified.remove();
+    NIS.falsified(inv);
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptSliceEquality.java
+for (Iterator<Invariant> iInvs = invs.iterator() ; iInvs.hasNext() ;)
+{
+  Invariant inv = iInvs.next();
+  if (!Daikon.dkconfig_undo_opts)
+  {
+    if (inv.isObviousStatically_AllInEquality())
+    {
+      iInvs.remove();
+    }
+  }
+}haha 
+matches1

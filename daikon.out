@@ -1,3 +1,9 @@
+/Users/remywang/daikon//java/utilMDE/FileIOException.java
+/Users/remywang/daikon//java/utilMDE/NoType.java
+/Users/remywang/daikon//java/utilMDE/Digest.java
+/Users/remywang/daikon//java/utilMDE/OrderedPairIterator.java
+/Users/remywang/daikon//java/utilMDE/CountingPrintWriter.java
+/Users/remywang/daikon//java/utilMDE/WeakIdentityHashMap.java
 /Users/remywang/daikon//java/utilMDE/WeakIdentityHashMap.java
 for (Iterator<? extends Map.Entry<? extends K, ? extends V>> i = m.entrySet().iterator() ; i.hasNext() ;)
 {
@@ -5,6 +11,11 @@ for (Iterator<? extends Map.Entry<? extends K, ? extends V>> i = m.entrySet().it
   put(e.getKey(), e.getValue());
 }haha 
 matches1
+/Users/remywang/daikon//java/utilMDE/Pair.java
+/Users/remywang/daikon//java/utilMDE/FileCompiler.java
+/Users/remywang/daikon//java/utilMDE/MultiRandSelector.java
+/Users/remywang/daikon//java/utilMDE/Stopwatch.java
+/Users/remywang/daikon//java/utilMDE/WeakHasherMap.java
 /Users/remywang/daikon//java/utilMDE/WeakHasherMap.java
 for (Iterator<Map.Entry<WeakKey, V>> i = hashEntrySet.iterator() ; i.hasNext() ;)
 {
@@ -16,6 +27,13 @@ for (Iterator<Map.Entry<WeakKey, V>> i = hashEntrySet.iterator() ; i.hasNext() ;
   h += wk.hashCode() ^ (v = ent.getValue() == null ? 0 : v.hashCode());
 }haha 
 matches1
+/Users/remywang/daikon//java/utilMDE/Assert.java
+/Users/remywang/daikon//java/utilMDE/TimeLimitProcess.java
+/Users/remywang/daikon//java/utilMDE/Intern.java
+/Users/remywang/daikon//java/utilMDE/SimpleLog.java
+/Users/remywang/daikon//java/utilMDE/RandomSelector.java
+/Users/remywang/daikon//java/utilMDE/BCELUtil.java
+/Users/remywang/daikon//java/utilMDE/UtilMDE.java
 /Users/remywang/daikon//java/utilMDE/UtilMDE.java
 for (Iterator itor = set.iterator() ; itor.hasNext() ;)
 {
@@ -26,6 +44,21 @@ for (Iterator itor = set.iterator() ; itor.hasNext() ;)
   }
 }haha 
 matches1
+/Users/remywang/daikon//java/utilMDE/Hasher.java
+/Users/remywang/daikon//java/utilMDE/Fmt.java
+/Users/remywang/daikon//java/utilMDE/Partitioner.java
+/Users/remywang/daikon//java/utilMDE/Triple.java
+/Users/remywang/daikon//java/utilMDE/ArraysMDE.java
+/Users/remywang/daikon//java/utilMDE/StrTok.java
+/Users/remywang/daikon//java/utilMDE/TestUtilMDE.java
+/Users/remywang/daikon//java/utilMDE/Filter.java
+/Users/remywang/daikon//java/utilMDE/FuzzyFloat.java
+/Users/remywang/daikon//java/daikon/split/ReplaceStatement.java
+/Users/remywang/daikon//java/daikon/split/misc/ReturnTrueSplitter.java
+/Users/remywang/daikon//java/daikon/split/misc/MiscSplitters.java
+/Users/remywang/daikon//java/daikon/split/misc/CallerContextSplitter.java
+/Users/remywang/daikon//java/daikon/split/SpinfoFileParser.java
+/Users/remywang/daikon//java/daikon/split/ContextSplitterFactory.java
 /Users/remywang/daikon//java/daikon/split/ContextSplitterFactory.java
 for (Iterator<File> i = files.iterator() ; i.hasNext() ;)
 {
@@ -50,6 +83,19 @@ for (Iterator<File> i = files.iterator() ; i.hasNext() ;)
   }
 }haha 
 matches1
+/Users/remywang/daikon//java/daikon/split/SplitterJavaSource.java
+/Users/remywang/daikon//java/daikon/split/NullReplacer.java
+/Users/remywang/daikon//java/daikon/split/SplitterObject.java
+/Users/remywang/daikon//java/daikon/split/TokenExtractor.java
+/Users/remywang/daikon//java/daikon/split/ArrayFixer.java
+/Users/remywang/daikon//java/daikon/split/PrefixFixer.java
+/Users/remywang/daikon//java/daikon/split/SplitterLoader.java
+/Users/remywang/daikon//java/daikon/split/SplitterExample.java
+/Users/remywang/daikon//java/daikon/split/StatementReplacer.java
+/Users/remywang/daikon//java/daikon/split/PrefixRemover.java
+/Users/remywang/daikon//java/daikon/split/TokenReplacer.java
+/Users/remywang/daikon//java/daikon/split/ReplaceStatementMap.java
+/Users/remywang/daikon//java/daikon/split/SplitterFactory.java
 /Users/remywang/daikon//java/daikon/split/SplitterFactory.java
 for (Iterator<SpinfoFileParser> spi = splitters.iterator() ; spi.hasNext() ;)
 {
@@ -88,6 +134,27 @@ for (Iterator<SpinfoFileParser> spi = splitters.iterator() ; spi.hasNext() ;)
   }
 }haha 
 matches1
+/Users/remywang/daikon//java/daikon/split/Splitter.java
+/Users/remywang/daikon//java/daikon/split/ThisRemover.java
+/Users/remywang/daikon//java/daikon/split/SplitterList.java
+/Users/remywang/daikon//java/daikon/split/OrigFixer.java
+/Users/remywang/daikon//java/daikon/split/Visitors.java
+/Users/remywang/daikon//java/daikon/JTraceInference.java
+/Users/remywang/daikon//java/daikon/inv/Joiner.java
+/Users/remywang/daikon//java/daikon/inv/GuardingImplication.java
+/Users/remywang/daikon//java/daikon/inv/ternary/TernaryInvariant.java
+/Users/remywang/daikon//java/daikon/inv/ValueSet.java
+/Users/remywang/daikon//java/daikon/inv/unary/stringsequence/CommonStringSequence.java
+/Users/remywang/daikon//java/daikon/inv/unary/stringsequence/SingleStringSequence.java
+/Users/remywang/daikon//java/daikon/inv/unary/UnaryInvariant.java
+/Users/remywang/daikon//java/daikon/inv/unary/string/SingleString.java
+/Users/remywang/daikon//java/daikon/inv/unary/sequence/SingleSequence.java
+/Users/remywang/daikon//java/daikon/inv/unary/sequence/SingleFloatSequence.java
+/Users/remywang/daikon//java/daikon/inv/unary/sequence/SingleScalarSequence.java
+/Users/remywang/daikon//java/daikon/inv/unary/scalar/NonModulus.java
+/Users/remywang/daikon//java/daikon/inv/unary/scalar/SingleScalar.java
+/Users/remywang/daikon//java/daikon/inv/unary/scalar/SingleFloat.java
+/Users/remywang/daikon//java/daikon/inv/unary/scalar/Modulus.java
 /Users/remywang/daikon//java/daikon/inv/unary/scalar/Modulus.java
 for (Iterator<Invariant> itor = ppt.invs.iterator() ; itor.hasNext() ;)
 {
@@ -96,6 +163,9 @@ for (Iterator<Invariant> itor = ppt.invs.iterator() ; itor.hasNext() ;)
     return (Modulus) inv;
 }haha 
 matches1
+/Users/remywang/daikon//java/daikon/inv/unary/scalar/Positive.java
+/Users/remywang/daikon//java/daikon/inv/InvariantStatus.java
+/Users/remywang/daikon//java/daikon/inv/Invariant.java
 /Users/remywang/daikon//java/daikon/inv/Invariant.java
 for (Iterator<VarInfo> iter = all_vars1.iterator() ; iter.hasNext() ;)
 {
@@ -136,6 +206,8 @@ for (Iterator<VarInfo> iSet = vis[position].get_equalitySet_vars().iterator() ; 
     return temp;
 }haha 
 matches5
+/Users/remywang/daikon//java/daikon/inv/IsEqualityComparison.java
+/Users/remywang/daikon//java/daikon/inv/FeatureExtractor.java
 /Users/remywang/daikon//java/daikon/inv/FeatureExtractor.java
 for (Iterator<IntDoublePair> all = allFeatures.iterator() ; all.hasNext() ;)
 {
@@ -218,6 +290,8 @@ for (Iterator<String> i = neg.iterator() ; i.hasNext() ;)
   }
 }haha 
 matches9
+/Users/remywang/daikon//java/daikon/inv/OneOf.java
+/Users/remywang/daikon//java/daikon/inv/Equality.java
 /Users/remywang/daikon//java/daikon/inv/Equality.java
 for (Iterator<VarInfo> i = variables.iterator() ; i.hasNext() ;)
 {
@@ -327,6 +401,25 @@ for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
   Assert.assertTrue(VarComparability.comparable(leader, var), ("not comparable: " + leader.name.name() + " " + var.name.name() + " at ppt " + ppt.parent.name()));
 }haha 
 matches7
+/Users/remywang/daikon//java/daikon/inv/DiscardInfo.java
+/Users/remywang/daikon//java/daikon/inv/InvariantInfo.java
+/Users/remywang/daikon//java/daikon/inv/Comparison.java
+/Users/remywang/daikon//java/daikon/inv/Invariants.java
+/Users/remywang/daikon//java/daikon/inv/Implication.java
+/Users/remywang/daikon//java/daikon/inv/DummyInvariant.java
+/Users/remywang/daikon//java/daikon/inv/AndJoiner.java
+/Users/remywang/daikon//java/daikon/inv/binary/BinaryInvariant.java
+/Users/remywang/daikon//java/daikon/inv/filter/VariableFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/ParentFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/DerivedVariableFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/OnlyConstantVariablesFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/ObviousFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/SimplifyFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/InvariantFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/UnjustifiedFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/UnmodifiedVariableEqualityFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/DerivedParameterFilter.java
+/Users/remywang/daikon//java/daikon/inv/filter/InvariantFilters.java
 /Users/remywang/daikon//java/daikon/inv/filter/InvariantFilters.java
 for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext() ;)
 {
@@ -388,6 +481,7 @@ for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext()
 }haha 
 matches7
 /Users/remywang/daikon//java/daikon/inv/OutputFormat.java
+/Users/remywang/daikon//java/daikon/inv/OutputFormat.java
 for (Iterator<Map.Entry<String, String>> it = quantifiers.entrySet().iterator() ; it.hasNext() ;)
 {
   Map.Entry<String, String> entry = it.next();
@@ -398,105 +492,9 @@ for (Iterator<Map.Entry<String, String>> it = quantifiers.entrySet().iterator() 
   str += "forall " + key + " in " + quantifiers.get(key);
 }haha 
 matches1
-/Users/remywang/daikon//java/daikon/tools/InvMatch.java
-for (Iterator<List<InvTranslate>> i = valid_translations.iterator() ; i.hasNext() ;)
-{
-  List<InvTranslate> current_translation = i.next();
-  Fmt.pf("  Translation: ");
-  for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
-  {
-    InvTranslate xlate = j.next();
-    Fmt.pf("    %s", xlate);
-  }
-}haha 
-for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
-{
-  InvTranslate xlate = j.next();
-  Fmt.pf("    %s", xlate);
-}haha 
-for (Iterator<InvTranslate> i = best_translation.iterator() ; i.hasNext() ;)
-{
-  InvTranslate xlate = i.next();
-  Fmt.pf("  %s", xlate);
-}haha 
-for (Iterator<List<InvTranslate>> i = xlate_list.iterator() ; i.hasNext() ;)
-{
-  List<InvTranslate> inv_xlate_list = i.next();
-  Invariant inv = invi.next();
-  Fmt.pf("%s translations:", inv.format());
-  for (Iterator<InvTranslate> j = inv_xlate_list.iterator() ; j.hasNext() ;)
-  {
-    InvTranslate xlate = j.next();
-    Fmt.pf("  %s", xlate);
-  }
-}haha 
-for (Iterator<InvTranslate> j = inv_xlate_list.iterator() ; j.hasNext() ;)
-{
-  InvTranslate xlate = j.next();
-  Fmt.pf("  %s", xlate);
-}haha 
-for (Iterator<InvTranslate> i = inv_xlate_list.iterator() ; i.hasNext() ;)
-{
-  InvTranslate xlate = i.next();
-  List<InvTranslate> new_translation = new ArrayList<InvTranslate>();
-  new_translation.addAll(current_translation);
-  new_translation.add(xlate);
-  if (!is_good_translation(new_translation))
-    continue;
-  if (index + 1 == xlate_list.size())
-  {
-    valid_translations.add(new_translation);
-  }
-  else
-  {
-    consider_xlate(valid_translations, new_translation, xlate_list, (index + 1));
-  }
-}haha 
-for (Iterator<InvTranslate> i = translation_list.iterator() ; i.hasNext() ;)
-{
-  InvTranslate xlate = i.next();
-  if (xlate == null)
-    continue;
-  for (String key : xlate.var_map.keySet()) {
-                                              String val = xlate.var_map.get(key);
-                                              String cur_val = var_map.get(key);
-                                              if (cur_val == null)
-                                                var_map.put(key, val);
-                                              else
-                                                if (!cur_val.equals(val))
-                                                  return false;
-                                            }
-}haha 
-for (Iterator<List<InvTranslate>> i = valid_translations.iterator() ; i.hasNext() ;)
-{
-  List<InvTranslate> current_translation = i.next();
-  int quality = 0;
-  for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
-  {
-    InvTranslate xlate = j.next();
-    if (xlate != null)
-      quality += xlate.quality;
-  }
-  if (quality > best_quality)
-  {
-    best_translation = current_translation;
-    best_quality = quality;
-  }
-}haha 
-for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
-{
-  InvTranslate xlate = j.next();
-  if (xlate != null)
-    quality += xlate.quality;
-}haha 
-matches9
-/Users/remywang/daikon//java/daikon/tools/ExtractConsequent.java
-for (Iterator<PptTopLevel> itor = ppts_sorted.iterator() ; itor.hasNext() ;)
-{
-  PptTopLevel ppt = itor.next();
-  extract_consequent_maybe(ppt, ppts);
-}haha 
-matches1
+/Users/remywang/daikon//java/daikon/inv/InvDef.java
+/Users/remywang/daikon//java/daikon/inv/DiscardCode.java
+/Users/remywang/daikon//java/daikon/PptTopLevel.java
 /Users/remywang/daikon//java/daikon/PptTopLevel.java
 for (Iterator<PptSplitter> ii = splitters.iterator() ; ii.hasNext() ;)
 {
@@ -633,29 +631,109 @@ for (Iterator<PptSlice> i = slices_to_remove.iterator() ; i.hasNext() ;)
   removeSlice(slice);
 }haha 
 matches17
-/Users/remywang/daikon//java/daikon/tools/runtimechecker/Property.java
-for (Iterator<String> i = annoStrings.iterator() ; i.hasNext() ;)
+/Users/remywang/daikon//java/daikon/tools/ExtractConsequent.java
+/Users/remywang/daikon//java/daikon/tools/ExtractConsequent.java
+for (Iterator<PptTopLevel> itor = ppts_sorted.iterator() ; itor.hasNext() ;)
 {
-  String location = i.next();
-  if (location == null || location.equals(""))
-  {
-    continue;
-  }
-  String[] cutUp = location.split("<INVINFO>");
-  for (int splits = 0 ; splits < cutUp.length ; splits++)
-  {
-    try
-    {
-      String s = cutUp[splits];
-      Property anno = Property.get(("<INVINFO>" + s));
-      annos.add(anno);
-    }
-    catch (Exception e)
-    {
-    }
-  }
+  PptTopLevel ppt = itor.next();
+  extract_consequent_maybe(ppt, ppts);
 }haha 
 matches1
+/Users/remywang/daikon//java/daikon/tools/InvMatch.java
+/Users/remywang/daikon//java/daikon/tools/InvMatch.java
+for (Iterator<List<InvTranslate>> i = valid_translations.iterator() ; i.hasNext() ;)
+{
+  List<InvTranslate> current_translation = i.next();
+  Fmt.pf("  Translation: ");
+  for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
+  {
+    InvTranslate xlate = j.next();
+    Fmt.pf("    %s", xlate);
+  }
+}haha 
+for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
+{
+  InvTranslate xlate = j.next();
+  Fmt.pf("    %s", xlate);
+}haha 
+for (Iterator<InvTranslate> i = best_translation.iterator() ; i.hasNext() ;)
+{
+  InvTranslate xlate = i.next();
+  Fmt.pf("  %s", xlate);
+}haha 
+for (Iterator<List<InvTranslate>> i = xlate_list.iterator() ; i.hasNext() ;)
+{
+  List<InvTranslate> inv_xlate_list = i.next();
+  Invariant inv = invi.next();
+  Fmt.pf("%s translations:", inv.format());
+  for (Iterator<InvTranslate> j = inv_xlate_list.iterator() ; j.hasNext() ;)
+  {
+    InvTranslate xlate = j.next();
+    Fmt.pf("  %s", xlate);
+  }
+}haha 
+for (Iterator<InvTranslate> j = inv_xlate_list.iterator() ; j.hasNext() ;)
+{
+  InvTranslate xlate = j.next();
+  Fmt.pf("  %s", xlate);
+}haha 
+for (Iterator<InvTranslate> i = inv_xlate_list.iterator() ; i.hasNext() ;)
+{
+  InvTranslate xlate = i.next();
+  List<InvTranslate> new_translation = new ArrayList<InvTranslate>();
+  new_translation.addAll(current_translation);
+  new_translation.add(xlate);
+  if (!is_good_translation(new_translation))
+    continue;
+  if (index + 1 == xlate_list.size())
+  {
+    valid_translations.add(new_translation);
+  }
+  else
+  {
+    consider_xlate(valid_translations, new_translation, xlate_list, (index + 1));
+  }
+}haha 
+for (Iterator<InvTranslate> i = translation_list.iterator() ; i.hasNext() ;)
+{
+  InvTranslate xlate = i.next();
+  if (xlate == null)
+    continue;
+  for (String key : xlate.var_map.keySet()) {
+                                              String val = xlate.var_map.get(key);
+                                              String cur_val = var_map.get(key);
+                                              if (cur_val == null)
+                                                var_map.put(key, val);
+                                              else
+                                                if (!cur_val.equals(val))
+                                                  return false;
+                                            }
+}haha 
+for (Iterator<List<InvTranslate>> i = valid_translations.iterator() ; i.hasNext() ;)
+{
+  List<InvTranslate> current_translation = i.next();
+  int quality = 0;
+  for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
+  {
+    InvTranslate xlate = j.next();
+    if (xlate != null)
+      quality += xlate.quality;
+  }
+  if (quality > best_quality)
+  {
+    best_translation = current_translation;
+    best_quality = quality;
+  }
+}haha 
+for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
+{
+  InvTranslate xlate = j.next();
+  if (xlate != null)
+    quality += xlate.quality;
+}haha 
+matches9
+/Users/remywang/daikon//java/daikon/tools/InvTranslate.java
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/InstrumentVisitor.java
 /Users/remywang/daikon//java/daikon/tools/runtimechecker/InstrumentVisitor.java
 for (Iterator<Invariant> invI = invList.iterator() ; invI.hasNext() ;)
 {
@@ -821,6 +899,33 @@ for (Iterator<PptTopLevel> i = matching_ppts.iterator() ; i.hasNext() ;)
   }
 }haha 
 matches11
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/Property.java
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/Property.java
+for (Iterator<String> i = annoStrings.iterator() ; i.hasNext() ;)
+{
+  String location = i.next();
+  if (location == null || location.equals(""))
+  {
+    continue;
+  }
+  String[] cutUp = location.split("<INVINFO>");
+  for (int splits = 0 ; splits < cutUp.length ; splits++)
+  {
+    try
+    {
+      String s = cutUp[splits];
+      Property anno = Property.get(("<INVINFO>" + s));
+      annos.add(anno);
+    }
+    catch (Exception e)
+    {
+    }
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/WriteViolationFile.java
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/Violation.java
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/InstrumentHandler.java
 /Users/remywang/daikon//java/daikon/tools/runtimechecker/InstrumentHandler.java
 for (Iterator<ParseResults> i = parseResults.iterator() ; i.hasNext() ;)
 {
@@ -879,6 +984,17 @@ for (Iterator<ParseResults> i = parseResults.iterator() ; i.hasNext() ;)
   }
 }haha 
 matches1
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/CheckerClass.java
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/MalformedPropertyException.java
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/CommandHandler.java
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/Main.java
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/Runtime.java
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/CheckerClasses.java
+/Users/remywang/daikon//java/daikon/tools/gretel/CoverageStats.java
+/Users/remywang/daikon//java/daikon/tools/TraceSelect.java
+/Users/remywang/daikon//java/daikon/tools/DtraceNonceFixer.java
+/Users/remywang/daikon//java/daikon/tools/jtb/Ast.java
+/Users/remywang/daikon//java/daikon/tools/jtb/AnnotateVisitor.java
 /Users/remywang/daikon//java/daikon/tools/jtb/AnnotateVisitor.java
 for (Iterator<PptTopLevel> itor = matching_ppts.iterator() ; itor.hasNext() ;)
 {
@@ -899,6 +1015,13 @@ for (Iterator<PptTopLevel> itor = matching_ppts.iterator() ; itor.hasNext() ;)
     }
 }haha 
 matches1
+/Users/remywang/daikon//java/daikon/tools/jtb/CollectFieldsVisitor.java
+/Users/remywang/daikon//java/daikon/tools/jtb/Annotate.java
+/Users/remywang/daikon//java/daikon/tools/jtb/ClassOrInterfaceTypeDecorateVisitor.java
+/Users/remywang/daikon//java/daikon/tools/jtb/InsertCommentFormatter.java
+/Users/remywang/daikon//java/daikon/tools/jtb/ConditionExtractor.java
+/Users/remywang/daikon//java/daikon/tools/jtb/SimpleTreeDumper.java
+/Users/remywang/daikon//java/daikon/tools/jtb/ParseResults.java
 /Users/remywang/daikon//java/daikon/tools/jtb/ParseResults.java
 for (Iterator<String> i = javaFileNames.iterator() ; i.hasNext() ;)
 {
@@ -907,6 +1030,10 @@ for (Iterator<String> i = javaFileNames.iterator() ; i.hasNext() ;)
   retval.add(results);
 }haha 
 matches1
+/Users/remywang/daikon//java/daikon/tools/jtb/CreateSpinfo.java
+/Users/remywang/daikon//java/daikon/tools/jtb/PptNameMatcher.java
+/Users/remywang/daikon//java/daikon/tools/jtb/OrigModifier.java
+/Users/remywang/daikon//java/daikon/tools/jtb/InstrumentObserversVisitor.java
 /Users/remywang/daikon//java/daikon/tools/jtb/InstrumentObserversVisitor.java
 for (Iterator<MethodDeclaration> i = observer_methods.iterator() ; i.hasNext() ;)
 {
@@ -929,6 +1056,8 @@ for (Iterator<FormalParameter> i = Ast.getParameters(method).iterator() ; i.hasN
   parameters.add(Ast.getName(param));
 }haha 
 matches3
+/Users/remywang/daikon//java/daikon/tools/jtb/CreateSpinfoC.java
+/Users/remywang/daikon//java/daikon/tools/jtb/Annotation.java
 /Users/remywang/daikon//java/daikon/tools/jtb/Annotation.java
 for (Iterator<String> i = annoStrings.iterator() ; i.hasNext() ;)
 {
@@ -952,6 +1081,8 @@ for (Iterator<String> i = annoStrings.iterator() ; i.hasNext() ;)
   }
 }haha 
 matches1
+/Users/remywang/daikon//java/daikon/tools/compare/LogicalCompare.java
+/Users/remywang/daikon//java/daikon/tools/InvariantChecker.java
 /Users/remywang/daikon//java/daikon/tools/InvariantChecker.java
 for (Iterator<PptSplitter> ii = ppt.splitters.iterator() ; ii.hasNext() ;)
 {
@@ -984,6 +1115,20 @@ for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
   }
 }haha 
 matches2
+/Users/remywang/daikon//java/daikon/tools/DtraceDiff.java
+/Users/remywang/daikon//java/daikon/tools/DtracePartitioner.java
+/Users/remywang/daikon//java/daikon/JTrace.java
+/Users/remywang/daikon//java/daikon/test/FormatTestCase.java
+/Users/remywang/daikon//java/daikon/test/MasterUnitTester.java
+/Users/remywang/daikon//java/daikon/test/split/SplitterFactoryTestUpdater.java
+/Users/remywang/daikon//java/daikon/test/inv/unary/sequence/OneOfSequenceTester.java
+/Users/remywang/daikon//java/daikon/test/inv/unary/scalar/OneOfScalarTester.java
+/Users/remywang/daikon//java/daikon/test/inv/InvariantAddAndCheckTester.java
+/Users/remywang/daikon//java/daikon/test/inv/InvariantTester.java
+/Users/remywang/daikon//java/daikon/test/LinearTernaryCoreTest.java
+/Users/remywang/daikon//java/daikon/test/TestClassOrInterfaceTypeDecorateVisitor.java
+/Users/remywang/daikon//java/daikon/test/config/ConfigurationTest.java
+/Users/remywang/daikon//java/daikon/test/SampleTester.java
 /Users/remywang/daikon//java/daikon/test/SampleTester.java
 for (Iterator<Invariant> i = slice.invs.iterator() ; i.hasNext() ;)
 {
@@ -1009,6 +1154,44 @@ for (Iterator<String> i = args.iterator() ; i.hasNext() ;)
     return false;
 }haha 
 matches3
+/Users/remywang/daikon//java/daikon/test/diff/MinusVisitorTester.java
+/Users/remywang/daikon//java/daikon/test/diff/DiffDummyInvariant.java
+/Users/remywang/daikon//java/daikon/test/diff/XorVisitorTester.java
+/Users/remywang/daikon//java/daikon/test/diff/UnionVisitorTester.java
+/Users/remywang/daikon//java/daikon/test/diff/ConsequentCVFSortComparatorTester.java
+/Users/remywang/daikon//java/daikon/test/diff/InvMapTester.java
+/Users/remywang/daikon//java/daikon/test/diff/DetailedStatisticsVisitorTester.java
+/Users/remywang/daikon//java/daikon/test/diff/PrintDifferingInvariantsVisitorTester.java
+/Users/remywang/daikon//java/daikon/test/diff/DiffTester.java
+/Users/remywang/daikon//java/daikon/test/diff/ConsequentCVFPairComparatorTester.java
+/Users/remywang/daikon//java/daikon/test/GenericTestClass.java
+/Users/remywang/daikon//java/daikon/test/InvariantFormatTester.java
+/Users/remywang/daikon//java/daikon/test/VarInfoNameTest.java
+/Users/remywang/daikon//java/daikon/test/TestAnnotate.java
+/Users/remywang/daikon//java/daikon/test/Common.java
+/Users/remywang/daikon//java/daikon/test/TestAst.java
+/Users/remywang/daikon//java/daikon/test/VarInfoNameDriver.java
+/Users/remywang/daikon//java/daikon/test/TestQuant.java
+/Users/remywang/daikon//java/daikon/test/ProglangTypeTest.java
+/Users/remywang/daikon//java/daikon/test/ModBitTrackerTest.java
+/Users/remywang/daikon//java/daikon/test/VarComparabilityTest.java
+/Users/remywang/daikon//java/daikon/test/DtraceDiffTester.java
+/Users/remywang/daikon//java/daikon/PptSlice0.java
+/Users/remywang/daikon//java/daikon/DynamicConstants.java
+/Users/remywang/daikon//java/daikon/config/ParameterDoclet.java
+/Users/remywang/daikon//java/daikon/config/Configuration.java
+/Users/remywang/daikon//java/daikon/config/InvariantDoclet.java
+/Users/remywang/daikon//java/daikon/Global.java
+/Users/remywang/daikon//java/daikon/MemMonitor.java
+/Users/remywang/daikon//java/daikon/PptConditional.java
+/Users/remywang/daikon//java/daikon/diff/MatchCountVisitor.java
+/Users/remywang/daikon//java/daikon/diff/MinusVisitor.java
+/Users/remywang/daikon//java/daikon/diff/Node.java
+/Users/remywang/daikon//java/daikon/diff/InvNode.java
+/Users/remywang/daikon//java/daikon/diff/Visitor.java
+/Users/remywang/daikon//java/daikon/diff/XorInvariantsVisitor.java
+/Users/remywang/daikon//java/daikon/diff/RootNode.java
+/Users/remywang/daikon//java/daikon/diff/MatchCountVisitor2.java
 /Users/remywang/daikon//java/daikon/diff/MatchCountVisitor2.java
 for (Iterator<String> i = cnt.iterator() ; i.hasNext() ;)
 {
@@ -1041,6 +1224,8 @@ for (Iterator<String> i = cnt.iterator() ; i.hasNext() ;)
   }
 }haha 
 matches4
+/Users/remywang/daikon//java/daikon/diff/MultiDiff.java
+/Users/remywang/daikon//java/daikon/diff/PptCountVisitor.java
 /Users/remywang/daikon//java/daikon/diff/PptCountVisitor.java
 for (Iterator<String> i = targSet.iterator() ; i.hasNext() ;)
 {
@@ -1064,6 +1249,14 @@ for (Iterator<String> i = incorrectSet.iterator() ; i.hasNext() ;)
   System.out.println(str);
 }haha 
 matches3
+/Users/remywang/daikon//java/daikon/diff/DepthFirstVisitor.java
+/Users/remywang/daikon//java/daikon/diff/PrintAllVisitor.java
+/Users/remywang/daikon//java/daikon/diff/ConsequentPairComparator.java
+/Users/remywang/daikon//java/daikon/diff/ConsequentCVFPairComparator.java
+/Users/remywang/daikon//java/daikon/diff/XorVisitor.java
+/Users/remywang/daikon//java/daikon/diff/PrintDifferingInvariantsVisitor.java
+/Users/remywang/daikon//java/daikon/diff/UnionVisitor.java
+/Users/remywang/daikon//java/daikon/diff/InvMap.java
 /Users/remywang/daikon//java/daikon/diff/InvMap.java
 for (Iterator<Invariant> i2 = invs.iterator() ; i2.hasNext() ;)
 {
@@ -1071,18 +1264,11 @@ for (Iterator<Invariant> i2 = invs.iterator() ; i2.hasNext() ;)
   result += "  " + inv.format() + Global.lineSep;
 }haha 
 matches1
-/Users/remywang/daikon//java/daikon/diff/MultiDiffVisitor.java
-for (Iterator<String> i = programPointsList.iterator() ; i.hasNext() ;)
-{
-  String key = i.next();
-  lastMap.put(key, new ArrayList<String>());
-}haha 
-for (Iterator<String> i = programPointsList.iterator() ; i.hasNext() ;)
-{
-  String key = i.next();
-  lastMap.put(key, new ArrayList<String>());
-}haha 
-matches2
+/Users/remywang/daikon//java/daikon/diff/PrintNullDiffVisitor.java
+/Users/remywang/daikon//java/daikon/diff/PptNode.java
+/Users/remywang/daikon//java/daikon/diff/DetailedStatisticsVisitor.java
+/Users/remywang/daikon//java/daikon/diff/ConsequentExtractorVisitor.java
+/Users/remywang/daikon//java/daikon/diff/Diff.java
 /Users/remywang/daikon//java/daikon/diff/Diff.java
 for (Iterator<PptTopLevel> i = ppts.iterator() ; i.hasNext() ;)
 {
@@ -1145,6 +1331,22 @@ for (Iterator<String> i = manip.nameStringSet().iterator() ; i.hasNext() ;)
   }
 }haha 
 matches4
+/Users/remywang/daikon//java/daikon/diff/MultiDiffVisitor.java
+/Users/remywang/daikon//java/daikon/diff/MultiDiffVisitor.java
+for (Iterator<String> i = programPointsList.iterator() ; i.hasNext() ;)
+{
+  String key = i.next();
+  lastMap.put(key, new ArrayList<String>());
+}haha 
+for (Iterator<String> i = programPointsList.iterator() ; i.hasNext() ;)
+{
+  String key = i.next();
+  lastMap.put(key, new ArrayList<String>());
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/diff/ConsequentCVFSortComparator.java
+/Users/remywang/daikon//java/daikon/diff/ConsequentSortComparator.java
+/Users/remywang/daikon//java/daikon/FileIO.java
 /Users/remywang/daikon//java/daikon/FileIO.java
 for (Iterator<Invocation> i = invocations.iterator() ; i.hasNext() ;)
 {
@@ -1174,6 +1376,9 @@ for (Iterator<Invariant> j = inv_list.iterator() ; j.hasNext() ;)
   slice.addInvariant(inv);
 }haha 
 matches3
+/Users/remywang/daikon//java/daikon/PptName.java
+/Users/remywang/daikon//java/daikon/DiscReasonMap.java
+/Users/remywang/daikon//java/daikon/PrintInvariants.java
 /Users/remywang/daikon//java/daikon/PrintInvariants.java
 for (Iterator<PptTopLevel> itor = ppts_sorted.iterator() ; itor.hasNext() ;)
 {
@@ -1226,6 +1431,53 @@ for (Iterator<Invariant> ii = slice.invs.iterator() ; ii.hasNext() ;)
   Fmt.pf("%s%s [%s]", indent, inv.format(), UtilMDE.unqualified_name(inv.getClass()));
 }haha 
 matches5
+/Users/remywang/daikon//java/daikon/VarComparability.java
+/Users/remywang/daikon//java/daikon/chicory/DeclWriter.java
+/Users/remywang/daikon//java/daikon/chicory/MethodInfo.java
+/Users/remywang/daikon//java/daikon/chicory/DaikonWriter.java
+/Users/remywang/daikon//java/daikon/chicory/FieldInfo.java
+/Users/remywang/daikon//java/daikon/chicory/MethodContext.java
+/Users/remywang/daikon//java/daikon/chicory/ParameterInfo.java
+/Users/remywang/daikon//java/daikon/chicory/StringInfo.java
+/Users/remywang/daikon//java/daikon/chicory/DeclReader.java
+/Users/remywang/daikon//java/daikon/chicory/DTraceWriter.java
+/Users/remywang/daikon//java/daikon/chicory/RootInfo.java
+/Users/remywang/daikon//java/daikon/chicory/ThisObjInfo.java
+/Users/remywang/daikon//java/daikon/chicory/DaikonClassInfo.java
+/Users/remywang/daikon//java/daikon/chicory/ReturnInfo.java
+/Users/remywang/daikon//java/daikon/chicory/ArrayInfo.java
+/Users/remywang/daikon//java/daikon/chicory/Test.java
+/Users/remywang/daikon//java/daikon/chicory/StreamRedirectThread.java
+/Users/remywang/daikon//java/daikon/chicory/NonsensicalList.java
+/Users/remywang/daikon//java/daikon/chicory/PureMethodInfo.java
+/Users/remywang/daikon//java/daikon/chicory/NonsensicalObject.java
+/Users/remywang/daikon//java/daikon/chicory/ChicoryPremain.java
+/Users/remywang/daikon//java/daikon/chicory/ClassInfo.java
+/Users/remywang/daikon//java/daikon/chicory/Runtime.java
+/Users/remywang/daikon//java/daikon/chicory/ListInfo.java
+/Users/remywang/daikon//java/daikon/chicory/DaikonVariableInfo.java
+/Users/remywang/daikon//java/daikon/chicory/Instrument.java
+/Users/remywang/daikon//java/daikon/Daikon.java
+/Users/remywang/daikon//java/daikon/derive/ternary/TernaryDerivationFactory.java
+/Users/remywang/daikon//java/daikon/derive/ternary/TernaryDerivation.java
+/Users/remywang/daikon//java/daikon/derive/unary/SequenceMin.java
+/Users/remywang/daikon//java/daikon/derive/unary/SequenceLengthFactory.java
+/Users/remywang/daikon//java/daikon/derive/unary/SequenceMax.java
+/Users/remywang/daikon//java/daikon/derive/unary/SequenceMinMaxSumFactory.java
+/Users/remywang/daikon//java/daikon/derive/unary/UnaryDerivation.java
+/Users/remywang/daikon//java/daikon/derive/unary/UnaryDerivationFactory.java
+/Users/remywang/daikon//java/daikon/derive/unary/SequenceSum.java
+/Users/remywang/daikon//java/daikon/derive/unary/SequenceLength.java
+/Users/remywang/daikon//java/daikon/derive/DerivationFactory.java
+/Users/remywang/daikon//java/daikon/derive/Derivation.java
+/Users/remywang/daikon//java/daikon/derive/binary/SequencesConcat.java
+/Users/remywang/daikon//java/daikon/derive/binary/SequenceSubsequence.java
+/Users/remywang/daikon//java/daikon/derive/binary/BinaryDerivationFactory.java
+/Users/remywang/daikon//java/daikon/derive/binary/SequencesConcatFactory.java
+/Users/remywang/daikon//java/daikon/derive/binary/BinaryDerivation.java
+/Users/remywang/daikon//java/daikon/derive/ValueAndModified.java
+/Users/remywang/daikon//java/daikon/Chicory.java
+/Users/remywang/daikon//java/daikon/VarInfo.java
 /Users/remywang/daikon//java/daikon/VarInfo.java
 for (Iterator<VarInfoName> i = name.inOrderTraversal().iterator() ; i.hasNext() ;)
 {
@@ -1241,14 +1493,8 @@ for (Iterator<VarInfoName> i = name.inOrderTraversal().iterator() ; i.hasNext() 
   }
 }haha 
 matches1
-/Users/remywang/daikon//java/daikon/suppress/NISuppressionSet.java
-for (Iterator<Invariant> i = new_invs.iterator() ; i.hasNext() ;)
-{
-  Invariant new_inv = i.next();
-  if (new_inv.getClass() == inv.getClass() && new_inv.ppt == slice)
-    Assert.assertTrue(false, Fmt.spf(("inv %s:%s already in new_invs " + "(slice %s)"), inv.getClass(), inv.format(), slice));
-}haha 
-matches1
+/Users/remywang/daikon//java/daikon/LogHelper.java
+/Users/remywang/daikon//java/daikon/suppress/NISuppression.java
 /Users/remywang/daikon//java/daikon/suppress/NISuppression.java
 for (Iterator<Invariant> j = a.iterator() ; j.hasNext() ;)
 {
@@ -1348,6 +1594,16 @@ for (Iterator<Invariant> j = antecedents[i].iterator() ; j.hasNext() ;)
   out += "    " + inv.format() + (inv.is_false() ? " [false]" : " t") + sep;
 }haha 
 matches6
+/Users/remywang/daikon//java/daikon/suppress/NISuppressionSet.java
+/Users/remywang/daikon//java/daikon/suppress/NISuppressionSet.java
+for (Iterator<Invariant> i = new_invs.iterator() ; i.hasNext() ;)
+{
+  Invariant new_inv = i.next();
+  if (new_inv.getClass() == inv.getClass() && new_inv.ppt == slice)
+    Assert.assertTrue(false, Fmt.spf(("inv %s:%s already in new_invs " + "(slice %s)"), inv.getClass(), inv.format(), slice));
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/suppress/NIS.java
 /Users/remywang/daikon//java/daikon/suppress/NIS.java
 for (Iterator<Invariant> i = Daikon.proto_invs.iterator() ; i.hasNext() ;)
 {
@@ -1649,6 +1905,7 @@ for (Iterator<Invariant> j = ilist.iterator() ; j.hasNext() ;)
 }haha 
 matches24
 /Users/remywang/daikon//java/daikon/suppress/NISuppressor.java
+/Users/remywang/daikon//java/daikon/suppress/NISuppressor.java
 for (Iterator<Invariant> i = slice.invs.iterator() ; i.hasNext() ;)
 {
   Invariant slice_inv = i.next();
@@ -1666,14 +1923,10 @@ for (Iterator<Invariant> i = slice.invs.iterator() ; i.hasNext() ;)
   }
 }haha 
 matches2
-/Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantTableModel.java
-for (Iterator<Invariant> iter = allInvariants.iterator() ; iter.hasNext() ;)
-{
-  Invariant invariant = iter.next();
-  if (invariantFilters.shouldKeep(invariant) == null)
-    filteredInvariants.add(invariant);
-}haha 
-matches1
+/Users/remywang/daikon//java/daikon/suppress/NISuppressee.java
+/Users/remywang/daikon//java/daikon/VarComparabilityNone.java
+/Users/remywang/daikon//java/daikon/Ppt.java
+/Users/remywang/daikon//java/daikon/PptSplitter.java
 /Users/remywang/daikon//java/daikon/PptSplitter.java
 for (Iterator<VarInfo[]> itor = slices.iterator() ; itor.hasNext() ;)
 {
@@ -1823,6 +2076,19 @@ for (OrderedPairIterator<Invariant> opi = new OrderedPairIterator<Invariant>(ss1
   }
 }haha 
 matches8
+/Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantTableModel.java
+/Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantTableModel.java
+for (Iterator<Invariant> iter = allInvariants.iterator() ; iter.hasNext() ;)
+{
+  Invariant invariant = iter.next();
+  if (invariantFilters.shouldKeep(invariant) == null)
+    filteredInvariants.add(invariant);
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/gui/treeGUI/TableSorter.java
+/Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantTablesPanel.java
+/Users/remywang/daikon//java/daikon/gui/treeGUI/VariableListChangeListener.java
+/Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantsGUI.java
 /Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantsGUI.java
 for (Iterator<String> iter = new TreeSet<String>(pptMap.nameStringSet()).iterator() ; iter.hasNext() ;)
 {
@@ -1903,6 +2169,12 @@ for (Iterator<String> iter = pptMap.nameStringSet().iterator() ; iter.hasNext() 
   }
 }haha 
 matches3
+/Users/remywang/daikon//java/daikon/gui/treeGUI/TableMap.java
+/Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantsUpdateListener.java
+/Users/remywang/daikon//java/daikon/gui/treeGUI/VariableSelectionDialog.java
+/Users/remywang/daikon//java/daikon/VarInfoAux.java
+/Users/remywang/daikon//java/daikon/DaikonSimple.java
+/Users/remywang/daikon//java/daikon/VarInfoName.java
 /Users/remywang/daikon//java/daikon/VarInfoName.java
 for (Iterator<VarInfoName> i = o.args.iterator() ; i.hasNext() ;)
 {
@@ -1937,6 +2209,21 @@ for (Iterator<VarInfoName> i = o.args.iterator() ; i.hasNext() ;)
   NoReturnValue retval = vin.accept(this);
 }haha 
 matches5
+/Users/remywang/daikon//java/daikon/Debug.java
+/Users/remywang/daikon//java/daikon/UnionInvariants.java
+/Users/remywang/daikon//java/daikon/dcomp/Premain.java
+/Users/remywang/daikon//java/daikon/dcomp/DCInstrument.java
+/Users/remywang/daikon//java/daikon/dcomp/StackVer.java
+/Users/remywang/daikon//java/daikon/dcomp/TagEntry.java
+/Users/remywang/daikon//java/daikon/dcomp/LimitedConstraintVisitor.java
+/Users/remywang/daikon//java/daikon/dcomp/DCRuntime.java
+/Users/remywang/daikon//java/daikon/dcomp/DCompMarker.java
+/Users/remywang/daikon//java/daikon/dcomp/StackTypes.java
+/Users/remywang/daikon//java/daikon/dcomp/Test.java
+/Users/remywang/daikon//java/daikon/dcomp/BuildJDK.java
+/Users/remywang/daikon//java/daikon/dcomp/TypeStack.java
+/Users/remywang/daikon//java/daikon/ProglangType.java
+/Users/remywang/daikon//java/daikon/PptMap.java
 /Users/remywang/daikon//java/daikon/PptMap.java
 for (Iterator<PptTopLevel> iPpt = ppts.iterator() ; iPpt.hasNext() ;)
 {
@@ -1949,6 +2236,42 @@ for (Iterator<PptTopLevel> i = nameToPpt.values().iterator() ; i.hasNext() ;)
   ppt.trimToSize();
 }haha 
 matches2
+/Users/remywang/daikon//java/daikon/VarComparabilityImplicit.java
+/Users/remywang/daikon//java/daikon/simplify/SimplifyError.java
+/Users/remywang/daikon//java/daikon/simplify/CmdRaw.java
+/Users/remywang/daikon//java/daikon/simplify/CmdUndoAssume.java
+/Users/remywang/daikon//java/daikon/simplify/CmdCheck.java
+/Users/remywang/daikon//java/daikon/simplify/SimpUtil.java
+/Users/remywang/daikon//java/daikon/simplify/CmdAssume.java
+/Users/remywang/daikon//java/daikon/simplify/Lemma.java
+/Users/remywang/daikon//java/daikon/simplify/LemmaStack.java
+/Users/remywang/daikon//java/daikon/simplify/SessionManager.java
+/Users/remywang/daikon//java/daikon/simplify/TimeoutException.java
+/Users/remywang/daikon//java/daikon/simplify/Session.java
+/Users/remywang/daikon//java/daikon/simplify/Cmd.java
+/Users/remywang/daikon//java/daikon/simplify/SimplifyException.java
+/Users/remywang/daikon//java/daikon/simplify/InvariantLemma.java
+/Users/remywang/daikon//java/daikon/MergeInvariants.java
+/Users/remywang/daikon//java/daikon/Runtime.java
+/Users/remywang/daikon//java/daikon/PptRelation.java
+/Users/remywang/daikon//java/daikon/PptRelation.java
+for (Iterator<PptSplitter> kk = rel.child.splitters.iterator() ; kk.hasNext() ;)
+{
+  PptSplitter csplit = kk.next();
+  if (ppt_split.splitter == csplit.splitter)
+  {
+    split_children.add(new SplitChild(rel, csplit));
+    continue child_loop;
+  }
+}haha 
+for (Iterator<SplitChild> jj = split_children.iterator() ; jj.hasNext() ;)
+{
+  SplitChild sc = jj.next();
+  ppt_split.add_relation(sc.rel, sc.ppt_split);
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/ValueTuple.java
+/Users/remywang/daikon//java/daikon/PptSlice.java
 /Users/remywang/daikon//java/daikon/PptSlice.java
 for (Iterator<Invariant> overInvs = invs.iterator() ; overInvs.hasNext() ;)
 {
@@ -1981,22 +2304,8 @@ for (Iterator<Invariant> i = invs.iterator() ; i.hasNext() ;)
     return inv;
 }haha 
 matches5
-/Users/remywang/daikon//java/daikon/PptRelation.java
-for (Iterator<PptSplitter> kk = rel.child.splitters.iterator() ; kk.hasNext() ;)
-{
-  PptSplitter csplit = kk.next();
-  if (ppt_split.splitter == csplit.splitter)
-  {
-    split_children.add(new SplitChild(rel, csplit));
-    continue child_loop;
-  }
-}haha 
-for (Iterator<SplitChild> jj = split_children.iterator() ; jj.hasNext() ;)
-{
-  SplitChild sc = jj.next();
-  ppt_split.add_relation(sc.rel, sc.ppt_split);
-}haha 
-matches2
+/Users/remywang/daikon//java/daikon/ModBitTracker.java
+/Users/remywang/daikon//java/daikon/PptSliceEquality.java
 /Users/remywang/daikon//java/daikon/PptSliceEquality.java
 for (Iterator<List<VarInfo>> i = multiMap.values().iterator() ; i.hasNext() ;)
 {
@@ -2092,3 +2401,235 @@ for (Iterator<Invariant> i = invs.iterator() ; i.hasNext() ;)
   Assert.assertTrue((inv.ppt == this));
 }haha 
 matches7
+/Users/remywang/daikon//java/jtb/JavaCharStream.java
+/Users/remywang/daikon//java/jtb/syntaxtree/BreakStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/MethodDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/PackageDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/VariableDeclarator.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ForUpdate.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NodeToken.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ThrowStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ArrayDimsAndInits.java
+/Users/remywang/daikon//java/jtb/syntaxtree/AnnotationTypeBody.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ExtendsList.java
+/Users/remywang/daikon//java/jtb/syntaxtree/SingleMemberAnnotation.java
+/Users/remywang/daikon//java/jtb/syntaxtree/MultiplicativeExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/RelationalExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/IfStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Initializer.java
+/Users/remywang/daikon//java/jtb/syntaxtree/PostfixExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Node.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ResultType.java
+/Users/remywang/daikon//java/jtb/syntaxtree/PrimitiveType.java
+/Users/remywang/daikon//java/jtb/syntaxtree/BooleanLiteral.java
+/Users/remywang/daikon//java/jtb/syntaxtree/MemberValuePairs.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Type.java
+/Users/remywang/daikon//java/jtb/syntaxtree/EnumDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/AssertStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/MemberValue.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NullLiteral.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Statement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/SynchronizedStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/PrimaryPrefix.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ClassOrInterfaceBodyDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/FormalParameters.java
+/Users/remywang/daikon//java/jtb/syntaxtree/FormalParameter.java
+/Users/remywang/daikon//java/jtb/syntaxtree/AllocationExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Modifiers.java
+/Users/remywang/daikon//java/jtb/syntaxtree/LocalVariableDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/DoStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ClassOrInterfaceType.java
+/Users/remywang/daikon//java/jtb/syntaxtree/FieldDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/TypeArguments.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NormalAnnotation.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ExplicitConstructorInvocation.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ContinueStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/PreIncrementExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ConditionalAndExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ClassOrInterfaceBody.java
+/Users/remywang/daikon//java/jtb/syntaxtree/AssignmentOperator.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NodeChoice.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ConstructorDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/MemberSelector.java
+/Users/remywang/daikon//java/jtb/syntaxtree/RUNSIGNEDSHIFT.java
+/Users/remywang/daikon//java/jtb/syntaxtree/SwitchStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/WhileStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/MethodDeclarator.java
+/Users/remywang/daikon//java/jtb/syntaxtree/AnnotationTypeDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/UnaryExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ArrayInitializer.java
+/Users/remywang/daikon//java/jtb/syntaxtree/WildcardBounds.java
+/Users/remywang/daikon//java/jtb/syntaxtree/TypeParameters.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Expression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ReferenceType.java
+/Users/remywang/daikon//java/jtb/syntaxtree/InclusiveOrExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NodeList.java
+/Users/remywang/daikon//java/jtb/syntaxtree/TypeBound.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NodeListInterface.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ImportDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ConditionalOrExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/TypeArgument.java
+/Users/remywang/daikon//java/jtb/syntaxtree/EqualityExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ArgumentList.java
+/Users/remywang/daikon//java/jtb/syntaxtree/MemberValueArrayInitializer.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Literal.java
+/Users/remywang/daikon//java/jtb/syntaxtree/TypeParameter.java
+/Users/remywang/daikon//java/jtb/syntaxtree/PrimaryExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/TryStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/RSIGNEDSHIFT.java
+/Users/remywang/daikon//java/jtb/syntaxtree/EmptyStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/MemberValuePair.java
+/Users/remywang/daikon//java/jtb/syntaxtree/CompilationUnit.java
+/Users/remywang/daikon//java/jtb/syntaxtree/AdditiveExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ShiftExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/LabeledStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ImplementsList.java
+/Users/remywang/daikon//java/jtb/syntaxtree/DefaultValue.java
+/Users/remywang/daikon//java/jtb/syntaxtree/InstanceOfExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/EnumConstant.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Name.java
+/Users/remywang/daikon//java/jtb/syntaxtree/StatementExpressionList.java
+/Users/remywang/daikon//java/jtb/syntaxtree/AndExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/BlockStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NodeOptional.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ClassOrInterfaceDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ReturnStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/VariableInitializer.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NameList.java
+/Users/remywang/daikon//java/jtb/syntaxtree/AnnotationTypeMemberDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/VariableDeclaratorId.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ForInit.java
+/Users/remywang/daikon//java/jtb/syntaxtree/PrimarySuffix.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ExclusiveOrExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/StatementExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/MarkerAnnotation.java
+/Users/remywang/daikon//java/jtb/syntaxtree/UnaryExpressionNotPlusMinus.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NodeListOptional.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Arguments.java
+/Users/remywang/daikon//java/jtb/syntaxtree/CastExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ConditionalExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Block.java
+/Users/remywang/daikon//java/jtb/syntaxtree/PreDecrementExpression.java
+/Users/remywang/daikon//java/jtb/syntaxtree/TypeDeclaration.java
+/Users/remywang/daikon//java/jtb/syntaxtree/NodeSequence.java
+/Users/remywang/daikon//java/jtb/syntaxtree/Annotation.java
+/Users/remywang/daikon//java/jtb/syntaxtree/EnumBody.java
+/Users/remywang/daikon//java/jtb/syntaxtree/ForStatement.java
+/Users/remywang/daikon//java/jtb/syntaxtree/CastLookahead.java
+/Users/remywang/daikon//java/jtb/syntaxtree/SwitchLabel.java
+/Users/remywang/daikon//java/jtb/TokenMgrError.java
+/Users/remywang/daikon//java/jtb/ParseException.java
+/Users/remywang/daikon//java/jtb/JavaParserTokenManager.java
+/Users/remywang/daikon//java/jtb/JavaParser.java
+/Users/remywang/daikon//java/jtb/visitor/GJVisitor.java
+/Users/remywang/daikon//java/jtb/visitor/GJVoidVisitor.java
+/Users/remywang/daikon//java/jtb/visitor/GJVoidDepthFirst.java
+/Users/remywang/daikon//java/jtb/visitor/Visitor.java
+/Users/remywang/daikon//java/jtb/visitor/TreeDumper.java
+/Users/remywang/daikon//java/jtb/visitor/GJNoArguDepthFirst.java
+/Users/remywang/daikon//java/jtb/visitor/GJNoArguVisitor.java
+/Users/remywang/daikon//java/jtb/visitor/TreeFormatter.java
+/Users/remywang/daikon//java/jtb/visitor/GJDepthFirst.java
+/Users/remywang/daikon//java/jtb/visitor/DepthFirstVisitor.java
+/Users/remywang/daikon//java/jtb/JavaParserConstants.java
+/Users/remywang/daikon//java/jtb/Token.java
+/Users/remywang/daikon//java/jtb/cparser/CParserConstants.java
+/Users/remywang/daikon//java/jtb/cparser/CParser.java
+/Users/remywang/daikon//java/jtb/cparser/CParserTokenManager.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/InitDeclarator.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/StorageClassSpecifier.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ParameterDeclaration.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/NodeToken.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/DirectDeclarator.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/StructOrUnionSpecifier.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/SpecifierQualifierList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/MultiplicativeExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/DeclarationSpecifiers.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/RelationalExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ConstantExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/Initializer.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/PostfixExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/Pointer.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/Node.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/TypeQualifier.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/FunctionDefinition.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/StructDeclaration.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/TypeName.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/Statement.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ParameterList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/LogicalANDExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/IdentifierList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/IterationStatement.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/StatementList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/Declarator.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/TypedefName.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/StructDeclarationList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/AssignmentOperator.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/DirectAbstractDeclarator.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/NodeChoice.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/DeclarationList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/Constant.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/TranslationUnit.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/UnaryExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/StructOrUnion.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/Expression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/StructDeclarator.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/InclusiveORExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/AbstractDeclarator.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/NodeList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/NodeListInterface.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/AssignmentExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/CompoundStatement.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ExpressionStatement.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/EqualityExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/Declaration.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/Enumerator.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/PrimaryExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/EnumeratorList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/SelectionStatement.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ParameterTypeList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ArgumentExpressionList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/JumpStatement.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/EnumSpecifier.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/AdditiveExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ShiftExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/LabeledStatement.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/StructDeclaratorList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/InitializerList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ANDExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/NodeOptional.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/TypeSpecifier.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ExternalDeclaration.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/UnaryOperator.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ExclusiveORExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/InitDeclaratorList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/TypeQualifierList.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/NodeListOptional.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/CastExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/ConditionalExpression.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/NodeSequence.java
+/Users/remywang/daikon//java/jtb/cparser/syntaxtree/LogicalORExpression.java
+/Users/remywang/daikon//java/jtb/cparser/TokenMgrError.java
+/Users/remywang/daikon//java/jtb/cparser/ParseException.java
+/Users/remywang/daikon//java/jtb/cparser/visitor/Visitor.java
+/Users/remywang/daikon//java/jtb/cparser/visitor/DepthFirstVisitor.java
+/Users/remywang/daikon//java/jtb/cparser/customvisitor/StringFinder.java
+/Users/remywang/daikon//java/jtb/cparser/customvisitor/Converter.java
+/Users/remywang/daikon//java/jtb/cparser/customvisitor/Printer.java
+/Users/remywang/daikon//java/jtb/cparser/customvisitor/ConditionPrinter.java
+/Users/remywang/daikon//java/jtb/cparser/ASCII_CharStream.java
+/Users/remywang/daikon//java/jtb/cparser/Token.java
+/Users/remywang/daikon//examples/StackAr/DataStructures/MyInteger.java
+/Users/remywang/daikon//examples/StackAr/DataStructures/Underflow.java
+/Users/remywang/daikon//examples/StackAr/DataStructures/Comparable.java
+/Users/remywang/daikon//examples/StackAr/DataStructures/Hashable.java
+/Users/remywang/daikon//examples/StackAr/DataStructures/Overflow.java
+/Users/remywang/daikon//examples/StackAr/DataStructures/StackAr.java
+/Users/remywang/daikon//examples/StackAr/DataStructures/StackArTester.java
+/Users/remywang/daikon//examples/QueueAr/DataStructures/MyInteger.java
+/Users/remywang/daikon//examples/QueueAr/DataStructures/QueueAr.java
+/Users/remywang/daikon//examples/QueueAr/DataStructures/Underflow.java
+/Users/remywang/daikon//examples/QueueAr/DataStructures/Comparable.java
+/Users/remywang/daikon//examples/QueueAr/DataStructures/Hashable.java
+/Users/remywang/daikon//examples/QueueAr/DataStructures/Overflow.java
+/Users/remywang/daikon//examples/QueueAr/DataStructures/QueueArTester.java

@@ -1,0 +1,690 @@
+/Users/remywang/daikon//java/utilMDE/WeakIdentityHashMap.java
+for (Iterator<K> i = iterator() ; i.hasNext() ;)
+  c.add(i.next());haha 
+for (Iterator<K> i = iterator() ; i.hasNext() ;)
+  c.add(i.next());haha 
+for (Iterator<V> i = iterator() ; i.hasNext() ;)
+  c.add(i.next());haha 
+for (Iterator<V> i = iterator() ; i.hasNext() ;)
+  c.add(i.next());haha 
+for (Iterator<Map.Entry<K, V>> i = iterator() ; i.hasNext() ;)
+  c.add(new OurSimpleEntry<K, V>(i.next()));haha 
+for (Iterator<Map.Entry<K, V>> i = iterator() ; i.hasNext() ;)
+  c.add(new OurSimpleEntry<K, V>(i.next()));haha 
+matches6
+/Users/remywang/daikon//java/utilMDE/BCELUtil.java
+for (Iterator i = il.iterator() ; i.hasNext() ;)
+{
+  InstructionHandle handle = (InstructionHandle) i.next();
+  out += handle.getInstruction().toString(pool.getConstantPool()) + "\n";
+}haha 
+matches1
+/Users/remywang/daikon//java/utilMDE/UtilMDE.java
+for (Iterator<List<T>> j = combos.iterator() ; j.hasNext() ;)
+{
+  List<T> simple = new ArrayList<T>();
+  simple.add(objs.get(i));
+  simple.addAll(j.next());
+  results.add(simple);
+}haha 
+for (Iterator<ArrayList<Integer>> j = combos.iterator() ; j.hasNext() ;)
+{
+  ArrayList<Integer> simple = new ArrayList<Integer>();
+  simple.add(new Integer(i));
+  simple.addAll(j.next());
+  results.add(simple);
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/inv/FeatureExtractor.java
+for (Iterator<String> i = outputData.iterator() ; i.hasNext() ;)
+  ps.println(i.next());haha 
+for (Iterator<String> i = vectors.iterator() ; i.hasNext() ;)
+  ps.println(i.next());haha 
+for (Iterator<String> i = inputs.iterator() ; i.hasNext() ;)
+{
+  BufferedReader br = new BufferedReader(new FileReader(i.next()));
+  br.readLine();
+  while (br.ready())
+  {
+    String vector = br.readLine();
+    assert vector != null;
+    if (type.equals("C5"))
+    {
+      if (vector.indexOf("bad") > -1)
+        neg.add(vector.substring(0, vector.lastIndexOf("bad")));
+      else
+        pos.add(vector.substring(0, vector.lastIndexOf("good")));
+    }
+    else
+      if (type.equals("SVMfu"))
+      {
+        int posind = vector.lastIndexOf("1");
+        int negind = vector.lastIndexOf("-1");
+        if ((negind == posind) - 1)
+          neg.add(vector.substring(0, vector.lastIndexOf("-1")));
+        else
+          pos.add(vector.substring(0, vector.lastIndexOf("1")));
+      }
+  }
+  br.close();
+}haha 
+for (Iterator<String> i = pos.iterator() ; i.hasNext() ;)
+  if (type.equals("C5"))
+    posvectors.add((i.next() + "good"));
+  else
+    if (type.equals("SVMfu"))
+      posvectors.add((i.next() + "1"));haha 
+for (Iterator<String> i = negvectors.iterator() ; i.hasNext() ;)
+  ps.println((i.next() + " "));haha 
+for (Iterator<String> i = posvectors.iterator() ; i.hasNext() ;)
+  ps.println((i.next() + " "));haha 
+for (Iterator<String> i = trains.iterator() ; i.hasNext() ;)
+{
+  BufferedReader br = new BufferedReader(new FileReader(i.next()));
+  br.readLine();
+  while (br.ready())
+  {
+    String vector = br.readLine();
+    assert vector != null;
+    if (type.equals("C5"))
+    {
+      if (vector.indexOf("bad") > -1)
+        neg.add(vector.substring(0, vector.lastIndexOf("bad")));
+      else
+        pos.add(vector.substring(0, vector.lastIndexOf("good")));
+    }
+    else
+      if (type.equals("SVMfu"))
+      {
+        int posind = vector.lastIndexOf("1");
+        int negind = vector.lastIndexOf("-1");
+        if ((negind == posind) - 1)
+          neg.add(vector.substring(0, vector.lastIndexOf("-1")));
+        else
+          pos.add(vector.substring(0, vector.lastIndexOf("1")));
+      }
+  }
+  br.close();
+}haha 
+for (Iterator<String> i = trains.iterator() ; i.hasNext() ;)
+{
+  BufferedReader br = new BufferedReader(new FileReader(i.next()));
+  br.readLine();
+  while (br.ready())
+  {
+    String vector = br.readLine();
+    assert vector != null;
+    if (type.equals("C5"))
+    {
+      if (vector.indexOf("bad") > -1)
+        testBad.add(vector.substring(0, vector.lastIndexOf("bad")));
+      else
+        testGood.add(vector.substring(0, vector.lastIndexOf("good")));
+    }
+    else
+      if (type.equals("SVMfu"))
+      {
+        int posind = vector.lastIndexOf("1");
+        int negind = vector.lastIndexOf("-1");
+        if ((negind == posind) - 1)
+          testBad.add(vector.substring(0, vector.lastIndexOf("-1")));
+        else
+          testGood.add(vector.substring(0, vector.lastIndexOf("1")));
+      }
+  }
+  br.close();
+}haha 
+matches8
+/Users/remywang/daikon//java/daikon/inv/Equality.java
+for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
+{
+  VarInfo var = i.next();
+  if (leader == var)
+    continue;
+  result.append("(").append(leaderName).append(" == ");
+  result.append(var.name.name()).append(")");
+  if (i.hasNext())
+    result.append(" && ");
+}haha 
+for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
+{
+  VarInfo var = i.next();
+  if (leader == var)
+    continue;
+  result.append(var.name.ioa_name());
+  result.append(" = ");
+  result.append(leaderName);
+  if (i.hasNext())
+    result.append(" /\\ ");
+}haha 
+for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
+{
+  VarInfo var = i.next();
+  if (leader == var)
+    continue;
+  if (leader.rep_type.isArray())
+  {
+    result.append("(").append("daikon.Quant.pairwiseEqual(");
+    result.append(leaderName).append(", ").append(var.name.name_using(format, var));
+    result.append(")");
+  }
+  else
+  {
+    if (leader.type.isFloat())
+    {
+      result.append("(").append(Invariant.formatFuzzy("eq", leader, var, format)).append(")");
+    }
+    else
+    {
+      if (leaderName.indexOf("daikon.Quant.collectObject") != -1 || var.name.name_using(format, var).indexOf("daikon.Quant.collectObject") != -1)
+      {
+        result.append(("(warning: it is meaningless to compare hashcodes for values " + "obtained through daikon.Quant.collect... methods."));
+      }
+      else
+      {
+        result.append("(").append(leaderName).append(" == ");
+        result.append(var.name.name_using(format, var)).append(")");
+      }
+    }
+  }
+  if (i.hasNext())
+    result.append(" && ");
+}haha 
+for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
+{
+  VarInfo vi = i.next();
+  if (vi == leader)
+    continue;
+  Assert.assertTrue(vi.comparableNWay(leader));
+  Object viValue = vi.getValue(vt);
+  int viMod = vi.getModified(vt);
+  if (leaderValue == viValue && leaderMod == viMod && !leaderOutOfBounds && !vi.missingOutOfBounds())
+    continue;
+  if (Debug.logOn())
+    Debug.log(getClass(), ppt.parent, Debug.vis(vi), ("Var " + vi.name.name() + " [" + viValue + "," + viMod + "] split from leader " + leader.name.name() + " [" + leaderValue + "," + leaderMod + "]"));
+  result.add(vi);
+  i.remove();
+}haha 
+matches4
+/Users/remywang/daikon//java/daikon/inv/filter/InvariantFilters.java
+for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext() ;)
+{
+  VariableFilter vf = iter.next();
+  if (vf.getVariable().equals(variable))
+  {
+    iter.remove();
+    foundOnce = true;
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/inv/OutputFormat.java
+for (Iterator<VarInfoName> it = roots.iterator() ; it.hasNext() ;)
+{
+  String lowerrootvar = it.next().name();
+  String vardef = "";
+  if (!getType(ppt, lowerrootvar).equals("int"))
+    vardef = getType(ppt, lowerrootvar) + " " + lowerrootvar + ";";
+  else
+    vardef = "int " + lowerrootvar + ";";
+  appendGlobal(ppt, vardef);
+}haha 
+for (Iterator<VarInfoName> it = roots.iterator() ; it.hasNext() ;)
+{
+  String upperrootvar = it.next().name();
+  String vardef = "";
+  if (!getType(ppt, upperrootvar).equals("int"))
+    vardef = getType(ppt, upperrootvar) + " " + upperrootvar + ";";
+  else
+    vardef = "int " + upperrootvar + ";";
+  appendGlobal(ppt, vardef);
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/PptTopLevel.java
+for (Iterator<Derivation> itor = result.iterator() ; itor.hasNext() ;)
+{
+  derived_vars += " " + itor.next().getVarInfo().name.name();
+}haha 
+for (Iterator<PptSlice> itor = slices_vector.iterator() ; itor.hasNext() ;)
+{
+  PptSlice slice = itor.next();
+  if (slice.invs.size() == 0)
+  {
+    itor.remove();
+  }
+}haha 
+for (Iterator<PptSlice> i = slices.iterator() ; i.hasNext() ;)
+{
+  addSlice(i.next());
+}haha 
+for (Iterator<PptSlice> iSlices = slices.iterator() ; iSlices.hasNext() ;)
+{
+  PptSlice slice = iSlices.next();
+  VarInfo[] newVis = new VarInfo[slice.arity()];
+  boolean needPivoting = false;
+  for (int i = 0 ; i < slice.arity() ; i++)
+  {
+    if (slice.var_infos[i].canonicalRep() != slice.var_infos[i])
+      needPivoting = true;
+  }
+  if (!needPivoting)
+    continue;
+  for (int i = 0 ; i < slice.arity() ; i++)
+  {
+    newVis[i] = slice.var_infos[i].canonicalRep();
+  }
+  PptSlice newSlice = slice.cloneAndPivot(newVis);
+  if (slice != newSlice)
+  {
+    pivoted.add(newSlice);
+    iSlices.remove();
+  }
+}haha 
+for (Iterator<PptRelation> i = children.iterator() ; i.hasNext() ;)
+  i.next().debug_print_tree(l, (indent + 1));haha 
+for (Iterator<VarInfo> k = cv.equalitySet.getVars().iterator() ; k.hasNext() ;)
+{
+  cv = k.next();
+  pv = rel.parentVar(cv);
+  if (pv != null)
+    break;
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant orig_inv = j.next();
+  Invariant inv = orig_inv.clone_and_permute(permute);
+  Invariant pinv = pslice.find_inv_exact(inv);
+  if (pinv != null)
+  {
+    j.remove();
+  }
+}haha 
+matches7
+/Users/remywang/daikon//java/daikon/tools/jtb/ConditionExtractor.java
+for (Iterator<String> e = caseValues.iterator() ; e.hasNext() ;)
+{
+  String switchValue = e.next().trim();
+  if (!switchValue.equals(":"))
+  {
+    if (!(defaultString.length() == 0))
+      defaultString.append(" && ");
+    defaultString.append((switchExpression + " != " + switchValue));
+    addCondition((switchExpression + " == " + switchValue));
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/tools/DtracePartitioner.java
+for (Iterator<String> i = nonceMap.values().iterator() ; i.hasNext() ;)
+{
+  al.add(i.next());
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/DynamicConstants.java
+for (Iterator<Constant> i = con_list.iterator() ; i.hasNext() ;)
+{
+  Constant con = i.next();
+  Object val = con.vi.getValue(vt);
+  if (Debug.logDetail())
+    Debug.log(getClass(), ppt, Debug.vis(con.vi), ("Adding " + Debug.toString(val) + " to constant " + con.val + " : missing = " + missing(con.vi, vt) + ": samples = " + con.count + "/" + count));
+  if (con.val != val || missing(con.vi, vt))
+  {
+    i.remove();
+    con.constant = false;
+    con.previous_constant = true;
+    Assert.assertTrue((all_vars[con.vi.varinfo_index].constant == false));
+    non_con.add(con);
+  }
+  else
+  {
+    con.count += count;
+  }
+}haha 
+for (Iterator<Constant> i = missing_list.iterator() ; i.hasNext() ;)
+{
+  Constant con = i.next();
+  if (con.vi.missingOutOfBounds())
+    continue;
+  Object val = con.vi.getValue(vt);
+  if (!missing(con.vi, vt))
+  {
+    i.remove();
+    con.always_missing = false;
+    if (Debug.logDetail())
+      Debug.log(getClass(), ppt, Debug.vis(con.vi), ("Adding " + Debug.toString(val) + " to missing : missing = " + missing(con.vi, vt) + ": samples = " + con.count + "/" + count + "/" + sample_cnt));
+    if (sample_cnt == 0)
+    {
+      con.val = val;
+      con.count = count;
+      con.constant = true;
+      con_list.add(con);
+    }
+    else
+    {
+      non_missing.add(con);
+      con.previous_missing = true;
+    }
+  }
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (inv.is_false())
+  {
+    j.remove();
+  }
+}haha 
+matches3
+/Users/remywang/daikon//java/daikon/diff/MatchCountVisitor.java
+for (Iterator<String> j = goodMap.get(ppt).iterator() ; j.hasNext() ;)
+{
+  System.out.println(j.next());
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/diff/MatchCountVisitor2.java
+for (Iterator<String> j = goodMap.get(ppt).iterator() ; j.hasNext() ;)
+{
+  System.out.println(j.next());
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/diff/PptCountVisitor.java
+for (Iterator<String> j = goodMap.get(ppt).iterator() ; j.hasNext() ;)
+{
+  System.out.println(j.next());
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/diff/InvMap.java
+for (Iterator<PptTopLevel> i = ppts.iterator() ; i.hasNext() ;)
+  answer.addAll(get(i.next()));haha 
+matches1
+/Users/remywang/daikon//java/daikon/FileIO.java
+for (Iterator<Integer> itor = keys.iterator() ; itor.hasNext() ;)
+{
+  invocations.add(call_hashmap.get(itor.next()));
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/chicory/StringInfo.java
+for (Iterator<String> iter = theValues.iterator() ; iter.hasNext() ;)
+{
+  Object str = iter.next();
+  if (str == null)
+    buf.append(str);
+  else
+    if (str instanceof NonsensicalObject || str instanceof NonsensicalList)
+      buf.append("nonsensical");
+    else
+      buf.append(("\"" + encodeString(((String) str)) + "\""));
+  if (iter.hasNext())
+    buf.append(" ");
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/chicory/DaikonVariableInfo.java
+for (Iterator<Object> iter = theValues.iterator() ; iter.hasNext() ;)
+{
+  Object elementVal = iter.next();
+  buf.append(getValueStringOfObject(elementVal, true));
+  if (iter.hasNext())
+    buf.append(" ");
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/chicory/Instrument.java
+for (Iterator<InstructionHandle> ii = (Iterator<InstructionHandle>) il.iterator() ; ii.hasNext() ;)
+{
+  foundLine = false;
+  InstructionHandle ih = ii.next();
+  if (ih.hasTargeters())
+  {
+    for (InstructionTargeter it : ih.getTargeters()) {
+                                                       if (it instanceof LineNumberGen)
+                                                       {
+                                                         LineNumberGen lng = (LineNumberGen) it;
+                                                         line_number = lng.getSourceLine();
+                                                         foundLine = true;
+                                                       }
+                                                     }
+  }
+  switch (ih.getInstruction().getOpcode())
+  {
+    case Constants.ARETURN:
+    case Constants.DRETURN:
+    case Constants.FRETURN:
+    case Constants.IRETURN:
+    case Constants.LRETURN:
+    case Constants.RETURN:
+      if (line_number == last_line_number && foundLine == false)
+      {
+        line_number++;
+      }
+      last_line_number = line_number;
+      if (!shouldFilter(class_info.class_name, mgen.getName(), DaikonWriter.methodExitName(class_info.class_name, getArgTypes(mgen), mgen.toString(), mgen.getName(), line_number)))
+      {
+        shouldInclude = true;
+        exit_locs.add(new Integer(line_number));
+        isIncluded.add(true);
+      }
+      else
+        isIncluded.add(false);
+      break;
+    default:
+      break;
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/Daikon.java
+for (Iterator<Invariant> i = proto_invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  Assert.assertTrue((inv != null));
+  if (!inv.enabled())
+    i.remove();
+}haha 
+for (Iterator<String> i = ppts.iterator() ; i.hasNext() ;)
+{
+  String ppt_name = i.next();
+  if (--ppt_cnt <= 0)
+  {
+    String last_ppt_name = ppt_name;
+    while (i.hasNext())
+    {
+      ppt_name = i.next();
+      if (last_ppt_name.indexOf("EXIT") != -1 && ppt_name.indexOf("EXIT") == -1)
+        return last_ppt_name;
+      last_ppt_name = ppt_name;
+    }
+    return ppt_name;
+  }
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/suppress/NIS.java
+for (Iterator<Invariant> i = new_invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  if (inv.is_ni_suppressed())
+  {
+    still_suppressed_cnt++;
+    inv.log("removed, still suppressed in second pass");
+    inv.ppt.invs.remove(inv);
+    i.remove();
+  }
+}haha 
+for (Iterator<Invariant> j = eq_invs.iterator() ; j.hasNext() ;)
+{
+  IntEqual inv = (IntEqual) j.next();
+  VarInfo v1 = inv.ppt.var_infos[0];
+  VarInfo v2 = inv.ppt.var_infos[1];
+  if (ppt.is_constant(v1) && ppt.is_constant(v2))
+    Fmt.pf("inv %s has two constant variables", inv.format());
+  if (!v1.compatible(v2))
+    Fmt.pf("inv %s has incompatible variables", inv.format());
+  Count cnt = var_map.get(v1);
+  if (cnt == null)
+  {
+    cnt = new Count(0);
+    var_map.put(v1, cnt);
+  }
+  cnt.val++;
+  cnt = var_map.get(v2);
+  if (cnt == null)
+  {
+    cnt = new Count(0);
+    var_map.put(v2, cnt);
+  }
+  cnt.val++;
+}haha 
+for (Iterator<Antecedents> i = comp_ants.values().iterator() ; i.hasNext() ;)
+{
+  Antecedents ants = i.next();
+  if (ants.false_cnt == 0)
+    i.remove();
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (inv.is_ni_suppressed())
+  {
+    inv.log(("Removed because suppressed " + inv.format()));
+    j.remove();
+  }
+}haha 
+matches4
+/Users/remywang/daikon//java/daikon/PptSplitter.java
+for (Iterator<Invariant> kk = nc_slice.invs.iterator() ; kk.hasNext() ;)
+  System.out.println((" -- inv = " + kk.next()));haha 
+for (Iterator<Invariant[]> ii = different_invs_vec.iterator() ; ii.hasNext() ;)
+{
+  Invariant[] diff_invs = ii.next();
+  if (diff_invs[0] != null)
+  {
+    Assert.assertTrue((diff_invs[1] == null));
+    for (Invariant[] ex_invs : exclusive_invs_vec) {
+                                                     if (ex_invs[0] == diff_invs[0])
+                                                     {
+                                                       debug.fine(("removed exclusive invariant " + ex_invs[0]));
+                                                       ii.remove();
+                                                       break;
+                                                     }
+                                                   }
+  }
+  else
+  {
+    Assert.assertTrue((diff_invs[1] != null));
+    for (Invariant[] ex_invs : exclusive_invs_vec) {
+                                                     if (ex_invs[1] == diff_invs[1])
+                                                     {
+                                                       debug.fine(("removed exclusive invariant " + ex_invs[1]));
+                                                       ii.remove();
+                                                       break;
+                                                     }
+                                                   }
+  }
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantsGUI.java
+for (Iterator<JCheckBox> iter = filterCheckBoxes.iterator() ; iter.hasNext() ;)
+  iter.next().setSelected(true);haha 
+for (Iterator<JCheckBox> iter = filterCheckBoxes.iterator() ; iter.hasNext() ;)
+  iter.next().setSelected(false);haha 
+matches2
+/Users/remywang/daikon//java/daikon/VarInfoName.java
+for (Iterator<VarInfoName> i = args.iterator() ; i.hasNext() ;)
+{
+  sb.append(i.next().repr());
+  if (i.hasNext())
+    sb.append(", ");
+}haha 
+for (Iterator<VarInfoName> i = args.iterator() ; i.hasNext() ;)
+{
+  sb.append(i.next().name());
+  if (i.hasNext())
+    sb.append(", ");
+}haha 
+for (Iterator<VarInfoName> i = args.iterator() ; i.hasNext() ;)
+{
+  sb.append(i.next().name());
+  if (i.hasNext())
+    sb.append(", ");
+}haha 
+for (Iterator<VarInfoName> i = args.iterator() ; i.hasNext() ;)
+{
+  sb.append(i.next().repr());
+  if (i.hasNext())
+    sb.append(", ");
+}haha 
+for (Iterator<VarInfoName> i = args.iterator() ; i.hasNext() ;)
+{
+  sb.append(i.next().repr());
+  if (i.hasNext())
+    sb.append(", ");
+}haha 
+for (Iterator<VarInfoName> i = args.iterator() ; i.hasNext() ;)
+{
+  sb.append(i.next().ioa_name());
+  if (i.hasNext())
+    sb.append(", ");
+}haha 
+for (Iterator<VarInfoName> i = args.iterator() ; i.hasNext() ;)
+{
+  sb.append(i.next().identifier_name());
+  if (i.hasNext())
+    sb.append("_comma_");
+}haha 
+matches7
+/Users/remywang/daikon//java/daikon/MergeInvariants.java
+for (Iterator<PptRelation> j = ppt.children.iterator() ; j.hasNext() ;)
+{
+  PptRelation rel = j.next();
+  if (rel.getRelationType() == PptRelation.PPT_PPTCOND)
+    j.remove();
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptSlice.java
+for (Iterator<Invariant> iFalsified = invs.iterator() ; iFalsified.hasNext() ;)
+{
+  Invariant inv = iFalsified.next();
+  if (inv.is_false())
+  {
+    iFalsified.remove();
+    NIS.falsified(inv);
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptRelation.java
+for (Iterator<PptSplitter> ii = ppt.splitters.iterator() ; ii.hasNext() ;)
+{
+  PptSplitter ppt_split = ii.next();
+  List<SplitChild> split_children = new ArrayList<SplitChild>();
+  child_loop: for (int jj = 0 ; jj < ppt.children.size() ; jj++)
+              {
+                PptRelation rel = ppt.children.get(jj);
+                if (!rel.child.has_splitters())
+                  break;
+                for (PptSplitter csplit : rel.child.splitters) {
+                                                                 if (ppt_split.splitter == csplit.splitter)
+                                                                 {
+                                                                   split_children.add(new SplitChild(rel, csplit));
+                                                                   continue child_loop;
+                                                                 }
+                                                               }
+                break;
+              }
+  if (split_children.size() != ppt.children.size())
+  {
+    ii.remove();
+    continue;
+  }
+  for (SplitChild sc : split_children) {
+                                         ppt_split.add_relation(sc.rel, sc.ppt_split);
+                                       }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptSliceEquality.java
+for (Iterator<Invariant> iInvs = invs.iterator() ; iInvs.hasNext() ;)
+{
+  Invariant inv = iInvs.next();
+  if (!Daikon.dkconfig_undo_opts)
+  {
+    if (inv.isObviousStatically_AllInEquality())
+    {
+      iInvs.remove();
+    }
+  }
+}haha 
+matches1
