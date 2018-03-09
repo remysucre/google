@@ -31,7 +31,7 @@ java = QuasiQuoter {
     }
 
 exts :: Data b => b -> Maybe (Q Language.Haskell.TH.Pat)
-exts = const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` antiId `extQ` antiVar
+exts = const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` antiId `extQ` antiVar `extQ` antiType
 
 rename :: Language.Java.Syntax.Stmt -> State (DS.Set String) Language.Java.Syntax.Stmt
 rename p = transformM rnvar p
@@ -76,6 +76,10 @@ antiVar (MetaVar "_") = Just $ wildP
 antiVar (MetaVar s) = Just $ varP (mkName s)
 antiVar _ = Nothing
 
+antiType :: Language.Java.Syntax.Type -> Maybe (Q Language.Haskell.TH.Pat)
+antiType MetaType = Just $ wildP
+antiType _ = Nothing
+
 antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
 antiExpPat (MetaExp "_") = Just $ wildP
 antiExpPat (MetaExp s) = Just $ varP (mkName s)
@@ -88,6 +92,9 @@ antiExpPat (EHasS p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out fo
         p_ = dataToPatQ exts p
 antiExpPat (EHasE p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
   where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
+        p_ = dataToPatQ exts p
+antiExpPat (EHasI p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
+  where body = compE [bindS p_ [|universeBi n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
         p_ = dataToPatQ exts p
 antiExpPat _ = Nothing
 

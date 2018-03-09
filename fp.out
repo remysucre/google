@@ -1,0 +1,71 @@
+/Users/remywang/daikon//java/daikon/inv/FeatureExtractor.java
+for (Iterator<IntDoublePair> all = allFeatures.iterator() ; all.hasNext() ;)
+{
+  IntDoublePair current = all.next();
+  if (numbersToNames.containsKey(current))
+  {
+    String currentName = numbersToNames.get(current);
+    if (currentName.endsWith("Bool"))
+      names.println((currentName + ":0.0, 1.0."));
+    else
+      if (currentName.endsWith("Float"))
+        names.println((currentName + ": continuous."));
+      else
+        if (currentName.endsWith("Int"))
+          names.println((currentName + ": continuous."));
+        else
+          throw new IOException("All feature names must end with one of " + "Float, Bool, or Int." + lineSep + "Error: " + currentName + lineSep);
+  }
+  else
+    throw new IOException("Feature " + current.number + " not included in .names file");
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/inv/filter/InvariantFilters.java
+for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext() ;)
+{
+  InvariantFilter filter = iter.next();
+  if (!filter.shouldDiscard(invariant))
+  {
+    hasAnyVariable = true;
+  }
+}haha 
+for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext() ;)
+{
+  InvariantFilter filter = iter.next();
+  if (filter.shouldDiscard(invariant))
+  {
+    if (invariant.logOn())
+      invariant.log(("Failed ALL_VARIABLES filter" + filter.getClass().getName()));
+    return filter;
+  }
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/tools/ExtractConsequent.java
+for (Iterator<PptTopLevel> itor = ppts_sorted.iterator() ; itor.hasNext() ;)
+{
+  PptTopLevel ppt = itor.next();
+  extract_consequent_maybe(ppt, ppts);
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptTopLevel.java
+for (Iterator<Invariant> _invs = all.iterator() ; _invs.hasNext() ;)
+{
+  Invariant inv = _invs.next();
+  if (test.include(inv))
+  {
+    String fmt = inv.format_using(OutputFormat.SIMPLIFY);
+    if (!format_simplify_problem(fmt))
+    {
+      printing.add(inv);
+    }
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/InstrumentVisitor.java
+for (Iterator<Invariant> invI = invList.iterator() ; invI.hasNext() ;)
+{
+  Invariant inv = invI.next();
+  xmlStringToIndex.put(toProperty(inv).xmlString(), Integer.toString(varNumCounter));
+  varNumCounter++;
+}haha 
+matches1

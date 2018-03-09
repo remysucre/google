@@ -24,21 +24,10 @@ greps prog pctnt = [ a | a <- universeBi prog, pctnt a]
 grepj :: CompilationUnit -> (Stmt -> Bool) -> [Stmt]
 grepj prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
--- TODO transformation engine
-
 --------------------
 -- patterns here ---
 --------------------
 
-{-
-for (#_<#_> #x = `_ ; #x.hasNext() ;)
-{
-  #_ #_ = #x.next();
-  `[ `! `*( #x `)* `]
-}
--}
-
--- Pattern for Patch 7 (File: DataSet/Patch7/OLD_CARBON16738/Eclipse_SWT/gtk/org/eclipse/swt/widgets/Spinner.java)
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog pat
   where pat [java| 
@@ -94,10 +83,14 @@ testj prog = grepj prog pat
 //     Daikon      //
 /////////////////////
 //
-// for (#_<#_> #i = `_; #i.#_(); ) { // PATTERN HERE
+for (`_ #i = `*( iterator `)*; #i.hasNext(); ) { // PATTERN HERE
+  `_ #_ = #i.next();
+  `[ `! `*( #i `)* `]
+}
+// for (#_<#_> #i = `*( iterator() `)* ; #i.hasNext(); ) {
 //   #_ #_ = #i.next();
 //   `[ `! `*( #i `)* `]
-// } 
+// }
 //
 |] = True
         pat _ = False

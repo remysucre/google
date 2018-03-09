@@ -2,8 +2,10 @@ module Main where
 
 import Lib
 import Language.Java.Pretty
+import Language.Java.Syntax
 import Language.Java.Parser
 import System.Environment
+import Debug.Trace
 
 -- $(matchs)
 
@@ -12,10 +14,12 @@ main = do
   -- print . map prettyPrint $ teste
   [fn] <- getArgs
   fc <- readFile fn
-  let Right java = parser compilationUnit fc
+  let java = case parser compilationUnit fc
+               of Right pt -> pt
+                  _ -> trace fn $ CompilationUnit Nothing [] []
       res = testj java
       ms = concatMap ((++ "haha \n") . prettyPrint) $ res
-      out = fn ++ "\n" ++ ms ++ (show $ length res) ++ "\n"
+      out = fn ++ "\n" ++ ms ++ "matches" ++ (show $ length res) ++ "\n"
   -- print 
   if length res > 0 then putStr out else return ()
   -- print $ length res
