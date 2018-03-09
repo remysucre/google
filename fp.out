@@ -1,3 +1,49 @@
+/Users/remywang/daikon//java/utilMDE/WeakIdentityHashMap.java
+for (Iterator<? extends Map.Entry<? extends K, ? extends V>> i = m.entrySet().iterator() ; i.hasNext() ;)
+{
+  Map.Entry<? extends K, ? extends V> e = i.next();
+  put(e.getKey(), e.getValue());
+}haha 
+matches1
+/Users/remywang/daikon//java/utilMDE/WeakHasherMap.java
+for (Iterator<Map.Entry<WeakKey, V>> i = hashEntrySet.iterator() ; i.hasNext() ;)
+{
+  Map.Entry<WeakKey, V> ent = i.next();
+  WeakKey wk = ent.getKey();
+  Object v;
+  if (wk == null)
+    continue;
+  h += wk.hashCode() ^ (v = ent.getValue() == null ? 0 : v.hashCode());
+}haha 
+matches1
+/Users/remywang/daikon//java/utilMDE/UtilMDE.java
+for (Iterator itor = set.iterator() ; itor.hasNext() ;)
+{
+  Object elt = itor.next();
+  if (key.equals(elt))
+  {
+    return elt;
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/inv/Invariant.java
+for (Iterator<VarInfo> iSet = vis[position].get_equalitySet_vars().iterator() ; iSet.hasNext() ;)
+{
+  VarInfo vi = iSet.next();
+  assigned[position] = vi;
+  DiscardInfo temp = isObviousStatically_SomeInEqualityHelper(vis, assigned, (position + 1));
+  if (temp != null)
+    return temp;
+}haha 
+for (Iterator<VarInfo> iSet = vis[position].get_equalitySet_vars().iterator() ; iSet.hasNext() ;)
+{
+  VarInfo vi = iSet.next();
+  assigned[position] = vi;
+  DiscardInfo temp = isObviousDynamically_SomeInEqualityHelper(vis, assigned, (position + 1));
+  if (temp != null)
+    return temp;
+}haha 
+matches2
 /Users/remywang/daikon//java/daikon/inv/FeatureExtractor.java
 for (Iterator<IntDoublePair> all = allFeatures.iterator() ; all.hasNext() ;)
 {
@@ -19,7 +65,24 @@ for (Iterator<IntDoublePair> all = allFeatures.iterator() ; all.hasNext() ;)
   else
     throw new IOException("Feature " + current.number + " not included in .names file");
 }haha 
-matches1
+for (Iterator<IntDoublePair> fets = features.get(i).iterator() ; fets.hasNext() ;)
+{
+  IntDoublePair fet = fets.next();
+  if (fet.value > THRESHOLD)
+    output.print((fet.number + ":" + df.format(fet.value) + " "));
+}haha 
+for (Iterator<IntDoublePair> fets = features.get(i).iterator() ; fets.hasNext() ;)
+{
+  IntDoublePair fet = fets.next();
+  output.print((fet.number + " " + df.format(fet.value) + " "));
+}haha 
+for (Iterator<IntDoublePair> it = getReflectFeatures(varInfos[i], lookup).iterator() ; it.hasNext() ;)
+{
+  IntDoublePair current = it.next();
+  answer.add(new IntDoublePair((current.number + i + 1), current.value));
+  answer.add(current);
+}haha 
+matches4
 /Users/remywang/daikon//java/daikon/inv/filter/InvariantFilters.java
 for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext() ;)
 {
@@ -40,6 +103,17 @@ for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext()
   }
 }haha 
 matches2
+/Users/remywang/daikon//java/daikon/inv/OutputFormat.java
+for (Iterator<Map.Entry<String, String>> it = quantifiers.entrySet().iterator() ; it.hasNext() ;)
+{
+  Map.Entry<String, String> entry = it.next();
+  String key = entry.getKey();
+  String value = entry.getValue();
+  if (!str.equals(""))
+    str += ",";
+  str += "forall " + key + " in " + quantifiers.get(key);
+}haha 
+matches1
 /Users/remywang/daikon//java/daikon/tools/ExtractConsequent.java
 for (Iterator<PptTopLevel> itor = ppts_sorted.iterator() ; itor.hasNext() ;)
 {
@@ -69,3 +143,68 @@ for (Iterator<Invariant> invI = invList.iterator() ; invI.hasNext() ;)
   varNumCounter++;
 }haha 
 matches1
+/Users/remywang/daikon//java/daikon/diff/Diff.java
+for (Iterator<String> i = manip.nameStringSet().iterator() ; i.hasNext() ;)
+{
+  String somePptName = i.next();
+  if (targ.equals(somePptName))
+  {
+    PptTopLevel repl = manip.get(somePptName);
+    return repl.getInvariants();
+  }
+}haha 
+for (Iterator<String> i = manip.nameStringSet().iterator() ; i.hasNext() ;)
+{
+  String somePptName = i.next();
+  if (targetName.equals(somePptName))
+  {
+    PptTopLevel repl = manip.get(somePptName);
+    return UtilMDE.sortList(repl.getInvariants(), PptTopLevel.icfp);
+  }
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/PrintInvariants.java
+for (Iterator<PptTopLevel> itor = ppts_sorted.iterator() ; itor.hasNext() ;)
+{
+  PptTopLevel ppt = itor.next();
+  StringBuffer toPrint = new StringBuffer();
+  toPrint.append(print_reasons_from_ppt(ppt, ppts));
+  StringTokenizer st = new StringTokenizer(toPrint.toString(), lineSep);
+  if (st.countTokens() > 2)
+  {
+    System.out.print(toPrint.toString());
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptSplitter.java
+for (Iterator<Invariant[]> i = different_invs_vec.iterator() ; i.hasNext() ;)
+{
+  Invariant[] invs = i.next();
+  if (invs[0] != null)
+    invs[0].log((invs[0] + " differs from " + invs[1]));
+  if (invs[1] != null)
+    invs[1].log((invs[0] + " differs from " + invs[1]));
+  debug.fine(("-- " + invs[0] + " -- " + invs[1]));
+}haha 
+for (OrderedPairIterator<Invariant> opi = new OrderedPairIterator<Invariant>(ss1.iterator(), ss2.iterator(), icfp) ; opi.hasNext() ;)
+{
+  Pair<Invariant, Invariant> pair = opi.next();
+  if (pair.a == null || pair.b == null)
+  {
+    result.add(new Invariant[] {
+                                 pair.a,
+                                 pair.b,
+                               });
+  }
+}haha 
+for (OrderedPairIterator<Invariant> opi = new OrderedPairIterator<Invariant>(ss1.iterator(), ss2.iterator(), icfp) ; opi.hasNext() ;)
+{
+  Pair pair = opi.next();
+  if (pair.a != null && pair.b != null)
+  {
+    Invariant inv1 = (Invariant) pair.a;
+    Invariant inv2 = (Invariant) pair.b;
+    result.add(inv1);
+  }
+}haha 
+matches3

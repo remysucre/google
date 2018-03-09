@@ -115,13 +115,14 @@ antiStmtPat (MetaStmt "_") = Just $ wildP
 antiStmtPat (MetaStmt s) = Just $ varP (mkName s)
 antiStmtPat (SAssertEq s) = Just $ viewP [|(== $(varE . mkName $ s))|] [p|True|]
 antiStmtPat (StmtBlock (Block [h, BlockStmt (Seq pseq)])) = Just p
-  {- [p| StmtBlock (Block (p: (\ns -> all (\case {ps -> True; _ -> False}) ns)))|]-}
+  {- [p| StmtBlock (Block (p: (\ns -> all (\case {ps -> True; BlockStmt _ -> False; _ -> True}) ns)))|]-}
   where p = conP (mkName "StmtBlock") [conP (mkName "Block") [ infixP h_ (mkName ":") ps_]]
         h_ = dataToPatQ exts h
         ps_ = [p|((\ns -> all $(matchps) ns) -> True)|]
-        matchps = lamCaseE [c1, c2]
+        matchps = lamCaseE [c1, c2, c3]
         c1 = match (conP (mkName "BlockStmt") [pseq_]) (normalB [|True|]) [] -- TODO come here if things break
-        c2 = match wildP (normalB [|False|]) []
+        c2 = match (conP (mkName "BlockStmt") [wildP]) (normalB [|False|]) []
+        c3 = match wildP (normalB [|True|]) []
         pseq_ = dataToPatQ exts pseq
 antiStmtPat (SNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
   where c1 = match p_ ( normalB [| False |]) []

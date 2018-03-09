@@ -1,5 +1,3 @@
-java/daikon/Chicory.java
-java/daikon/DynamicConstants.java
 java/daikon/FileIO.java
 java/daikon/PptMap.java
 java/daikon/PptRelation.java
@@ -19,8 +17,8 @@ java/daikon/gui/treeGUI/InvariantTableModel.java
 java/daikon/gui/treeGUI/InvariantsGUI.java
 java/daikon/inv/Equality.java
 java/daikon/inv/FeatureExtractor.java
-java/daikon/inv/InvDef.java
 java/daikon/inv/Invariant.java
+java/daikon/inv/OutputFormat.java
 java/daikon/inv/filter/InvariantFilters.java
 java/daikon/inv/unary/scalar/Modulus.java
 java/daikon/split/ContextSplitterFactory.java
@@ -30,9 +28,9 @@ java/daikon/suppress/NISuppression.java
 java/daikon/suppress/NISuppressionSet.java
 java/daikon/suppress/NISuppressor.java
 java/daikon/test/SampleTester.java
+java/daikon/tools/ExtractConsequent.java
 java/daikon/tools/InvMatch.java
 java/daikon/tools/InvariantChecker.java
-java/daikon/tools/TraceSelect.java
 java/daikon/tools/jtb/AnnotateVisitor.java
 java/daikon/tools/jtb/Annotation.java
 java/daikon/tools/jtb/InstrumentObserversVisitor.java
@@ -40,3 +38,6 @@ java/daikon/tools/jtb/ParseResults.java
 java/daikon/tools/runtimechecker/InstrumentHandler.java
 java/daikon/tools/runtimechecker/InstrumentVisitor.java
 java/daikon/tools/runtimechecker/Property.java
+java/utilMDE/UtilMDE.java
+java/utilMDE/WeakHasherMap.java
+java/utilMDE/WeakIdentityHashMap.java
