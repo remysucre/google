@@ -1,0 +1,2056 @@
+/Users/remywang/daikon//java/utilMDE/WeakHasherMap.java
+for (Iterator<Map.Entry<WeakKey, V>> i = hashEntrySet.iterator() ; i.hasNext() ;)
+{
+  Map.Entry<WeakKey, V> ent = i.next();
+  WeakKey wk = ent.getKey();
+  Object v;
+  if (wk == null)
+    continue;
+  h += wk.hashCode() ^ (v = ent.getValue() == null ? 0 : v.hashCode());
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/split/ContextSplitterFactory.java
+for (Iterator<File> i = files.iterator() ; i.hasNext() ;)
+{
+  File file = i.next();
+  String filename = file.getName();
+  System.out.print(".");
+  debug.fine(("Reading mapfile " + filename));
+  PptNameAndSplitters[] splitters;
+  try
+  {
+    MapfileEntry[] entries = parse_mapfile(file);
+    splitters = make_context_splitters(entries, grain);
+  }
+  catch (IOException e)
+  {
+    throw new Error(e.toString());
+  }
+  for (int j = 0 ; j < splitters.length ; j++)
+  {
+    PptNameAndSplitters nas = splitters[j];
+    SplitterList.put(nas.ppt_name, nas.splitters);
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/split/SplitterFactory.java
+for (Iterator<SpinfoFileParser> spi = splitters.iterator() ; spi.hasNext() ;)
+{
+  SpinfoFileParser fileParser = spi.next();
+  SplitterObject[][] splitterObjects = fileParser.getSplitterObjects();
+  StatementReplacer statementReplacer = fileParser.getReplacer();
+  for (int i = 0 ; i < splitterObjects.length ; i++)
+  {
+    int numsplitters = splitterObjects[i].length;
+    if (numsplitters != 0)
+    {
+      String ppt_name = splitterObjects[i][0].getPptName();
+      if (matchPpt(ppt_name, ppt))
+      {
+        loadSplitters(splitterObjects[i], ppt, statementReplacer);
+        Vector<Splitter> sp = new Vector<Splitter>();
+        for (int k = 0 ; k < numsplitters ; k++)
+        {
+          if (splitterObjects[i][k].splitterExists())
+          {
+            sp.addElement(splitterObjects[i][k].getSplitter());
+          }
+          else
+            if (!Daikon.dkconfig_suppressSplitterErrors)
+            {
+              System.out.println(splitterObjects[i][k].getError());
+            }
+        }
+        if (sp.size() >= 1)
+        {
+          SplitterList.put(ppt_name, ((Splitter[]) sp.toArray(new Splitter[0])));
+        }
+        splitterObjects[i] = new SplitterObject[0];
+      }
+    }
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/inv/unary/scalar/Modulus.java
+for (Iterator<Invariant> itor = ppt.invs.iterator() ; itor.hasNext() ;)
+{
+  Invariant inv = itor.next();
+  if (inv instanceof Modulus)
+    return (Modulus) inv;
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/inv/Invariant.java
+for (Iterator<VarInfo> iter = all_vars1.iterator() ; iter.hasNext() ;)
+{
+  VarInfo elt = iter.next();
+  VarInfoName viname = name_extractor.getFromFirst(elt);
+  all_vars_names1.add(viname);
+}haha 
+for (Iterator<VarInfo> iter = all_vars2.iterator() ; iter.hasNext() ;)
+{
+  VarInfo elt = iter.next();
+  VarInfoName viname = name_extractor.getFromSecond(elt);
+  intersection = all_vars_names1.contains(viname);
+  if (intersection)
+  {
+    break;
+  }
+}haha 
+for (Iterator<Invariant> itor = ppt.invs.iterator() ; itor.hasNext() ;)
+{
+  Invariant inv = itor.next();
+  if (inv.getClass() == invclass)
+    return inv;
+}haha 
+for (Iterator<VarInfo> iSet = vis[position].get_equalitySet_vars().iterator() ; iSet.hasNext() ;)
+{
+  VarInfo vi = iSet.next();
+  assigned[position] = vi;
+  DiscardInfo temp = isObviousStatically_SomeInEqualityHelper(vis, assigned, (position + 1));
+  if (temp != null)
+    return temp;
+}haha 
+for (Iterator<VarInfo> iSet = vis[position].get_equalitySet_vars().iterator() ; iSet.hasNext() ;)
+{
+  VarInfo vi = iSet.next();
+  assigned[position] = vi;
+  DiscardInfo temp = isObviousDynamically_SomeInEqualityHelper(vis, assigned, (position + 1));
+  if (temp != null)
+    return temp;
+}haha 
+matches5
+/Users/remywang/daikon//java/daikon/inv/FeatureExtractor.java
+for (Iterator<IntDoublePair> all = allFeatures.iterator() ; all.hasNext() ;)
+{
+  IntDoublePair current = all.next();
+  if (numbersToNames.containsKey(current))
+  {
+    String currentName = numbersToNames.get(current);
+    if (currentName.endsWith("Bool"))
+      names.println((currentName + ":0.0, 1.0."));
+    else
+      if (currentName.endsWith("Float"))
+        names.println((currentName + ": continuous."));
+      else
+        if (currentName.endsWith("Int"))
+          names.println((currentName + ": continuous."));
+        else
+          throw new IOException("All feature names must end with one of " + "Float, Bool, or Int." + lineSep + "Error: " + currentName + lineSep);
+  }
+  else
+    throw new IOException("Feature " + current.number + " not included in .names file");
+}haha 
+for (Iterator<IntDoublePair> h = allFeatures.iterator() ; h.hasNext() ;)
+{
+  IntDoublePair current = h.next();
+  boolean contains = false;
+  for (Iterator<IntDoublePair> j = allFets.iterator() ; j.hasNext() ;)
+  {
+    IntDoublePair jguy = j.next();
+    if (jguy.number == current.number)
+      contains = true;
+  }
+  if (!contains)
+    allFets.add(current);
+}haha 
+for (Iterator<IntDoublePair> j = allFets.iterator() ; j.hasNext() ;)
+{
+  IntDoublePair jguy = j.next();
+  if (jguy.number == current.number)
+    contains = true;
+}haha 
+for (Iterator<IntDoublePair> fets = allFets.iterator() ; fets.hasNext() ;)
+{
+  IntDoublePair fet = fets.next();
+  output.print((df.format(fet.value) + ","));
+}haha 
+for (Iterator<IntDoublePair> fets = features.get(i).iterator() ; fets.hasNext() ;)
+{
+  IntDoublePair fet = fets.next();
+  if (fet.value > THRESHOLD)
+    output.print((fet.number + ":" + df.format(fet.value) + " "));
+}haha 
+for (Iterator<IntDoublePair> fets = features.get(i).iterator() ; fets.hasNext() ;)
+{
+  IntDoublePair fet = fets.next();
+  output.print((fet.number + " " + df.format(fet.value) + " "));
+}haha 
+for (Iterator<IntDoublePair> it = getReflectFeatures(varInfos[i], lookup).iterator() ; it.hasNext() ;)
+{
+  IntDoublePair current = it.next();
+  answer.add(new IntDoublePair((current.number + i + 1), current.value));
+  answer.add(current);
+}haha 
+for (Iterator<IntDoublePair> iter = answer.iterator() ; iter.hasNext() ;)
+{
+  IntDoublePair current = iter.next();
+  if (!index.contains(new Integer(current.number)))
+    final_answer.add(current);
+  index.add(new Integer(current.number));
+}haha 
+for (Iterator<String> i = neg.iterator() ; i.hasNext() ;)
+{
+  String vector = i.next();
+  if (!pos.contains(vector))
+  {
+    if (type.equals("C5"))
+      negvectors.add((vector + "bad"));
+    else
+      if (type.equals("SVMfu"))
+        negvectors.add((vector + "-1"));
+  }
+}haha 
+matches9
+/Users/remywang/daikon//java/daikon/inv/Equality.java
+for (Iterator<VarInfo> i = variables.iterator() ; i.hasNext() ;)
+{
+  VarInfo vi = i.next();
+  if (debug.isLoggable(Level.FINE))
+  {
+    debug.fine(("  " + vi.name.name() + " [" + vi.comparability + "]"));
+  }
+  Assert.assertTrue((vi.ppt == leader.ppt));
+  Assert.assertTrue(vi.comparableNWay(leader));
+  Assert.assertTrue(VarComparability.comparable(leader, vi), ("not comparable " + leader.name.name() + " " + vi.name.name() + " at ppt " + ppt.parent.name()));
+  Assert.assertTrue((vi.rep_type.isArray() == leader.rep_type.isArray()));
+  vi.equalitySet = this;
+}haha 
+for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
+{
+  VarInfo var = i.next();
+  if (!start)
+  {
+    result.append(" == ");
+  }
+  else
+  {
+    start = false;
+  }
+  result.append(var.name.name());
+  result.append(("[" + var.varinfo_index + "]"));
+  if (var == leader())
+    result.append("L");
+}haha 
+for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
+{
+  VarInfo other = i.next();
+  if (other.isDerivedSequenceMinMaxSum())
+  {
+    break;
+  }
+  if (other.isValidEscExpression())
+  {
+    valid_equiv.add(other);
+  }
+  else
+  {
+    invalid_equiv.add(other);
+  }
+}haha 
+for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
+{
+  VarInfo var = i.next();
+  if (var == leader)
+    continue;
+  String[] form = VarInfoName.QuantHelper.format_simplify(new VarInfoName[] {
+                                                                              leader.name,
+                                                                              var.name,
+                                                                            }, true);
+  String a = format_elt(form[1]);
+  String b = format_elt(form[2]);
+  result.append((" " + form[0] + "(EQ " + a + " " + b + ")" + form[3]));
+}haha 
+for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
+{
+  VarInfo var = i.next();
+  if (var == leader)
+    continue;
+  String a = format_elt(leaderName);
+  String b = format_elt(var.name.simplify_name());
+  result.append(" (EQ ");
+  result.append(a);
+  result.append(" ");
+  result.append(b);
+  result.append(")");
+}haha 
+for (Iterator<VarInfo> iVars = vars.iterator() ; iVars.hasNext() ;)
+{
+  VarInfo var = iVars.next();
+  if (newLeader == null)
+  {
+    newLeader = var;
+  }
+  else
+    if (newLeader.isDerivedParamAndUninteresting() && !var.isDerivedParamAndUninteresting())
+    {
+      newLeader = var;
+    }
+    else
+      if (var.isDerivedParamAndUninteresting() && !newLeader.isDerivedParamAndUninteresting())
+      {
+      }
+      else
+        if (var.derivedDepth() < newLeader.derivedDepth())
+        {
+          newLeader = var;
+        }
+        else
+          if (var.derivedDepth() > newLeader.derivedDepth())
+          {
+          }
+          else
+            if (var.name.inOrderTraversal().size() < newLeader.name.inOrderTraversal().size())
+            {
+              newLeader = var;
+            }
+}haha 
+for (Iterator<VarInfo> i = vars.iterator() ; i.hasNext() ;)
+{
+  VarInfo var = i.next();
+  Assert.assertTrue(VarComparability.comparable(leader, var), ("not comparable: " + leader.name.name() + " " + var.name.name() + " at ppt " + ppt.parent.name()));
+}haha 
+matches7
+/Users/remywang/daikon//java/daikon/inv/filter/InvariantFilters.java
+for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext() ;)
+{
+  InvariantFilter filter = iter.next();
+  if (!filter.shouldDiscard(invariant))
+  {
+    hasAnyVariable = true;
+  }
+}haha 
+for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext() ;)
+{
+  InvariantFilter filter = iter.next();
+  if (filter.shouldDiscard(invariant))
+  {
+    if (invariant.logOn())
+      invariant.log(("Failed ALL_VARIABLES filter" + filter.getClass().getName()));
+    return filter;
+  }
+}haha 
+for (Iterator<InvariantFilter> iter = propertyFilters.iterator() ; iter.hasNext() ;)
+{
+  InvariantFilter filter = iter.next();
+  if (invariant.logDetail() || df.isLoggable(Level.FINE))
+  {
+    invariant.log(df, ("applying " + filter.getClass().getName()));
+  }
+  if (filter.shouldDiscard(invariant))
+  {
+    if (invariant.logOn() || df.isLoggable(Level.FINE))
+      invariant.log(df, ("failed " + filter.getClass().getName() + ": " + invariant.format()));
+    return filter;
+  }
+}haha 
+for (Iterator<InvariantFilter> iter = propertyFilters.iterator() ; iter.hasNext() ;)
+{
+  InvariantFilter filter = iter.next();
+  if (filter.getDescription().equals(description))
+  {
+    answer = filter;
+  }
+}haha 
+for (Iterator<InvariantFilter> iter = propertyFilters.iterator() ; iter.hasNext() ;)
+{
+  InvariantFilter filter = iter.next();
+  filter.turnOn();
+}haha 
+for (Iterator<InvariantFilter> iter = propertyFilters.iterator() ; iter.hasNext() ;)
+{
+  InvariantFilter filter = iter.next();
+  filter.turnOff();
+}haha 
+for (Iterator<VariableFilter> iter = variableFilters.iterator() ; iter.hasNext() ;)
+{
+  VariableFilter vf = iter.next();
+  if (vf.getVariable().equals(variable))
+  {
+    return true;
+  }
+}haha 
+matches7
+/Users/remywang/daikon//java/daikon/inv/OutputFormat.java
+for (Iterator<Map.Entry<String, String>> it = quantifiers.entrySet().iterator() ; it.hasNext() ;)
+{
+  Map.Entry<String, String> entry = it.next();
+  String key = entry.getKey();
+  String value = entry.getValue();
+  if (!str.equals(""))
+    str += ",";
+  str += "forall " + key + " in " + quantifiers.get(key);
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/tools/InvMatch.java
+for (Iterator<List<InvTranslate>> i = valid_translations.iterator() ; i.hasNext() ;)
+{
+  List<InvTranslate> current_translation = i.next();
+  Fmt.pf("  Translation: ");
+  for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
+  {
+    InvTranslate xlate = j.next();
+    Fmt.pf("    %s", xlate);
+  }
+}haha 
+for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
+{
+  InvTranslate xlate = j.next();
+  Fmt.pf("    %s", xlate);
+}haha 
+for (Iterator<InvTranslate> i = best_translation.iterator() ; i.hasNext() ;)
+{
+  InvTranslate xlate = i.next();
+  Fmt.pf("  %s", xlate);
+}haha 
+for (Iterator<List<InvTranslate>> i = xlate_list.iterator() ; i.hasNext() ;)
+{
+  List<InvTranslate> inv_xlate_list = i.next();
+  Invariant inv = invi.next();
+  Fmt.pf("%s translations:", inv.format());
+  for (Iterator<InvTranslate> j = inv_xlate_list.iterator() ; j.hasNext() ;)
+  {
+    InvTranslate xlate = j.next();
+    Fmt.pf("  %s", xlate);
+  }
+}haha 
+for (Iterator<InvTranslate> j = inv_xlate_list.iterator() ; j.hasNext() ;)
+{
+  InvTranslate xlate = j.next();
+  Fmt.pf("  %s", xlate);
+}haha 
+for (Iterator<InvTranslate> i = inv_xlate_list.iterator() ; i.hasNext() ;)
+{
+  InvTranslate xlate = i.next();
+  List<InvTranslate> new_translation = new ArrayList<InvTranslate>();
+  new_translation.addAll(current_translation);
+  new_translation.add(xlate);
+  if (!is_good_translation(new_translation))
+    continue;
+  if (index + 1 == xlate_list.size())
+  {
+    valid_translations.add(new_translation);
+  }
+  else
+  {
+    consider_xlate(valid_translations, new_translation, xlate_list, (index + 1));
+  }
+}haha 
+for (Iterator<InvTranslate> i = translation_list.iterator() ; i.hasNext() ;)
+{
+  InvTranslate xlate = i.next();
+  if (xlate == null)
+    continue;
+  for (String key : xlate.var_map.keySet()) {
+                                              String val = xlate.var_map.get(key);
+                                              String cur_val = var_map.get(key);
+                                              if (cur_val == null)
+                                                var_map.put(key, val);
+                                              else
+                                                if (!cur_val.equals(val))
+                                                  return false;
+                                            }
+}haha 
+for (Iterator<List<InvTranslate>> i = valid_translations.iterator() ; i.hasNext() ;)
+{
+  List<InvTranslate> current_translation = i.next();
+  int quality = 0;
+  for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
+  {
+    InvTranslate xlate = j.next();
+    if (xlate != null)
+      quality += xlate.quality;
+  }
+  if (quality > best_quality)
+  {
+    best_translation = current_translation;
+    best_quality = quality;
+  }
+}haha 
+for (Iterator<InvTranslate> j = current_translation.iterator() ; j.hasNext() ;)
+{
+  InvTranslate xlate = j.next();
+  if (xlate != null)
+    quality += xlate.quality;
+}haha 
+matches9
+/Users/remywang/daikon//java/daikon/tools/ExtractConsequent.java
+for (Iterator<PptTopLevel> itor = ppts_sorted.iterator() ; itor.hasNext() ;)
+{
+  PptTopLevel ppt = itor.next();
+  extract_consequent_maybe(ppt, ppts);
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptTopLevel.java
+for (Iterator<PptSplitter> ii = splitters.iterator() ; ii.hasNext() ;)
+{
+  PptSplitter ppt_split = ii.next();
+  ppt_split.add_bottom_up(vt, count);
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  log.fine(("-- " + inv.format() + (NIS.is_suppressor(inv.getClass()) ? "[suppressor]" : "") + (inv.is_false() ? " [falsified]" : " ")));
+}haha 
+for (Iterator<Invariant> i = rm_list.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  inv.ppt.removeInvariant(inv);
+}haha 
+for (Iterator<PptRelation> ii = children.iterator() ; ii.hasNext() ;)
+{
+  PptRelation rel = ii.next();
+  if (rel.getRelationType() == PptRelation.EXIT_EXITNN)
+    exit_points.add(rel.child);
+}haha 
+for (Iterator<PptSlice> iPivoted = pivoted.iterator() ; iPivoted.hasNext() ;)
+{
+  PptSlice oPivoted = iPivoted.next();
+  addSlice(oPivoted);
+  if (debugEqualTo.isLoggable(Level.FINE))
+  {
+    debugEqualTo.fine(("  Readded: " + oPivoted));
+  }
+}haha 
+for (Iterator<Invariant> _invs = all.iterator() ; _invs.hasNext() ;)
+{
+  Invariant inv = _invs.next();
+  if (test.include(inv))
+  {
+    String fmt = inv.format_using(OutputFormat.SIMPLIFY);
+    if (!format_simplify_problem(fmt))
+    {
+      printing.add(inv);
+    }
+  }
+}haha 
+for (Iterator<PptTopLevel> ppts = closure.iterator() ; ppts.hasNext() ;)
+{
+  PptTopLevel ppt = ppts.next();
+  Vector<Invariant> invs_vec = ppt.invariants_vector();
+  Collections.sort(invs_vec, icfp);
+  Iterator<Invariant> _invs = InvariantFilters.addEqualityInvariants(invs_vec).iterator();
+  while (_invs.hasNext())
+  {
+    Invariant inv = _invs.next();
+    if (inv instanceof Implication)
+    {
+      continue;
+    }
+    if (!test.include(inv))
+    {
+      continue;
+    }
+    String fmt = inv.format_using(OutputFormat.SIMPLIFY);
+    if (format_simplify_problem(fmt))
+    {
+      continue;
+    }
+    proverStack.pushLemma(new InvariantLemma(inv));
+    if (ppt.ppt_name.isObjectInstanceSynthetic())
+      proverStack.pushLemma(InvariantLemma.makeLemmaAddOrig(inv));
+  }
+}haha 
+for (Iterator<PptSlice> i = viewsAsCollection().iterator() ; i.hasNext() ;)
+{
+  PptSlice slice = i.next();
+  slice.repCheck();
+}haha 
+for (Iterator<PptSlice> i = viewsAsCollection().iterator() ; i.hasNext() ;)
+{
+  PptSlice slice = i.next();
+  result.append((Global.lineSep + slice.toString()));
+}haha 
+for (Iterator<VarInfo> j = vars.iterator() ; j.hasNext() ;)
+{
+  VarInfo v = j.next();
+  if (set_str != "")
+    set_str += ",";
+  set_str += v.name.name();
+  if (v.missingOutOfBounds())
+    set_str += "{MOB}";
+}haha 
+for (Iterator<PptRelation> i = parents.iterator() ; i.hasNext() ;)
+{
+  PptRelation rel = i.next();
+  if (rel.parentVar(v) != null)
+    return true;
+}haha 
+for (Iterator<PptRelation> i = children.iterator() ; i.hasNext() ;)
+{
+  PptRelation rel = i.next();
+  if (!rel.child.in_merge)
+    rel.child.mergeInvs();
+}haha 
+for (Iterator<PptRelation> i = children.iterator() ; i.hasNext() ;)
+{
+  PptRelation rel = i.next();
+  rel.child.remove_child_invs(rel);
+}haha 
+for (Iterator<PptRelation> i = children.iterator() ; i.hasNext() ;)
+{
+  PptRelation rel = i.next();
+  rel.child.parents.remove(rel);
+}haha 
+for (Iterator<VarInfo> k = pv.equalitySet.getVars().iterator() ; k.hasNext() ;)
+{
+  VarInfo test_pv = k.next();
+  VarInfo test_cv = rel.childVar(test_pv);
+  if (test_cv.canonicalRep() != cv.canonicalRep())
+  {
+    Fmt.pf(("pv.equalitySet = " + pv.equalitySet));
+    Fmt.pf(("cv.equalitySet = " + cv.equalitySet));
+    Assert.assertTrue(false, ("parent variable " + test_pv + " child " + test_cv + " is not in the same child equality set as " + cv));
+  }
+}haha 
+for (Iterator<PptRelation> i = children.iterator() ; i.hasNext() ;)
+{
+  PptRelation crel = i.next();
+  if (!crel.child.invariants_removed)
+  {
+    return;
+  }
+}haha 
+for (Iterator<PptSlice> i = slices_to_remove.iterator() ; i.hasNext() ;)
+{
+  PptSlice slice = i.next();
+  removeSlice(slice);
+}haha 
+matches17
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/Property.java
+for (Iterator<String> i = annoStrings.iterator() ; i.hasNext() ;)
+{
+  String location = i.next();
+  if (location == null || location.equals(""))
+  {
+    continue;
+  }
+  String[] cutUp = location.split("<INVINFO>");
+  for (int splits = 0 ; splits < cutUp.length ; splits++)
+  {
+    try
+    {
+      String s = cutUp[splits];
+      Property anno = Property.get(("<INVINFO>" + s));
+      annos.add(anno);
+    }
+    catch (Exception e)
+    {
+    }
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/InstrumentVisitor.java
+for (Iterator<Invariant> invI = invList.iterator() ; invI.hasNext() ;)
+{
+  Invariant inv = invI.next();
+  xmlStringToIndex.put(toProperty(inv).xmlString(), Integer.toString(varNumCounter));
+  varNumCounter++;
+}haha 
+for (Iterator<FormalParameter> i = Ast.getParametersNoImplicit(ctor).iterator() ; i.hasNext() ;)
+{
+  FormalParameter param = i.next();
+  parameters.add(Ast.getName(param));
+  typesAndParameters.add(Ast.format(param));
+}haha 
+for (Iterator<FormalParameter> i = Ast.getParameters(method).iterator() ; i.hasNext() ;)
+{
+  FormalParameter param = i.next();
+  parameters.add(Ast.getName(param));
+  typesAndParameters.add(Ast.format(param));
+}haha 
+for (Iterator<Invariant> i = invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  String javarep = inv.format_using(OutputFormat.JAVA);
+  Property property = toProperty(inv);
+  String xmlString = property.xmlString();
+  if (xmlString.indexOf("orig(") != -1)
+  {
+    continue;
+  }
+  if (javarep.indexOf("unimplemented") != -1)
+  {
+    continue;
+  }
+  if (javarep.indexOf("\\result") != -1)
+  {
+    javarep = javarep.replaceAll("\\\\result", "retval_instrument");
+  }
+  String addViolationToListCode = "daikon.tools.runtimechecker.Runtime.violationsAdd" + "(daikon.tools.runtimechecker.Violation.get(daikonProperties[" + xmlStringToIndex.get(xmlString) + "], " + vioTime + "));";
+  code.append(("try {" + daikon.Global.lineSep + ""));
+  code.append("daikon.tools.runtimechecker.Runtime.numEvaluations++;");
+  code.append(("if (!(" + daikon.Global.lineSep + ""));
+  code.append(javarep);
+  code.append(")) {");
+  code.append(addViolationToListCode);
+  code.append("}");
+  code.append(("} catch (ThreadDeath t_instrument) {" + daikon.Global.lineSep + ""));
+  code.append("throw t_instrument;");
+  code.append(("} catch (Throwable t_instrument) {" + daikon.Global.lineSep + ""));
+  code.append("}");
+}haha 
+for (Iterator<Invariant> i = invariants.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  if (!inv.isValidExpression(OutputFormat.JAVA))
+  {
+    continue;
+  }
+  if (inv instanceof FunctionBinary)
+  {
+    FunctionBinary fb = (FunctionBinary) inv;
+    if (fb.isLshift() || fb.isRshiftSigned() || fb.isRshiftUnsigned())
+    {
+      continue;
+    }
+  }
+  if (outputOnlyHighConfInvariants)
+  {
+    if (toProperty(inv).calculateConfidence() < 0.5)
+    {
+      continue;
+    }
+  }
+  survivors.add(inv);
+}haha 
+for (Iterator<PptTopLevel> i = matching_ppts.iterator() ; i.hasNext() ;)
+{
+  PptTopLevel ppt = i.next();
+  if (ppt.ppt_name.isExitPoint() && ppt.ppt_name.isCombinedExitPoint())
+  {
+    List<Invariant> postconditions = filterInvariants(Ast.getInvariants(ppt, pptmap));
+    appendInvariantChecks(postconditions, code, "daikon.tools.runtimechecker.Violation.Time.onExit");
+  }
+}haha 
+for (Iterator<PptTopLevel> i = matching_ppts.iterator() ; i.hasNext() ;)
+{
+  PptTopLevel ppt = i.next();
+  if (ppt.ppt_name.isEnterPoint())
+  {
+    List<Invariant> preconditions = filterInvariants(Ast.getInvariants(ppt, pptmap));
+    appendInvariantChecks(preconditions, code, "daikon.tools.runtimechecker.Violation.Time.onEntry");
+  }
+}haha 
+for (Iterator<PptTopLevel> i = matching_ppts.iterator() ; i.hasNext() ;)
+{
+  PptTopLevel ppt = i.next();
+  if (ppt.ppt_name.isEnterPoint())
+  {
+    List<Invariant> preconditions = filterInvariants(Ast.getInvariants(ppt, pptmap));
+    List<InvProp> finalList = null;
+    if (majorProperties)
+    {
+      finalList = getMajor(preconditions);
+    }
+    else
+    {
+      finalList = getMinor(preconditions);
+    }
+    appendInvariantChecks_checker(finalList, code);
+  }
+}haha 
+for (Iterator<PptTopLevel> i = matching_ppts.iterator() ; i.hasNext() ;)
+{
+  PptTopLevel ppt = i.next();
+  if (ppt.ppt_name.isExitPoint() && ppt.ppt_name.isCombinedExitPoint())
+  {
+    List<Invariant> postconditions = filterInvariants(Ast.getInvariants(ppt, pptmap));
+    List<InvProp> finalList = null;
+    if (majorProperties)
+    {
+      finalList = getMajor(postconditions);
+    }
+    else
+    {
+      finalList = getMinor(postconditions);
+    }
+    appendInvariantChecks_checker(finalList, code);
+  }
+}haha 
+for (Iterator<PptTopLevel> i = matching_ppts.iterator() ; i.hasNext() ;)
+{
+  PptTopLevel ppt = i.next();
+  if (ppt.ppt_name.isEnterPoint())
+  {
+    List<Invariant> preconditions = filterInvariants(Ast.getInvariants(ppt, pptmap));
+    List<InvProp> finalList = null;
+    if (majorProperties)
+    {
+      finalList = getMajor(preconditions);
+    }
+    else
+    {
+      finalList = getMinor(preconditions);
+    }
+    appendInvariantChecks_checker(finalList, code);
+  }
+}haha 
+for (Iterator<PptTopLevel> i = matching_ppts.iterator() ; i.hasNext() ;)
+{
+  PptTopLevel ppt = i.next();
+  if (ppt.ppt_name.isExitPoint() && ppt.ppt_name.isCombinedExitPoint())
+  {
+    List<Invariant> postconditions = filterInvariants(Ast.getInvariants(ppt, pptmap));
+    List<InvProp> finalList = null;
+    if (majorProperties)
+    {
+      finalList = getMajor(postconditions);
+    }
+    else
+    {
+      finalList = getMinor(postconditions);
+    }
+    appendInvariantChecks_checker(finalList, code);
+  }
+}haha 
+matches11
+/Users/remywang/daikon//java/daikon/tools/runtimechecker/InstrumentHandler.java
+for (Iterator<ParseResults> i = parseResults.iterator() ; i.hasNext() ;)
+{
+  ParseResults oneFile = i.next();
+  System.out.println(("Instrumenting " + oneFile.fileName));
+  List<CheckerClass> checkerClasses = new ArrayList<CheckerClass>();
+  for (int j = 0 ; j < oneFile.roots.size() ; j++)
+  {
+    TypeDeclaration decl = oneFile.roots.get(j);
+    InstrumentVisitor v = new InstrumentVisitor(ppts, decl);
+    decl.accept(v);
+    if (createCheckerClasses)
+    {
+      v.add_checkers_for_nondeclared_members();
+      checkerClasses.addAll(v.checkerClasses.getCheckerClasses());
+    }
+  }
+  try
+  {
+    File instrumentedFileDir = new File(outputDir.getPath() + File.separator + oneFile.packageName.replace(".", File.separator));
+    if (!instrumentedFileDir.exists())
+    {
+      instrumentedFileDir.mkdirs();
+    }
+    File checkerClassesDir = new File(checkersOutputDirName + File.separator + oneFile.packageName.replace(".", File.separator));
+    if (!checkerClassesDir.exists())
+    {
+      checkerClassesDir.mkdirs();
+    }
+    String instrumentedFileName = oneFile.fileName;
+    File instrumentedFile = new File(instrumentedFileDir, instrumentedFileName);
+    debug.fine(("instrumented file name: " + instrumentedFile.getPath()));
+    System.out.println(("Writing " + instrumentedFile));
+    Writer output = new FileWriter(instrumentedFile);
+    oneFile.compilationUnit.accept(new TreeFormatter());
+    TreeDumper dumper = new TreeDumper(output);
+    dumper.printSpecials(false);
+    oneFile.compilationUnit.accept(dumper);
+    output.close();
+    for (CheckerClass cls : checkerClasses) {
+                                              String checkerClassFileName = cls.getCheckerClassName() + ".java";
+                                              File checkerClassFile = new File(checkerClassesDir, checkerClassFileName);
+                                              System.out.println(("Writing " + checkerClassFile));
+                                              output = new FileWriter(checkerClassFile);
+                                              CompilationUnit cu = cls.getCompilationUnit();
+                                              cu.accept(new TreeFormatter());
+                                              cu.accept(new TreeDumper(output));
+                                            }
+  }
+  catch (IOException e)
+  {
+    System.err.println(("Exception while instrumenting " + oneFile.fileName));
+    System.err.println(e.getMessage());
+    e.printStackTrace();
+    return false;
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/tools/jtb/AnnotateVisitor.java
+for (Iterator<PptTopLevel> itor = matching_ppts.iterator() ; itor.hasNext() ;)
+{
+  PptTopLevel ppt = itor.next();
+  String prefix;
+  if (ppt.ppt_name.isEnterPoint())
+  {
+    requires_invs = invariants_for(ppt, ppts);
+  }
+  else
+    if (ppt.ppt_name.isExitPoint())
+    {
+      if (!ppt.ppt_name.isCombinedExitPoint())
+      {
+        continue;
+      }
+      ensures_invs = invariants_for(ppt, ppts);
+    }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/tools/jtb/ParseResults.java
+for (Iterator<String> i = javaFileNames.iterator() ; i.hasNext() ;)
+{
+  String javaFileName = i.next();
+  ParseResults results = parse(javaFileName, discardComments);
+  retval.add(results);
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/tools/jtb/InstrumentObserversVisitor.java
+for (Iterator<MethodDeclaration> i = observer_methods.iterator() ; i.hasNext() ;)
+{
+  MethodDeclaration method = i.next();
+  String fldtype = getFieldTypeFor(method);
+  String fldname = getFieldNameFor(method);
+  String code = "private " + fldtype + " " + fldname + ";" + Global.lineSep;
+  ClassOrInterfaceBodyDeclaration decl = (ClassOrInterfaceBodyDeclaration) Ast.create("ClassOrInterfaceBodyDeclaration", code);
+  Ast.addDeclaration(clazzOrInterface, decl);
+}haha 
+for (Iterator<MethodDeclaration> i = observer_methods.iterator() ; i.hasNext() ;)
+{
+  MethodDeclaration obs_method = i.next();
+  String fldname = getFieldNameFor(obs_method);
+  code.append(("    " + fldname + " = " + getCallExprFor(obs_method) + ";"));
+}haha 
+for (Iterator<FormalParameter> i = Ast.getParameters(method).iterator() ; i.hasNext() ;)
+{
+  FormalParameter param = i.next();
+  parameters.add(Ast.getName(param));
+}haha 
+matches3
+/Users/remywang/daikon//java/daikon/tools/jtb/Annotation.java
+for (Iterator<String> i = annoStrings.iterator() ; i.hasNext() ;)
+{
+  String location = i.next();
+  if (location == null || location.equals(""))
+  {
+    continue;
+  }
+  String[] cutUp = location.split("<INVINFO>");
+  for (int splits = 0 ; splits < cutUp.length ; splits++)
+  {
+    try
+    {
+      String s = cutUp[splits];
+      Annotation anno = Annotation.get(("<INVINFO>" + s));
+      annos.add(anno);
+    }
+    catch (Exception e)
+    {
+    }
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/tools/InvariantChecker.java
+for (Iterator<PptSplitter> ii = ppt.splitters.iterator() ; ii.hasNext() ;)
+{
+  PptSplitter ppt_split = ii.next();
+  PptConditional ppt_cond = ppt_split.choose_conditional(vt);
+  if (ppt_cond != null)
+    add(ppt_cond, vt);
+  else
+    debug.fine(": sample doesn't pick conditional");
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (debug_detail.isLoggable(Level.FINE))
+    debug_detail.fine((": : Processing invariant: " + inv));
+  if (!inv.isActive())
+  {
+    if (debug_detail.isLoggable(Level.FINE))
+      debug_detail.fine((": : skipped non-active " + inv));
+    continue;
+  }
+  Invariant pre_inv = (Invariant) inv.clone();
+  InvariantStatus status = inv.add_sample(vt, 1);
+  if (status != InvariantStatus.NO_CHANGE)
+  {
+    LineNumberReader lnr = FileIO.data_trace_state.reader;
+    String line = lnr == null ? "?" : String.valueOf(lnr.getLineNumber());
+    output_stream.println(("At ppt " + ppt.name + ", Invariant '" + pre_inv.format() + "' invalidated by sample " + Debug.toString(slice.var_infos, vt) + "at line " + line));
+    error_cnt++;
+  }
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/test/SampleTester.java
+for (Iterator<Invariant> i = slice.invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  if (inv.getClass() == cls)
+    return true;
+  if (format != null && format.equals(inv.format()))
+    return true;
+  debug.fine(Fmt.spf("trace %s: '%s'", inv.getClass(), inv.format()));
+}haha 
+for (Iterator<Invariant> i = slice.invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  Fmt.pf("found %s: %s", inv.getClass(), inv.format());
+}haha 
+for (Iterator<String> i = args.iterator() ; i.hasNext() ;)
+{
+  String arg = i.next();
+  VarInfo v = ppt.find_var_by_name(arg);
+  if (v == null)
+    parse_error(Fmt.spf("Variable '%s' not found at ppt %s", arg, ppt.name()));
+  if (!ppt.constants.is_constant(v))
+    return false;
+}haha 
+matches3
+/Users/remywang/daikon//java/daikon/diff/MatchCountVisitor2.java
+for (Iterator<String> i = cnt.iterator() ; i.hasNext() ;)
+{
+  String elem = i.next();
+  if (targSet.contains(elem))
+    correctSet.add(elem);
+}haha 
+for (Iterator<String> i = targSet.iterator() ; i.hasNext() ;)
+{
+  String str = i.next();
+  if (correctSet.contains(str))
+  {
+    System.out.println(str);
+  }
+}haha 
+for (Iterator<String> i = targSet.iterator() ; i.hasNext() ;)
+{
+  String str = i.next();
+  if (!correctSet.contains(str))
+  {
+    System.out.println(str);
+  }
+}haha 
+for (Iterator<String> i = cnt.iterator() ; i.hasNext() ;)
+{
+  String str = i.next();
+  if (!correctSet.contains(str))
+  {
+    System.out.println(str);
+  }
+}haha 
+matches4
+/Users/remywang/daikon//java/daikon/diff/PptCountVisitor.java
+for (Iterator<String> i = targSet.iterator() ; i.hasNext() ;)
+{
+  String str = i.next();
+  if (correctSet.contains(str))
+  {
+    System.out.println(str);
+  }
+}haha 
+for (Iterator<String> i = targSet.iterator() ; i.hasNext() ;)
+{
+  String str = i.next();
+  if (!correctSet.contains(str))
+  {
+    System.out.println(str);
+  }
+}haha 
+for (Iterator<String> i = incorrectSet.iterator() ; i.hasNext() ;)
+{
+  String str = i.next();
+  System.out.println(str);
+}haha 
+matches3
+/Users/remywang/daikon//java/daikon/diff/InvMap.java
+for (Iterator<Invariant> i2 = invs.iterator() ; i2.hasNext() ;)
+{
+  Invariant inv = i2.next();
+  result += "  " + inv.format() + Global.lineSep;
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/diff/MultiDiffVisitor.java
+for (Iterator<String> i = programPointsList.iterator() ; i.hasNext() ;)
+{
+  String key = i.next();
+  lastMap.put(key, new ArrayList<String>());
+}haha 
+for (Iterator<String> i = programPointsList.iterator() ; i.hasNext() ;)
+{
+  String key = i.next();
+  lastMap.put(key, new ArrayList<String>());
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/diff/Diff.java
+for (Iterator<PptTopLevel> i = ppts.iterator() ; i.hasNext() ;)
+{
+  PptTopLevel ppt = i.next();
+  if (ignoreNumberedExits && ppt.ppt_name.isNumberedExitPoint())
+    continue;
+  List<Invariant> invs = UtilMDE.sortList(ppt.getInvariants(), PptTopLevel.icfp);
+  map.put(ppt, invs);
+  if (examineAllPpts)
+  {
+    for (Iterator<PptConditional> i2 = ppt.cond_iterator() ; i2.hasNext() ;)
+    {
+      PptConditional pptCond = i2.next();
+      List<Invariant> invsCond = UtilMDE.sortList(pptCond.getInvariants(), PptTopLevel.icfp);
+      map.put(pptCond, invsCond);
+    }
+  }
+}haha 
+for (Iterator<Invariant> j = invs1.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (inv instanceof Implication)
+  {
+    Implication imp = (Implication) inv;
+    if (!repeatFilter.contains(imp.consequent().format_using(OutputFormat.JAVA)))
+    {
+      repeatFilter.add(imp.consequent().format_using(OutputFormat.JAVA));
+      ret.add(imp.consequent());
+    }
+    if (imp.iff == true)
+    {
+      if (!repeatFilter.contains(imp.predicate().format()))
+      {
+        repeatFilter.add(imp.predicate().format());
+        ret.add(imp.predicate());
+      }
+    }
+  }
+  else
+  {
+    ret.add(inv);
+  }
+}haha 
+for (Iterator<String> i = manip.nameStringSet().iterator() ; i.hasNext() ;)
+{
+  String somePptName = i.next();
+  if (targ.equals(somePptName))
+  {
+    PptTopLevel repl = manip.get(somePptName);
+    return repl.getInvariants();
+  }
+}haha 
+for (Iterator<String> i = manip.nameStringSet().iterator() ; i.hasNext() ;)
+{
+  String somePptName = i.next();
+  if (targetName.equals(somePptName))
+  {
+    PptTopLevel repl = manip.get(somePptName);
+    return UtilMDE.sortList(repl.getInvariants(), PptTopLevel.icfp);
+  }
+}haha 
+matches4
+/Users/remywang/daikon//java/daikon/FileIO.java
+for (Iterator<Invocation> i = invocations.iterator() ; i.hasNext() ;)
+{
+  Invocation invok = i.next();
+  System.out.println(invok.format());
+}haha 
+for (Iterator<Invocation> i = invocations.iterator() ; i.hasNext() ;)
+{
+  Invocation invok = i.next();
+  invok = invok.canonicalize();
+  if (counter.containsKey(invok))
+  {
+    Integer oldCount = counter.get(invok);
+    Integer newCount = new Integer(oldCount.intValue() + 1);
+    counter.put(invok, newCount);
+  }
+  else
+  {
+    counter.put(invok, new Integer(1));
+  }
+}haha 
+for (Iterator<Invariant> j = inv_list.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  PptSlice slice = nppt.get_or_instantiate_slice(inv.ppt.var_infos);
+  inv.ppt = slice;
+  slice.addInvariant(inv);
+}haha 
+matches3
+/Users/remywang/daikon//java/daikon/PrintInvariants.java
+for (Iterator<PptTopLevel> itor = ppts_sorted.iterator() ; itor.hasNext() ;)
+{
+  PptTopLevel ppt = itor.next();
+  StringBuffer toPrint = new StringBuffer();
+  toPrint.append(print_reasons_from_ppt(ppt, ppts));
+  StringTokenizer st = new StringTokenizer(toPrint.toString(), lineSep);
+  if (st.countTokens() > 2)
+  {
+    System.out.print(toPrint.toString());
+  }
+}haha 
+for (Iterator<Invariant> ii = ppt.joiner_view.invs.iterator() ; ii.hasNext() ;)
+{
+  Invariant inv = ii.next();
+  PptSplitter.debug.fine(("-- " + inv.format()));
+}haha 
+for (Iterator<Invariant> ii = slice.invs.iterator() ; ii.hasNext() ;)
+{
+  Invariant inv = ii.next();
+  if (inv.getClass().getName().indexOf("Ternary") > 0)
+  {
+    lt_cnt++;
+  }
+}haha 
+for (Iterator<Invariant> ii = slice.invs.iterator() ; ii.hasNext() ;)
+{
+  Invariant inv = ii.next();
+  if (inv.getClass().getName().indexOf("Ternary") > 0)
+  {
+    continue;
+  }
+  String suppress = "";
+  NISuppressionSet ss = inv.get_ni_suppressions();
+  if (ss != null && ss.suppressed(slice))
+    suppress = "ERROR: Should be suppressed by " + ss;
+  Fmt.pf("    %s [%s] %s", inv.format(), UtilMDE.unqualified_name(inv.getClass()), suppress);
+  for (int i = 0 ; i < vis.length ; i++)
+  {
+    Fmt.pf("      %s is %s", vis[i].name.name(), vis[i].file_rep_type);
+    print_all_invs(ppt, vis[i], "      ");
+  }
+  print_all_invs(ppt, vis[0], vis[1], "      ");
+  print_all_invs(ppt, vis[1], vis[2], "      ");
+  print_all_invs(ppt, vis[0], vis[2], "      ");
+}haha 
+for (Iterator<Invariant> ii = slice.invs.iterator() ; ii.hasNext() ;)
+{
+  Invariant inv = ii.next();
+  Fmt.pf("%s%s [%s]", indent, inv.format(), UtilMDE.unqualified_name(inv.getClass()));
+}haha 
+matches5
+/Users/remywang/daikon//java/daikon/VarInfo.java
+for (Iterator<VarInfoName> i = name.inOrderTraversal().iterator() ; i.hasNext() ;)
+{
+  VarInfoName next = i.next();
+  if (next instanceof VarInfoName.Elements)
+  {
+    VarInfoName.Elements elems = (VarInfoName.Elements) next;
+    VarInfo seq = ppt.findVar(elems.term);
+    if (!seq.type.isArray())
+    {
+      return false;
+    }
+  }
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/suppress/NISuppression.java
+for (Iterator<Invariant> j = a.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (inv.is_false())
+    false_cnt++;
+}haha 
+for (Iterator<Invariant> i = antecedents[idx].iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  PptTopLevel ppt = inv.ppt.parent;
+  VarInfo[] cvis = consider_inv(inv, s, vis);
+  if (cvis == null)
+    continue;
+  if (idx + 1 == suppressors.length)
+  {
+    List<NIS.SupInv> new_invs = suppressee.find_all(cvis, ppt);
+    unsuppressed_invs.addAll(new_invs);
+    if (Daikon.dkconfig_internal_check)
+    {
+      for (Iterator<NIS.SupInv> j = new_invs.iterator() ; j.hasNext() ;)
+      {
+        NIS.SupInv supinv = j.next();
+        Invariant cinv = supinv.already_exists();
+        if (cinv != null)
+        {
+          NISuppressionSet ss = cinv.get_ni_suppressions();
+          ss.suppressed(cinv.ppt);
+          Assert.assertTrue(false, ("inv " + cinv.repr() + " of class " + supinv.suppressee + " already exists in ppt " + ppt.name + " suppressionset = " + ss + " suppression = " + this + " last antecedent = " + inv.format()));
+        }
+      }
+    }
+  }
+  else
+  {
+    find_suppressed_invs(unsuppressed_invs, antecedents, cvis, (idx + 1));
+  }
+}haha 
+for (Iterator<NIS.SupInv> j = new_invs.iterator() ; j.hasNext() ;)
+{
+  NIS.SupInv supinv = j.next();
+  Invariant cinv = supinv.already_exists();
+  if (cinv != null)
+  {
+    NISuppressionSet ss = cinv.get_ni_suppressions();
+    ss.suppressed(cinv.ppt);
+    Assert.assertTrue(false, ("inv " + cinv.repr() + " of class " + supinv.suppressee + " already exists in ppt " + ppt.name + " suppressionset = " + ss + " suppression = " + this + " last antecedent = " + inv.format()));
+  }
+}haha 
+for (Iterator<Invariant> i = antecedents[idx].iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  PptTopLevel ppt = inv.ppt.parent;
+  if (all_true_at_end && !inv.is_false())
+    return;
+  VarInfo[] cvis = consider_inv(inv, s, vis);
+  if (cvis == null)
+    continue;
+  if (idx + 1 == suppressors.length)
+  {
+    if (!false_antecedents && !inv.is_false())
+    {
+      if (debug)
+        Fmt.pf("Skipping %s, no false antecedents", VarInfo.toString(cvis));
+      continue;
+    }
+    List<NIS.SupInv> new_invs = suppressee.find_all(cvis, ppt);
+    if (debug)
+      Fmt.pf("created %s new invariants", new_invs);
+    unsuppressed_invs.addAll(new_invs);
+    if (Daikon.dkconfig_internal_check)
+    {
+      for (Iterator<NIS.SupInv> j = new_invs.iterator() ; j.hasNext() ;)
+      {
+        NIS.SupInv supinv = j.next();
+        Invariant cinv = supinv.already_exists();
+        if (cinv != null)
+          Assert.assertTrue(false, ("inv " + cinv.format() + " of class " + supinv.suppressee + " already exists in ppt " + ppt.name));
+      }
+    }
+  }
+  else
+  {
+    find_unsuppressed_invs(unsuppressed_invs, antecedents, cvis, (idx + 1), (false_antecedents || inv.is_false()));
+  }
+}haha 
+for (Iterator<NIS.SupInv> j = new_invs.iterator() ; j.hasNext() ;)
+{
+  NIS.SupInv supinv = j.next();
+  Invariant cinv = supinv.already_exists();
+  if (cinv != null)
+    Assert.assertTrue(false, ("inv " + cinv.format() + " of class " + supinv.suppressee + " already exists in ppt " + ppt.name));
+}haha 
+for (Iterator<Invariant> j = antecedents[i].iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  out += "    " + inv.format() + (inv.is_false() ? " [false]" : " t") + sep;
+}haha 
+matches6
+/Users/remywang/daikon//java/daikon/suppress/NISuppressionSet.java
+for (Iterator<Invariant> i = new_invs.iterator() ; i.hasNext() ;)
+{
+  Invariant new_inv = i.next();
+  if (new_inv.getClass() == inv.getClass() && new_inv.ppt == slice)
+    Assert.assertTrue(false, Fmt.spf(("inv %s:%s already in new_invs " + "(slice %s)"), inv.getClass(), inv.format(), slice));
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/suppress/NIS.java
+for (Iterator<Invariant> i = Daikon.proto_invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  NISuppressionSet ss = inv.get_ni_suppressions();
+  if (ss != null)
+  {
+    for (int j = 0 ; j < ss.suppression_set.length ; j++)
+    {
+      NISuppression sup = ss.suppression_set[j];
+      if (true)
+      {
+        assert inv.getClass() == sup.suppressee.sup_class :"class " + inv.getClass() + " doesn't match " + sup + "/" + sup.suppressee.sup_class;
+        Assert.assertTrue((inv.getClass() == ss.suppression_set[j].suppressee.sup_class), ("class " + inv.getClass() + " doesn't match " + ss.suppression_set[j]));
+      }
+    }
+    all_suppressions.add(ss);
+  }
+}haha 
+for (Iterator<NISuppressionSet> i = all_suppressions.iterator() ; i.hasNext() ;)
+{
+  NISuppressionSet suppression_set = i.next();
+  suppression_set.add_to_suppressor_map(suppressor_map);
+}haha 
+for (Iterator<List<NISuppressionSet>> i = suppressor_map.values().iterator() ; i.hasNext() ;)
+{
+  List<NISuppressionSet> ss_list = i.next();
+  for (Iterator<NISuppressionSet> j = ss_list.iterator() ; j.hasNext() ;)
+  {
+    NISuppressionSet ss = j.next();
+    NISuppressee suppressee = ss.get_suppressee();
+    List<NISuppressionSet> suppressor_ss_list = suppressor_map.get(suppressee.sup_class);
+    if (suppressor_ss_list == null)
+      continue;
+    for (Iterator<NISuppressionSet> k = suppressor_ss_list.iterator() ; k.hasNext() ;)
+    {
+      NISuppressionSet suppressor_ss = k.next();
+      suppressor_ss.recurse_definitions(ss);
+    }
+  }
+}haha 
+for (Iterator<NISuppressionSet> j = ss_list.iterator() ; j.hasNext() ;)
+{
+  NISuppressionSet ss = j.next();
+  NISuppressee suppressee = ss.get_suppressee();
+  List<NISuppressionSet> suppressor_ss_list = suppressor_map.get(suppressee.sup_class);
+  if (suppressor_ss_list == null)
+    continue;
+  for (Iterator<NISuppressionSet> k = suppressor_ss_list.iterator() ; k.hasNext() ;)
+  {
+    NISuppressionSet suppressor_ss = k.next();
+    suppressor_ss.recurse_definitions(ss);
+  }
+}haha 
+for (Iterator<NISuppressionSet> k = suppressor_ss_list.iterator() ; k.hasNext() ;)
+{
+  NISuppressionSet suppressor_ss = k.next();
+  suppressor_ss.recurse_definitions(ss);
+}haha 
+for (Iterator<NISuppressionSet> i = ss_list.iterator() ; i.hasNext() ;)
+{
+  NISuppressionSet ss = i.next();
+  ss.clear_state();
+  if (debug.isLoggable(Level.FINE))
+    debug.fine(("processing suppression set " + ss + " over falsified inv " + inv.format()));
+  ss.falsified(inv, new_invs);
+  suppressions_processed += ss.suppression_set.length;
+}haha 
+for (Iterator<Invariant> i = new_invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  if (inv.is_false())
+    Assert.assertTrue((!inv.is_false()), Fmt.spf(("inv %s in ppt %s is " + " false before sample is applied "), inv.format(), inv.ppt));
+  boolean missing = false;
+  for (int j = 0 ; j < inv.ppt.var_infos.length ; j++)
+  {
+    if (inv.ppt.var_infos[j].isMissing(vt))
+    {
+      missing = true;
+      break;
+    }
+  }
+  if (!missing)
+  {
+    InvariantStatus result = inv.add_sample(vt, count);
+    if (result == InvariantStatus.FALSIFIED)
+      Assert.assertTrue(false, ("inv " + inv.format() + " falsified by sample " + Debug.toString(inv.ppt.var_infos, vt) + " at ppt " + inv.ppt));
+  }
+  if (Daikon.dkconfig_internal_check)
+    Assert.assertTrue((inv.ppt.parent.findSlice(inv.ppt.var_infos) == inv.ppt));
+  inv.ppt.addInvariant(inv);
+  if (Debug.logOn())
+    inv.log((inv.format() + " added to slice"));
+  created_invs_cnt++;
+}haha 
+for (Iterator<Antecedents> i = comp_ants.values().iterator() ; i.hasNext() ;)
+{
+  Antecedents ants = i.next();
+  debugAnt.fine(ants.toString());
+}haha 
+for (Iterator<Antecedents> i = comp_ants.values().iterator() ; i.hasNext() ;)
+{
+  Antecedents ants = i.next();
+  List<Invariant> eq_invs = ants.get(IntEqual.class);
+  if (eq_invs != null && eq_invs.size() > 1000)
+  {
+    Map<VarInfo, Count> var_map = new LinkedHashMap<VarInfo, Count>();
+    Fmt.pf("ppt %s, comparability %s has %s equality invariants", ppt.name, ants.comparability, ("" + eq_invs.size()));
+    for (Iterator<Invariant> j = eq_invs.iterator() ; j.hasNext() ;)
+    {
+      IntEqual inv = (IntEqual) j.next();
+      VarInfo v1 = inv.ppt.var_infos[0];
+      VarInfo v2 = inv.ppt.var_infos[1];
+      if (ppt.is_constant(v1) && ppt.is_constant(v2))
+        Fmt.pf("inv %s has two constant variables", inv.format());
+      if (!v1.compatible(v2))
+        Fmt.pf("inv %s has incompatible variables", inv.format());
+      Count cnt = var_map.get(v1);
+      if (cnt == null)
+      {
+        cnt = new Count(0);
+        var_map.put(v1, cnt);
+      }
+      cnt.val++;
+      cnt = var_map.get(v2);
+      if (cnt == null)
+      {
+        cnt = new Count(0);
+        var_map.put(v2, cnt);
+      }
+      cnt.val++;
+    }
+    Fmt.pf("%s distinct variables", ("" + var_map.size()));
+    for (VarInfo key : var_map.keySet()) {
+                                           Count cnt = var_map.get(key);
+                                           Fmt.pf(" %s %s %s ", key.comparability, key.name.name(), ("" + cnt.val));
+                                         }
+  }
+}haha 
+for (Iterator<Antecedents> i = comp_ants.values().iterator() ; i.hasNext() ;)
+{
+  Antecedents ants = i.next();
+  debugAnt.fine(ants.toString());
+}haha 
+for (Iterator<NISuppressionSet> i = all_suppressions.iterator() ; i.hasNext() ;)
+{
+  NISuppressionSet ss = i.next();
+  for (Iterator<NISuppression> j = ss.iterator() ; j.hasNext() ;)
+  {
+    NISuppression sup = j.next();
+    suppressions_processed++;
+    for (Iterator<Antecedents> k = comp_ants.values().iterator() ; k.hasNext() ;)
+    {
+      Antecedents ants = k.next();
+      sup.find_unsuppressed_invs(unsuppressed_invs, ants);
+    }
+  }
+}haha 
+for (Iterator<NISuppression> j = ss.iterator() ; j.hasNext() ;)
+{
+  NISuppression sup = j.next();
+  suppressions_processed++;
+  for (Iterator<Antecedents> k = comp_ants.values().iterator() ; k.hasNext() ;)
+  {
+    Antecedents ants = k.next();
+    sup.find_unsuppressed_invs(unsuppressed_invs, ants);
+  }
+}haha 
+for (Iterator<Antecedents> k = comp_ants.values().iterator() ; k.hasNext() ;)
+{
+  Antecedents ants = k.next();
+  sup.find_unsuppressed_invs(unsuppressed_invs, ants);
+}haha 
+for (Iterator<SupInv> i = unsuppressed_invs.iterator() ; i.hasNext() ;)
+{
+  SupInv supinv = i.next();
+  new_invs_cnt++;
+  if (supinv.check(vt) == InvariantStatus.FALSIFIED)
+  {
+    supinv.log("unsuppressed inv falsified by sample");
+    false_invs_cnt++;
+    continue;
+  }
+  if (supinv.is_ni_suppressed())
+  {
+    supinv.log("unsuppresed inv still suppressed");
+    still_suppressed_cnt++;
+    continue;
+  }
+  Invariant inv = supinv.instantiate(ppt);
+  if (inv != null)
+  {
+    if (Daikon.dkconfig_internal_check)
+    {
+      if (inv.ppt.find_inv_exact(inv) != null)
+        Assert.assertTrue(false, ("inv " + inv.format() + " already exists in ppt " + ppt.name));
+    }
+    new_invs.add(inv);
+  }
+}haha 
+for (Iterator<Antecedents> i = comp_ants.values().iterator() ; i.hasNext() ;)
+{
+  Antecedents ants = i.next();
+  if (ants.alwaysComparable())
+    continue;
+  ants.add(compare_all);
+}haha 
+for (Iterator<NISuppressionSet> i = all_suppressions.iterator() ; i.hasNext() ;)
+{
+  NISuppressionSet ss = i.next();
+  for (Iterator<NISuppression> j = ss.iterator() ; j.hasNext() ;)
+  {
+    NISuppression sup = j.next();
+    for (Iterator<Antecedents> k = comp_ants.values().iterator() ; k.hasNext() ;)
+    {
+      Antecedents ants = k.next();
+      sup.find_suppressed_invs(suppressed_invs, ants);
+    }
+  }
+}haha 
+for (Iterator<NISuppression> j = ss.iterator() ; j.hasNext() ;)
+{
+  NISuppression sup = j.next();
+  for (Iterator<Antecedents> k = comp_ants.values().iterator() ; k.hasNext() ;)
+  {
+    Antecedents ants = k.next();
+    sup.find_suppressed_invs(suppressed_invs, ants);
+  }
+}haha 
+for (Iterator<Antecedents> k = comp_ants.values().iterator() ; k.hasNext() ;)
+{
+  Antecedents ants = k.next();
+  sup.find_suppressed_invs(suppressed_invs, ants);
+}haha 
+for (Iterator<SupInv> i = suppressed_invs.iterator() ; i.hasNext() ;)
+{
+  SupInv supinv = i.next();
+  Invariant inv = supinv.instantiate(ppt);
+  if (inv != null)
+  {
+    if (Daikon.dkconfig_internal_check)
+      Assert.assertTrue((inv.ppt.find_inv_exact(inv) == null));
+    inv.ppt.addInvariant(inv);
+    created_invs.add(inv);
+  }
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (!is_suppressor(inv.getClass()))
+    continue;
+  if (inv.is_false())
+    false_invs++;
+  VarComparability vc = inv.get_comparability();
+  Antecedents ants = comp_ants.get(vc);
+  if (ants == null)
+  {
+    ants = new Antecedents(vc);
+    comp_ants.put(vc, ants);
+  }
+  ants.add(inv);
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (!is_suppressor(inv.getClass()))
+    continue;
+  if (inv.is_false())
+    false_cnt++;
+  List<Invariant> antecedents = antecedent_map.get(inv.getClass());
+  if (antecedents == null)
+  {
+    antecedents = new ArrayList<Invariant>();
+    antecedent_map.put(inv.getClass(), antecedents);
+  }
+  antecedents.add(inv);
+}haha 
+for (Iterator<List<Invariant>> i = ants.antecedent_map.values().iterator() ; i.hasNext() ;)
+{
+  List<Invariant> invs = i.next();
+  for (Iterator<Invariant> j = invs.iterator() ; j.hasNext() ;)
+  {
+    Invariant inv = j.next();
+    add(inv);
+  }
+}haha 
+for (Iterator<Invariant> j = invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  add(inv);
+}haha 
+for (Iterator<Invariant> j = ilist.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (inv.is_false())
+    out += inv.format() + "[FALSE] ";
+  else
+    out += inv.format() + " ";
+}haha 
+matches24
+/Users/remywang/daikon//java/daikon/suppress/NISuppressor.java
+for (Iterator<Invariant> i = slice.invs.iterator() ; i.hasNext() ;)
+{
+  Invariant slice_inv = i.next();
+  if (match_true(slice_inv))
+    return state = NIS.VALID;
+}haha 
+for (Iterator<Invariant> i = slice.invs.iterator() ; i.hasNext() ;)
+{
+  Invariant slice_inv = i.next();
+  if (match_true(slice_inv))
+  {
+    if (NIS.debug.isLoggable(Level.FINE))
+      NIS.debug.fine(("suppressor matches inv " + slice_inv.format() + " " + !slice_inv.is_false()));
+    return state = NIS.VALID;
+  }
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantTableModel.java
+for (Iterator<Invariant> iter = allInvariants.iterator() ; iter.hasNext() ;)
+{
+  Invariant invariant = iter.next();
+  if (invariantFilters.shouldKeep(invariant) == null)
+    filteredInvariants.add(invariant);
+}haha 
+matches1
+/Users/remywang/daikon//java/daikon/PptSplitter.java
+for (Iterator<VarInfo[]> itor = slices.iterator() ; itor.hasNext() ;)
+{
+  VarInfo[] vis = itor.next();
+  int num_children = ppts.length;
+  Invariants[] invs = new Invariants[num_children];
+  PptSlice pslice = parent.get_or_instantiate_slice(vis);
+  for (int childno = 0 ; childno < num_children ; childno++)
+  {
+    PptTopLevel child_ppt = ppts[childno];
+    Assert.assertTrue((child_ppt.equality_view != null));
+    Assert.assertTrue((parent.equality_view != null));
+    invs[childno] = new Invariants();
+    VarInfo[] cvis_non_canonical = new VarInfo[vis.length];
+    VarInfo[] cvis = new VarInfo[vis.length];
+    VarInfo[] cvis_sorted = new VarInfo[vis.length];
+    for (int kk = 0 ; kk < vis.length ; kk++)
+    {
+      cvis_non_canonical[kk] = matching_var(child_ppt, parent, vis[kk]);
+      cvis[kk] = cvis_non_canonical[kk].canonicalRep();
+      cvis_sorted[kk] = cvis[kk];
+    }
+    Arrays.sort(cvis_sorted, VarInfo.IndexComparator.getInstance());
+    Invariant eq_inv = null;
+    if (!Arrays.equals(cvis_non_canonical, cvis))
+    {
+      PptSlice nc_slice = child_ppt.findSlice(cvis_non_canonical);
+      if (nc_slice != null)
+      {
+        if (nc_slice.invs.size() != 1)
+        {
+          System.out.println(("Found " + nc_slice.invs.size() + " invs at " + nc_slice));
+          for (Iterator<Invariant> kk = nc_slice.invs.iterator() ; kk.hasNext() ;)
+            System.out.println((" -- inv = " + kk.next()));
+          for (int kk = 0 ; kk < cvis_non_canonical.length ; kk++)
+            System.out.println((" -- equality set = " + cvis_non_canonical[kk].equalitySet.shortString()));
+          throw new Error("nc_slice.invs.size() == " + nc_slice.invs.size());
+        }
+        eq_inv = nc_slice.invs.get(0);
+        debug.fine(("Found eq inv " + eq_inv));
+      }
+    }
+    PptSlice cslice = child_ppt.findSlice(cvis_sorted);
+    if (cslice == null)
+    {
+      if (eq_inv != null)
+      {
+        for (int i = 0 ; i < cvis_sorted.length ; i++)
+          Fmt.pf(("con val = " + child_ppt.constants.all_vars[cvis_sorted[i].varinfo_index]));
+        throw new RuntimeException("found eq_inv " + eq_inv + " @" + eq_inv.ppt + " but can't find slice for " + VarInfo.toString(cvis_sorted));
+      }
+      continue;
+    }
+    int[] permute = PptTopLevel.build_permute(cvis_sorted, cvis);
+    for (int j = 0 ; j < cslice.invs.size() ; j++)
+    {
+      Invariant orig_inv = cslice.invs.get(j);
+      Invariant inv = orig_inv.clone_and_permute(permute);
+      inv.ppt = pslice;
+      invs[childno].add(inv);
+      if (eq_inv != null && orig_inv.getClass().equals(eq_inv.getClass()))
+        orig_inv = eq_inv;
+      Assert.assertTrue((!orig_invs.containsKey(inv)));
+      orig_invs.put(inv, orig_inv);
+    }
+  }
+  if (invs[0].size() == 0 && invs[1].size() == 0)
+  {
+    if (pslice.invs.size() == 0)
+      parent.removeSlice(pslice);
+    continue;
+  }
+  if (pslice.invs.size() == 0 && Debug.logDetail())
+    debug.fine(("PptSplitter: created new slice " + VarInfo.toString(vis) + " @" + parent.name));
+  exclusive_invs_vec.addAll(exclusive_conditions(invs[0], invs[1]));
+  same_invs_vec.addAll(same_invariants(invs[0], invs[1]));
+  different_invs_vec.addAll(different_invariants(invs[0], invs[1]));
+}haha 
+for (Iterator<Invariant[]> i = exclusive_invs_vec.iterator() ; i.hasNext() ;)
+{
+  Invariant[] invs = i.next();
+  invs[0].log(("exclusive condition with " + invs[1].format()));
+  invs[1].log(("exclusive condition with " + invs[0].format()));
+  debug.fine(("-- " + invs[0] + " -- " + invs[1]));
+}haha 
+for (Iterator<Invariant[]> i = different_invs_vec.iterator() ; i.hasNext() ;)
+{
+  Invariant[] invs = i.next();
+  if (invs[0] != null)
+    invs[0].log((invs[0] + " differs from " + invs[1]));
+  if (invs[1] != null)
+    invs[1].log((invs[0] + " differs from " + invs[1]));
+  debug.fine(("-- " + invs[0] + " -- " + invs[1]));
+}haha 
+for (Iterator<Invariant[]> jj = exclusive_invs_vec.iterator() ; jj.hasNext() ;)
+{
+  Invariant[] ex_invs = jj.next();
+  if (ex_invs[0] == diff_invs[0])
+  {
+    debug.fine(("removed exclusive invariant " + ex_invs[0]));
+    ii.remove();
+    break;
+  }
+}haha 
+for (Iterator<Invariant[]> jj = exclusive_invs_vec.iterator() ; jj.hasNext() ;)
+{
+  Invariant[] ex_invs = jj.next();
+  if (ex_invs[1] == diff_invs[1])
+  {
+    debug.fine(("removed exclusive invariant " + ex_invs[1]));
+    ii.remove();
+    break;
+  }
+}haha 
+for (Iterator<Invariant[]> ii = exclusive_invs_vec.iterator() ; ii.hasNext() ;)
+{
+  Invariant[] invs = ii.next();
+  for (int jj = 0 ; jj < con_invs.length ; jj++)
+  {
+    if (con_invs[jj] == null)
+    {
+      Invariant orig = orig_invs.get(invs[jj]);
+      if (orig.isObvious() == null && !orig.is_ni_suppressed())
+        con_invs[jj] = invs[jj];
+    }
+  }
+}haha 
+matches6
+/Users/remywang/daikon//java/daikon/gui/treeGUI/InvariantsGUI.java
+for (Iterator<String> iter = new TreeSet<String>(pptMap.nameStringSet()).iterator() ; iter.hasNext() ;)
+{
+  String name = iter.next();
+  PptName pptName = new PptName(name);
+  String className = pptName.getFullClassName();
+  DefaultMutableTreeNode classNode = getChildByName(root, className);
+  if (classNode == null)
+  {
+    PptTopLevel topLevel = (PptTopLevel) pptMap.get(name);
+    Assert.assertTrue((className != null));
+    root.add(new DefaultMutableTreeNode(className));
+  }
+}haha 
+for (Iterator<String> iter = new TreeSet<String>(pptMap.nameStringSet()).iterator() ; iter.hasNext() ;)
+{
+  String name = iter.next();
+  Assert.assertTrue((name != null));
+  PptName pptName = new PptName(name);
+  String className = pptName.getFullClassName();
+  DefaultMutableTreeNode classNode = getChildByName(root, className);
+  Assert.assertTrue((classNode != null));
+  if (pptName.isObjectInstanceSynthetic() || pptName.isClassStaticSynthetic())
+  {
+    String programPointName = pptName.getPoint();
+    DefaultMutableTreeNode programPointNode = getChildByName(classNode, programPointName);
+    if (programPointNode == null)
+    {
+      PptTopLevel topLevel = (PptTopLevel) pptMap.get(name);
+      Assert.assertTrue((topLevel != null));
+      classNode.add(new DefaultMutableTreeNode(topLevel));
+    }
+  }
+  else
+  {
+    String methodName = pptName.getSignature();
+    Assert.assertTrue((methodName != null));
+    DefaultMutableTreeNode methodNode = getChildByName(classNode, methodName);
+    if (methodNode == null)
+    {
+      classNode.add(new DefaultMutableTreeNode(methodName));
+    }
+  }
+}haha 
+for (Iterator<String> iter = pptMap.nameStringSet().iterator() ; iter.hasNext() ;)
+{
+  String name = iter.next();
+  PptName pptName = new PptName(name);
+  String methodName = pptName.getSignature();
+  if (methodName == null)
+    continue;
+  String className = pptName.getFullClassName();
+  DefaultMutableTreeNode classNode = getChildByName(root, className);
+  Assert.assertTrue((classNode != null));
+  DefaultMutableTreeNode methodNode = getChildByName(classNode, methodName);
+  String programPointName = pptName.getPoint();
+  DefaultMutableTreeNode programPointNode = getChildByName(methodNode, programPointName);
+  Assert.assertTrue((programPointNode == null));
+  PptTopLevel topLevel = (PptTopLevel) pptMap.get(name);
+  if (methodNode.getChildCount() == 0)
+  {
+    Assert.assertTrue((topLevel != null));
+    methodNode.add(new DefaultMutableTreeNode(topLevel));
+  }
+  else
+  {
+    int exitNumber = pptName.getPointSubscript();
+    int childIndex;
+    for (childIndex = 0 ; childIndex < methodNode.getChildCount() ; childIndex++)
+    {
+      PptTopLevel currentChild = (PptTopLevel) ((DefaultMutableTreeNode) methodNode.getChildAt(childIndex)).getUserObject();
+      int currentChildExitNumber = currentChild.ppt_name.getPointSubscript();
+      if (currentChildExitNumber > exitNumber)
+        break;
+    }
+    Assert.assertTrue((topLevel != null));
+    methodNode.insert(new DefaultMutableTreeNode(topLevel), childIndex);
+  }
+}haha 
+matches3
+/Users/remywang/daikon//java/daikon/VarInfoName.java
+for (Iterator<VarInfoName> i = o.args.iterator() ; i.hasNext() ;)
+{
+  VarInfoName vin = i.next();
+  retval = vin.accept(this);
+  if (retval != null)
+    return retval;
+}haha 
+for (Iterator<VarInfoName> i = o.args.iterator() ; i.hasNext() ;)
+{
+  VarInfoName vin = i.next();
+  result = vin.accept(this);
+  if (result != null)
+    return result;
+}haha 
+for (Iterator<VarInfoName> i = o.args.iterator() ; i.hasNext() ;)
+{
+  VarInfoName vin = i.next();
+  retval = vin.accept(this);
+  if (retval != null)
+    return retval;
+}haha 
+for (Iterator<VarInfoName> i = o.args.iterator() ; i.hasNext() ;)
+{
+  VarInfoName vin = i.next();
+  VarInfoName retval = vin.accept(this);
+  newArgs.add(retval);
+}haha 
+for (Iterator<VarInfoName> i = o.args.iterator() ; i.hasNext() ;)
+{
+  VarInfoName vin = i.next();
+  NoReturnValue retval = vin.accept(this);
+}haha 
+matches5
+/Users/remywang/daikon//java/daikon/PptMap.java
+for (Iterator<PptTopLevel> iPpt = ppts.iterator() ; iPpt.hasNext() ;)
+{
+  PptTopLevel ppt = iPpt.next();
+  add(ppt);
+}haha 
+for (Iterator<PptTopLevel> i = nameToPpt.values().iterator() ; i.hasNext() ;)
+{
+  PptTopLevel ppt = i.next();
+  ppt.trimToSize();
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/PptSlice.java
+for (Iterator<Invariant> overInvs = invs.iterator() ; overInvs.hasNext() ;)
+{
+  Invariant inv = overInvs.next();
+  if (omitTypes['r'] && inv.isReflexive())
+    toRemove.add(inv);
+}haha 
+for (Iterator<Invariant> i = invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  inv.repCheck();
+  Assert.assertTrue((inv.ppt == this));
+}haha 
+for (Iterator<Invariant> i = invs.iterator() ; i.hasNext() ;)
+{
+  Invariant mine = i.next();
+  if (mine.match(inv))
+    return true;
+}haha 
+for (Iterator<Invariant> i = invs.iterator() ; i.hasNext() ;)
+{
+  Invariant mine = i.next();
+  if (mine.getClass() == inv.getClass() && mine.isSameFormula(inv))
+    return mine;
+}haha 
+for (Iterator<Invariant> i = invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  if (inv.getClass() == cls)
+    return inv;
+}haha 
+matches5
+/Users/remywang/daikon//java/daikon/PptRelation.java
+for (Iterator<PptSplitter> kk = rel.child.splitters.iterator() ; kk.hasNext() ;)
+{
+  PptSplitter csplit = kk.next();
+  if (ppt_split.splitter == csplit.splitter)
+  {
+    split_children.add(new SplitChild(rel, csplit));
+    continue child_loop;
+  }
+}haha 
+for (Iterator<SplitChild> jj = split_children.iterator() ; jj.hasNext() ;)
+{
+  SplitChild sc = jj.next();
+  ppt_split.add_relation(sc.rel, sc.ppt_split);
+}haha 
+matches2
+/Users/remywang/daikon//java/daikon/PptSliceEquality.java
+for (Iterator<List<VarInfo>> i = multiMap.values().iterator() ; i.hasNext() ;)
+{
+  List<VarInfo> list = i.next();
+  varCount += list.size();
+  Equality eq = new Equality(list, this);
+  newInvs[invCount] = eq;
+  if (debug.isLoggable(Level.FINE))
+  {
+    debug.fine((" Created: " + eq));
+  }
+  if (Debug.logOn())
+    Debug.log(getClass(), parent, Debug.vis(eq.leader()), "Created");
+  invCount++;
+}haha 
+for (Iterator<VarInfo.Pair> i = eset.iterator() ; i.hasNext() ;)
+{
+  VarInfo.Pair cp = i.next();
+  List<VarInfo> vlist = varmap.get(cp.v1);
+  if (vlist == null)
+  {
+    vlist = new ArrayList<VarInfo>();
+    vlist.add(cp.v1);
+    varmap.put(cp.v1, vlist);
+    sample_cnt_map.put(cp.v1, new Integer(cp.samples));
+  }
+  vlist.add(cp.v2);
+  vlist = varmap.get(cp.v2);
+  if (vlist == null)
+  {
+    vlist = new ArrayList<VarInfo>();
+    vlist.add(cp.v2);
+    varmap.put(cp.v2, vlist);
+    sample_cnt_map.put(cp.v2, new Integer(cp.samples));
+  }
+  vlist.add(cp.v1);
+}haha 
+for (Iterator<Equality> iNewInvs = newInvs.iterator() ; iNewInvs.hasNext() ;)
+{
+  Equality eq = iNewInvs.next();
+  if (parent.constants == null || !parent.constants.is_missing(eq.leader()))
+    newInvsLeaders.add(eq.leader());
+}haha 
+for (Iterator<VarInfo> i = vis.iterator() ; i.hasNext() ;)
+{
+  VarInfo vi = i.next();
+  if (vi.missingOutOfBounds())
+    out_of_bounds.add(vi);
+  else
+    if (vt.isMissing(vi))
+    {
+      addToBindingList(multiMap, dummyMissing, vi);
+    }
+    else
+    {
+      if (vi.getValue(vt) == null)
+      {
+        Fmt.pf("null value for variable %s, mod=%s at ppt %s", vi.name.name(), ("" + vt.getModified(vi)), parent.name());
+        VarInfo rv = parent.find_var_by_name("return");
+        Fmt.pf(("return value = " + Debug.toString(rv.getValue(vt))));
+        Fmt.pf(("At line number " + FileIO.data_trace_state.reader.getLineNumber()));
+      }
+      addToBindingList(multiMap, vi.getValue(vt), vi);
+    }
+}haha 
+for (Iterator<Invariant> j = slice.invs.iterator() ; j.hasNext() ;)
+{
+  Invariant inv = j.next();
+  if (!Daikon.dkconfig_undo_opts)
+  {
+    if (inv.isObviousStatically_AllInEquality())
+    {
+      inv.falsify();
+      falsified_invs.add(inv);
+    }
+  }
+}haha 
+for (Iterator<PptSlice> itor = newSlices.iterator() ; itor.hasNext() ;)
+{
+  PptSlice slice = itor.next();
+  if (slice.invs.size() == 0)
+  {
+    continue;
+  }
+  Assert.assertTrue((parent.findSlice(slice.var_infos) == null));
+  slice.repCheck();
+  parent.addSlice(slice);
+}haha 
+for (Iterator<Invariant> i = invs.iterator() ; i.hasNext() ;)
+{
+  Invariant inv = i.next();
+  inv.repCheck();
+  Assert.assertTrue((inv.ppt == this));
+}haha 
+matches7

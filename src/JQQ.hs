@@ -31,7 +31,7 @@ java = QuasiQuoter {
     }
 
 exts :: Data b => b -> Maybe (Q Language.Haskell.TH.Pat)
-exts = const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` antiId `extQ` antiVar `extQ` antiType
+exts = const Nothing `extQ` antiExpPat `extQ` antiStmtPat `extQ` antiId `extQ` antiVar `extQ` antiRefType `extQ` antiType
 
 rename :: Language.Java.Syntax.Stmt -> State (DS.Set String) Language.Java.Syntax.Stmt
 rename p = transformM rnvar p
@@ -79,6 +79,10 @@ antiVar _ = Nothing
 antiType :: Language.Java.Syntax.Type -> Maybe (Q Language.Haskell.TH.Pat)
 antiType MetaType = Just $ wildP
 antiType _ = Nothing
+
+antiRefType :: Language.Java.Syntax.RefType -> Maybe (Q Language.Haskell.TH.Pat)
+antiRefType MetaRefType = Just $ wildP
+antiRefType _ = Nothing
 
 antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
 antiExpPat (MetaExp "_") = Just $ wildP

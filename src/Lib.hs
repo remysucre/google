@@ -83,7 +83,7 @@ testj prog = grepj prog pat
 //     Daikon      //
 /////////////////////
 //
-for (`_ #i = `*( iterator `)*; #i.hasNext(); ) { // PATTERN HERE
+for (Iterator<`_> #i = `*( iterator `)*; #i.hasNext(); ) { // PATTERN HERE
   `_ #_ = #i.next();
   `[ `! `*( #i `)* `]
 }
