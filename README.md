@@ -1,3 +1,9 @@
+# Building & running
+
+- Install Haskell stack: https://docs.haskellstack.org/en/stable/README/
+- Clone repo, and run `stack setup && stack build` at repo root. 
+- Then follow instruciton in `run.sh`
+
 # Search Lang semantics
 
 
