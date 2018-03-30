@@ -28,6 +28,18 @@ grepj prog pctnt = [ a | a <- universeBi prog, pctnt a]
 -- patterns here ---
 --------------------
 
+-- TODO invent special antiquote for bound patterns
+
+p1 :: TH.Q TH.Pat
+p1 = [p| [java|
+if (this.#x != null) {
+ int[] range = (int[]) this.#x.get(node);
+ ``p2 }
+|] |]
+
+p2 :: TH.Q TH.Pat
+p2 = [p| [java| `[ `_ `] |] |]
+
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog pat
   where pat [java| 
