@@ -92,27 +92,16 @@ antiExpPat (ENot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
         c2 = match wildP ( normalB [e| True |]) []
         p_ = dataToPatQ exts p
 antiExpPat (EHasS p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
-  where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
+  where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- NOTE undefined is never evaluated
         p_ = dataToPatQ exts p
 antiExpPat (EHasE p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
-  where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
+  where body = compE [bindS p_ [|universe n|], noBindS [|undefined|]] -- NOTE undefined is never evaluated
         p_ = dataToPatQ exts p
 antiExpPat (EHasI p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out for n
-  where body = compE [bindS p_ [|universeBi n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
+  where body = compE [bindS p_ [|universeBi n|], noBindS [|undefined|]] -- NOTE undefined is never evaluated
         p_ = dataToPatQ exts p
 antiExpPat _ = Nothing
-
--- quoting java statements
-
-jstmt :: QuasiQuoter
-jstmt = QuasiQuoter {
-      quoteExp = undefined
-    , quotePat  = \str ->
-        let Right c = traceShowId $ parser (stmt <* eof) str
-        in dataToPatQ exts c
-    , quoteType = undefined
-    , quoteDec  = undefined
-    }
+-- TODO antiExpPat (EAssertEq s) = Just $ viewP [|(== $(varE . mkName $ s))|] [p|True|]
 
 antiStmtPat :: Language.Java.Syntax.Stmt -> Maybe (Q Language.Haskell.TH.Pat)
 antiStmtPat (MetaStmt "_") = Just $ wildP
@@ -128,6 +117,18 @@ antiStmtPat (StmtBlock (Block [h, BlockStmt (Seq pseq)])) = Just p
         c2 = match (conP (mkName "BlockStmt") [wildP]) (normalB [|False|]) []
         c3 = match wildP (normalB [|True|]) []
         pseq_ = dataToPatQ exts pseq
+antiStmtPat (SOr p q) = Just (viewP (lamCaseE [c1, c2, c3]) [p|True|])
+  where c1 = match p_ ( normalB [| True |]) []
+        c2 = match q_ ( normalB [| True |]) []
+        c3 = match wildP ( normalB [| False |]) []
+        p_ = dataToPatQ exts p
+        q_ = dataToPatQ exts q
+antiStmtPat (SAnd p q) = 
+  Just (viewP [|\n -> case (n, n) of ($(p_), $(q_)) -> True; _ -> False |] [p|True|])
+  where -- c1 = match p_ ( normalB [| False |]) []
+        -- c2 = match wildP ( normalB [| True |]) []
+        p_ = dataToPatQ exts p
+        q_ = dataToPatQ exts q
 antiStmtPat (SNot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
   where c1 = match p_ ( normalB [| False |]) []
         c2 = match wildP ( normalB [| True |]) []
@@ -142,6 +143,18 @@ antiStmtPat (SHasI p) = Just [p| ((\n -> $(body)) -> _:_) |] -- TODO watch out f
   where body = compE [bindS p_ [|universeBi n|], noBindS [|undefined|]] -- TODO undefined is never evaluated
         p_ = dataToPatQ exts p
 antiStmtPat _ = Nothing
+
+-- quoting java statements
+
+jstmt :: QuasiQuoter
+jstmt = QuasiQuoter {
+      quoteExp = undefined
+    , quotePat  = \str ->
+        let Right c = traceShowId $ parser (stmt <* eof) str
+        in dataToPatQ exts c
+    , quoteType = undefined
+    , quoteDec  = undefined
+    }
 
 -- this pattern is just for easily making programs
 

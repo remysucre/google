@@ -43,69 +43,71 @@ p2 = [p| [java| `[ `_ `] |] |]
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog pat
   where pat [java| 
-/////////////////////
-//     Patch 1     //
-/////////////////////
-//
-// if (this.#x != null) {
-//  int[] range = (int[]) this.#x.get(node);
-//  `[ `_ `] }
-//
-/////////////////////
-//   Patch 2 & 3   //
-/////////////////////
-//
-// if (`*(
-// (( this.currentCharacter =
-// this.source [this.currentPosition++])
-// == '\\')
-// `)*) `*( (c1 = Character.getNumericValue(`_)) > 15 `)*
-//
-/////////////////////
-//     Patch 4     //
-/////////////////////
-//
-// switch (`_) {
-//   case SWT.LINE_DOT:
-//   case SWT.LINE_DASH:
-//   case SWT.LINE_DASHDOT:
-//   case SWT.LINE_DASHDOTDOT:
-//     data.state &= ~LINE_STYLE;
-// }
-//
-/////////////////////
-//     Patch 5     // 
-/////////////////////
-//
-// if (`*( focusIndex `)*) `*( redraw `)*
-//
-/////////////////////
-//     Patch 6     // 
-/////////////////////
-//
-// if (control instanceof Tree) { `*( TreeDragAndDropEffect `)* } else `_
-//
-/////////////////////
-//     Patch 7     // 
-/////////////////////
-//
-// for (int i = 0; i < digits; i++) adjustment.#x *= 10;
-//
-/////////////////////
-//     Daikon      //
-/////////////////////
-//
-for (Iterator<`_> #i = `*( iterator `)*; #i.hasNext(); ) { // PATTERN HERE
-  `_ #_ = #i.next();
-  `[ `! `*( #i `)* `]
-}
-// for (#_<#_> #i = `*( iterator() `)* ; #i.hasNext(); ) {
-//   #_ #_ = #i.next();
-//   `[ `! `*( #i `)* `]
-// }
-//
+`_ `; `_ 
 |] = True
         pat _ = False
+
+-- /////////////////////
+-- //     Patch 1     //
+-- /////////////////////
+-- //
+-- // if (this.#x != null) {
+-- //  int[] range = (int[]) this.#x.get(node);
+-- //  `[ `_ `] }
+-- //
+-- /////////////////////
+-- //   Patch 2 & 3   //
+-- /////////////////////
+-- //
+-- // if (`*(
+-- // (( this.currentCharacter =
+-- // this.source [this.currentPosition++])
+-- // == '\\')
+-- // `)*) `*( (c1 = Character.getNumericValue(`_)) > 15 `)*
+-- //
+-- /////////////////////
+-- //     Patch 4     //
+-- /////////////////////
+-- //
+-- // switch (`_) {
+-- //   case SWT.LINE_DOT:
+-- //   case SWT.LINE_DASH:
+-- //   case SWT.LINE_DASHDOT:
+-- //   case SWT.LINE_DASHDOTDOT:
+-- //     data.state &= ~LINE_STYLE;
+-- // }
+-- //
+-- /////////////////////
+-- //     Patch 5     // 
+-- /////////////////////
+-- //
+-- // if (`*( focusIndex `)*) `*( redraw `)*
+-- //
+-- /////////////////////
+-- //     Patch 6     // 
+-- /////////////////////
+-- //
+-- // if (control instanceof Tree) { `*( TreeDragAndDropEffect `)* } else `_
+-- //
+-- /////////////////////
+-- //     Patch 7     // 
+-- /////////////////////
+-- //
+-- // for (int i = 0; i < digits; i++) adjustment.#x *= 10;
+-- //
+-- /////////////////////
+-- //     Daikon      //
+-- /////////////////////
+-- //
+-- // for (Iterator<`_> #i = `*( iterator `)*; #i.hasNext(); ) { // PATTERN HERE
+-- //   `_ #_ = #i.next();
+-- //   `[ `! `*( #i `)* `]
+-- // }
+-- // for (#_<#_> #i = `*( iterator() `)* ; #i.hasNext(); ) {
+-- //   #_ #_ = #i.next();
+-- //   `[ `! `*( #i `)* `]
+-- // }
+-- //
 
 teste :: [Exp]
 teste = grepe prog1 pat
