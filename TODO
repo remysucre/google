@@ -1,6 +1,10 @@
 metalift patterns w/o analysis
 initializations
 
+print
+calls to rand
+i on lfs ((double[]) convolved)[i] = 0.0;
+
 hasNext
 get
 
