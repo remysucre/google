@@ -43,8 +43,9 @@ p2 = [p| [java| `[ `_ `] |] |]
 
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog pat
-  where pat [java| while ( #i < `_ ) `*( (`x)[#i] `)* |] = True
+  where pat [java| while ( #i < `_ ) `*( (`_)[#i] `)* |] = True
         pat [java| while ( #i < `_ ) `*( (`_).get(#i) `)* |] = True
+        pat [java| while (((`_) #i).hasNext()) `*( ((`_) #i).next() `)* |] = True
         pat _ = False
 
 -- /////////////////////

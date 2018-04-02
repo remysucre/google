@@ -1,0 +1,645 @@
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/Sum.java
+while (i < ((List) data).size())
+{
+  sum += ((Integer) ((List) data).get(i)).intValue();
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/MaxAbs.java
+while (i < ((List) data).size())
+{
+  int var = ((Integer) ((List) data).get(i)).intValue();
+  maxAbs = Math.max(Math.abs(var), maxAbs);
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/Average.java
+while (i < ((List) data).size())
+{
+  sum += ((Integer) ((List) data).get(i)).intValue();
+  count++;
+  i++;
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/Max.java
+while (i < ((List) data).size())
+{
+  int var = ((Integer) ((List) data).get(i)).intValue();
+  max = Math.max(var, max);
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/EqualFrequency.java
+while (i < ((List) data).size())
+{
+  int var = ((Integer) ((List) data).get(i)).intValue();
+  if (var == 100)
+  {
+    first++;
+  }
+  if (var == 110)
+  {
+    second++;
+  }
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/Min.java
+while (i < ((List) data).size())
+{
+  int var = ((Integer) ((List) data).get(i)).intValue();
+  min = Math.min(var, min);
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/Delta.java
+while (i < ((List) data).size())
+{
+  int var = ((Integer) ((List) data).get(i)).intValue();
+  max = Math.max(var, max);
+  min = Math.min(var, min);
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/Equal.java
+while (i < ((List) data).size())
+{
+  if (val != ((Integer) ((List) data).get(i)).intValue())
+  {
+    equal = false;
+  }
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/ConditionalCount.java
+while (i < ((List) data).size())
+{
+  int var = ((Integer) ((List) data).get(i)).intValue();
+  if (var < 100)
+  {
+    count++;
+  }
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/arith/ConditionalSum.java
+while (i < ((List) data).size())
+{
+  int var = ((Integer) ((List) data).get(i)).intValue();
+  if (var < 100)
+  {
+    sum += var;
+  }
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/pheonix/PcaJava.java
+while (i < rows)
+{
+  j = 0;
+  while (j < cols)
+  {
+    printf("%5d ", ((Object[]) new Object[] {
+                                              ((Integer[]) ((Integer[][]) vals)[i])[j],
+                                            }));
+    j++;
+  }
+  printf("\n", ((Object[]) new Object[] {
+                                        }));
+  i++;
+}haha 
+while (j < cols)
+{
+  printf("%5d ", ((Object[]) new Object[] {
+                                            ((Integer[]) ((Integer[][]) vals)[i])[j],
+                                          }));
+  j++;
+}haha 
+while (i < rows)
+{
+  j = 0;
+  while (j < cols)
+  {
+    (Integer[]) ((Integer[][]) pts)[i][j] = Integer.valueOf((rand() % grid_size));
+    j++;
+  }
+  i++;
+}haha 
+while (i < num_rows)
+{
+  sum = 0;
+  j = 0;
+  while (j < num_cols)
+  {
+    sum += ((Integer) ((Integer[]) ((Integer[][]) matrix)[i])[j]).intValue();
+    j++;
+  }
+  (int[]) mean[i] = sum / num_cols;
+  i++;
+}haha 
+while (j < num_cols)
+{
+  sum += ((Integer) ((Integer[]) ((Integer[][]) matrix)[i])[j]).intValue();
+  j++;
+}haha 
+while (i < num_rows)
+{
+  j = i;
+  while (j < num_rows)
+  {
+    sum = 0;
+    k = 0;
+    while (k < num_cols)
+    {
+      sum = (sum + ((Integer) ((Integer[]) ((Integer[][]) matrix)[i])[k]).intValue() - ((int[]) mean)[i]) * (((Integer) ((Integer[]) ((Integer[][]) matrix)[j])[k]).intValue() - ((int[]) mean)[j]);
+      k++;
+    }
+    int x = sum / (num_cols - 1);
+    (Integer[]) ((Integer[][]) cov)[i][j] = Integer.valueOf(x);
+    (Integer[]) ((Integer[][]) cov)[i][j] = Integer.valueOf(x);
+    j++;
+  }
+  i++;
+}haha 
+while (j < num_rows)
+{
+  sum = 0;
+  k = 0;
+  while (k < num_cols)
+  {
+    sum = (sum + ((Integer) ((Integer[]) ((Integer[][]) matrix)[i])[k]).intValue() - ((int[]) mean)[i]) * (((Integer) ((Integer[]) ((Integer[][]) matrix)[j])[k]).intValue() - ((int[]) mean)[j]);
+    k++;
+  }
+  int x = sum / (num_cols - 1);
+  (Integer[]) ((Integer[][]) cov)[i][j] = Integer.valueOf(x);
+  (Integer[]) ((Integer[][]) cov)[i][j] = Integer.valueOf(x);
+  j++;
+}haha 
+while (k < num_cols)
+{
+  sum = (sum + ((Integer) ((Integer[]) ((Integer[][]) matrix)[i])[k]).intValue() - ((int[]) mean)[i]) * (((Integer) ((Integer[]) ((Integer[][]) matrix)[j])[k]).intValue() - ((int[]) mean)[j]);
+  k++;
+}haha 
+matches8
+/Users/remywang/code-search-bench/metalift/casper/labelled/pheonix/StringMatch.java
+while (i < ((List) words).size())
+{
+  if (((String) key1).equals(((List) words).get(i)))
+    foundKey1 = true;
+  if (((String) key2).equals(((List) words).get(i)))
+    foundKey2 = true;
+  if (((String) key3).equals(((List) words).get(i)))
+    foundKey3 = true;
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/pheonix/Histogram.java
+while (i < ((List) image).size())
+{
+  int r = ((Pixel) ((List) image).get(i)).r;
+  int g = ((Pixel) ((List) image).get(i)).g;
+  int b = ((Pixel) ((List) image).get(i)).b;
+  ((int[]) hR)[r]++;
+  ((int[]) hG)[g]++;
+  ((int[]) hB)[b]++;
+  i += 1;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/pheonix/LinearRegression.java
+while (i < ((List) points).size())
+{
+  SX_ll += ((Point) ((List) points).get(i)).x;
+  SXX_ll += ((Point) ((List) points).get(i)).x * ((Point) ((List) points).get(i)).x;
+  SY_ll += ((Point) ((List) points).get(i)).y;
+  SYY_ll += ((Point) ((List) points).get(i)).y * ((Point) ((List) points).get(i)).y;
+  SXY_ll += ((Point) ((List) points).get(i)).x * ((Point) ((List) points).get(i)).y;
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/pheonix/KMeansJava.java
+while (i < ((Double[][]) a).length)
+{
+  int j = 0;
+  while (j < ((Double[]) ((Double[][]) a)[i]).length)
+  {
+    System.out.print(((String) (" " + ((Double[]) ((Double[][]) a)[i])[j])));
+    j++;
+  }
+  System.out.println();
+  i++;
+}haha 
+while (j < ((Double[]) ((Double[][]) a)[i]).length)
+{
+  System.out.print(((String) (" " + ((Double[]) ((Double[][]) a)[i])[j])));
+  j++;
+}haha 
+while (i < ((Double[][]) points).length)
+{
+  minDist = getSqDist(((Double[]) ((Double[][]) points)[i]), ((Double[]) ((Double[][]) means)[0]));
+  minIdx = 0;
+  j = 1;
+  while (j < ((Double[][]) means).length)
+  {
+    curDist = getSqDist(((Double[]) ((Double[][]) points)[i]), ((Double[]) ((Double[][]) means)[j]));
+    if (((Double) curDist).doubleValue() < ((Double) minDist).doubleValue())
+    {
+      minDist = (Double) curDist;
+      minIdx = j;
+    }
+    j++;
+  }
+  if (((int[]) clusters)[i] != minIdx)
+  {
+    (int[]) clusters[i] = minIdx;
+    modified = true;
+  }
+  i++;
+}haha 
+while (j < ((Double[][]) means).length)
+{
+  curDist = getSqDist(((Double[]) ((Double[][]) points)[i]), ((Double[]) ((Double[][]) means)[j]));
+  if (((Double) curDist).doubleValue() < ((Double) minDist).doubleValue())
+  {
+    minDist = (Double) curDist;
+    minIdx = j;
+  }
+  j++;
+}haha 
+while (ii < ((Double[][]) means).length)
+{
+  Double[] sum = (Double[]) new Double[dim];
+  int groupSize = 0;
+  int jj = 0;
+  while (jj < ((Double[][]) points).length)
+  {
+    if (((int[]) clusters)[jj] == ii)
+    {
+      sum = add(((Double[]) sum), ((Double[]) ((Double[][]) points)[jj]));
+      groupSize++;
+    }
+    jj++;
+  }
+  dim = ((Double[]) ((Double[][]) points)[0]).length;
+  Double[] meansi = (Double[]) ((Double[][]) means)[ii];
+  int kk = 0;
+  while (kk < dim)
+  {
+    if (groupSize != 0)
+    {
+      (Double[]) meansi[kk] = Double.valueOf((((Double) ((Double[]) sum)[kk]).doubleValue() / groupSize));
+    }
+    kk++;
+  }
+  (Double[][]) means[ii] = (Double[]) meansi;
+  ii++;
+}haha 
+while (jj < ((Double[][]) points).length)
+{
+  if (((int[]) clusters)[jj] == ii)
+  {
+    sum = add(((Double[]) sum), ((Double[]) ((Double[][]) points)[jj]));
+    groupSize++;
+  }
+  jj++;
+}haha 
+while (kk < dim)
+{
+  if (groupSize != 0)
+  {
+    (Double[]) meansi[kk] = Double.valueOf((((Double) ((Double[]) sum)[kk]).doubleValue() / groupSize));
+  }
+  kk++;
+}haha 
+while (i < ((Double[]) sum).length)
+{
+  (Double[]) sum[i] = Double.valueOf((((Double) ((Double[]) v1)[i]).doubleValue() + ((Double) ((Double[]) v2)[i]).doubleValue()));
+  i++;
+}haha 
+while (i < ((Double[]) v1).length)
+{
+  dist = Double.valueOf(((((Double) dist).doubleValue() + ((Double) ((Double[]) v1)[i]).doubleValue() - ((Double) ((Double[]) v2)[i]).doubleValue()) * (((Double) ((Double[]) v1)[i]).doubleValue() - ((Double) ((Double[]) v2)[i]).doubleValue())));
+  i++;
+}haha 
+while (i < numPoints)
+{
+  (Double[][]) p[i] = (Double[]) new Double[dim];
+  int j = 0;
+  while (j < dim)
+  {
+    (Double[]) ((Double[][]) p)[i][j] = Double.valueOf(Math.random());
+    j++;
+  }
+  i++;
+}haha 
+matches10
+/Users/remywang/code-search-bench/metalift/casper/labelled/pheonix/WordCount.java
+while (j < ((List) words).size())
+{
+  String word = (String) ((List) words).get(j);
+  Integer prev = (Integer) ((Map) counts).get(word);
+  if ((Integer) prev == null)
+    prev = Integer.valueOf(0);
+  ((Map) counts).put(((String) word), Integer.valueOf((((Integer) prev).intValue() + 1)));
+  j++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/bigλ/WikiPageCount.java
+while (((java.util.Iterator) extfor$iter).hasNext())
+{
+  Record record = (Record) (Record) ((java.util.Iterator) extfor$iter).next();
+  {
+    if (!((Map) result).containsKey(((Record) record).name))
+    {
+      ((Map) result).put(((Record) record).name, Integer.valueOf(0));
+    }
+    ((Map) result).put(((Record) record).name, Integer.valueOf((((Integer) ((Map) result).get(((Record) record).name)).intValue() + ((Record) record).views)));
+  }
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/bigλ/TwitterCounts.java
+while (((java.util.Iterator) extfor$iter$2).hasNext())
+{
+  String tweet = (String) (String) ((java.util.Iterator) extfor$iter$2).next();
+  {
+    {
+      String[] extfor$arr = ((String) tweet).split("\\s+");
+      int extfor$iter$1 = 0;
+      while (extfor$iter$1 < ((String[]) extfor$arr).length)
+      {
+        String word = (String) ((String[]) extfor$arr)[extfor$iter$1];
+        extfor$iter$1 = extfor$iter$1 + 1;
+        {
+          if (((String) word).charAt(0) == '#')
+          {
+            if (!((Map) result).containsKey(word))
+            {
+              ((Map) result).put(((String) word), Integer.valueOf(0));
+            }
+            ((Map) result).put(((String) word), Integer.valueOf((((Integer) ((Map) result).get(word)).intValue() + 1)));
+          }
+        }
+      }
+    }
+  }
+}haha 
+while (extfor$iter$1 < ((String[]) extfor$arr).length)
+{
+  String word = (String) ((String[]) extfor$arr)[extfor$iter$1];
+  extfor$iter$1 = extfor$iter$1 + 1;
+  {
+    if (((String) word).charAt(0) == '#')
+    {
+      if (!((Map) result).containsKey(word))
+      {
+        ((Map) result).put(((String) word), Integer.valueOf(0));
+      }
+      ((Map) result).put(((String) word), Integer.valueOf((((Integer) ((Map) result).get(word)).intValue() + 1)));
+    }
+  }
+}haha 
+matches2
+/Users/remywang/code-search-bench/metalift/casper/labelled/bigλ/ShakespearSentiment.java
+while (((java.util.Iterator) extfor$iter).hasNext())
+{
+  String word = (String) (String) ((java.util.Iterator) extfor$iter).next();
+  {
+    if (((String) word).trim().toLowerCase().equals("love"))
+    {
+      ((Map) result).put("love", Integer.valueOf((((Integer) ((Map) result).get("love")).intValue() + 1)));
+    }
+    else
+      if (((String) word).trim().toLowerCase().equals("hate"))
+      {
+        ((Map) result).put("hate", Integer.valueOf((((Integer) ((Map) result).get("hate")).intValue() + 1)));
+      }
+  }
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/bigλ/DatabaseSelect.java
+while (((java.util.Iterator) extfor$iter).hasNext())
+{
+  Record record = (Record) (Record) ((java.util.Iterator) extfor$iter).next();
+  {
+    if (((String) ((Record) record).columns.get(0)).equals(key))
+    {
+      ((List) result).add(((Record) record));
+    }
+  }
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/bigλ/CyclingSpeed.java
+while (((java.util.Iterator) extfor$iter).hasNext())
+{
+  Record record = (Record) (Record) ((java.util.Iterator) extfor$iter).next();
+  {
+    int speed = (int) Math.ceil(((Record) record).speed);
+    if (!((Map) result).containsKey(Integer.valueOf(speed)))
+    {
+      ((Map) result).put(Integer.valueOf(speed), Integer.valueOf(0));
+    }
+    ((Map) result).put(Integer.valueOf(speed), Integer.valueOf((((Integer) ((Map) result).get(Integer.valueOf(speed))).intValue() + 1)));
+  }
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/bigλ/YelpKids.java
+while (((java.util.Iterator) extfor$iter).hasNext())
+{
+  Record record = (Record) (Record) ((java.util.Iterator) extfor$iter).next();
+  {
+    if (!((Map) result).containsKey(((Record) record).city))
+    {
+      ((Map) result).put(((Record) record).city, Integer.valueOf(0));
+    }
+    if (((Record) record).goodForKids)
+    {
+      ((Map) result).put(((Record) record).city, Integer.valueOf((((Integer) ((Map) result).get(((Record) record).city)).intValue() + 1)));
+    }
+  }
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled/stats/Calculate.java
+while (i < ((double[]) a).length)
+{
+  (double[]) temp[i] = ((double[]) a)[i] * b;
+  i++;
+}haha 
+while (i < ((double[]) a).length)
+{
+  (double[]) temp[i] = ((double[]) a)[i] * ((double[]) b)[i];
+  i++;
+}haha 
+matches2
+/Users/remywang/code-search-bench/metalift/casper/labelled/stats/PlotUtil.java
+while (i < data.length)
+{
+  x[i] = ((double[]) data[i])[0];
+  i++;
+}haha 
+while (i < data.length)
+{
+  y[i] = ((double[]) data[i])[1];
+  i++;
+}haha 
+while (i < ((double[][]) data).length)
+{
+  ((PrintWriter) fileOut).printf("%2.5f %2.5f", ((Object[]) new Object[] {
+                                                                           Double.valueOf(((double[]) ((double[][]) data)[i])[0]),
+                                                                           Double.valueOf(((double[]) ((double[][]) data)[i])[1]),
+                                                                         }));
+  ((PrintWriter) fileOut).println();
+  i++;
+}haha 
+matches3
+/Users/remywang/code-search-bench/metalift/casper/labelled/stats/PlotReader.java
+while (i < ((double[][]) data).length)
+{
+  int j = 0;
+  while (j < ((double[]) ((double[][]) data)[0]).length)
+  {
+    (double[]) ((double[][]) data)[i][j] = (float) IOUtil.skipToDouble(((Scanner) scan));
+    j++;
+  }
+  i++;
+}haha 
+while (i < ((double[][]) data).length)
+{
+  int j = 0;
+  while (j < ((double[]) ((double[][]) data)[0]).length)
+  {
+    (double[]) ((double[][]) data)[i][j] = (float) IOUtil.skipToDouble(((Scanner) scan));
+    j++;
+  }
+  i++;
+}haha 
+while (i < ((double[][]) data).length)
+{
+  int j = 0;
+  while (j < ((double[]) ((double[][]) data)[0]).length)
+  {
+    (double[]) ((double[][]) data)[i][j] = (float) IOUtil.skipToDouble(((Scanner) scan));
+    j++;
+  }
+  i++;
+}haha 
+matches3
+/Users/remywang/code-search-bench/metalift/casper/labelled/stats/StatsUtil.java
+while (i < ((double[]) data).length)
+{
+  sum += ((double[]) data)[i];
+  i++;
+}haha 
+while (i < ((double[][]) data).length)
+{
+  covariance += (((double[]) ((double[][]) data)[i])[0] - xVariance) * (((double[]) ((double[][]) data)[i])[1] - yVariance);
+  i++;
+}haha 
+while (i < ((double[]) x).length)
+{
+  covariance += (((double[]) x)[i] - xVariance) * (((double[]) y)[i] - yVariance);
+  i++;
+}haha 
+while (i < ((double[]) data).length)
+{
+  variance += Math.pow((((double[]) data)[i] - mean), 2);
+  i++;
+}haha 
+while (i < ((double[][]) data).length)
+{
+  (double[]) fit[i] = gradient * ((double[]) ((double[][]) data)[i])[0] + offset;
+  i++;
+}haha 
+while (i < ((double[]) x).length)
+{
+  (double[]) fit[i] = gradient * ((double[]) x)[i] + offset;
+  i++;
+}haha 
+while (i < ((double[][]) data).length)
+{
+  rss += (((double[]) fit)[i] - ((double[]) ((double[][]) data)[i])[1]) * (((double[]) fit)[i] - ((double[]) ((double[][]) data)[i])[1]);
+  i++;
+}haha 
+while (i < ((double[]) y).length)
+{
+  rss += (((double[]) fit)[i] - ((double[]) y)[i]) * (((double[]) fit)[i] - ((double[]) y)[i]);
+  i++;
+}haha 
+while (i < ((double[]) fit).length)
+{
+  ssr += (((double[]) fit)[i] - yMean) * (((double[]) fit)[i] - yMean);
+  i++;
+}haha 
+while (i < ((double[]) y).length)
+{
+  (double[]) residuals[i] = ((double[]) y)[i] - ((double[]) fit)[i];
+  i++;
+}haha 
+while (i < numberOfSamples)
+{
+  (double[]) gaussian[i] = Math.sqrt((1 / period * variance)) * Math.exp((-(i - mean) * (i - mean) / 2 * variance));
+  tempGaussian += ((double[]) gaussian)[i];
+  i++;
+}haha 
+matches11
+/Users/remywang/code-search-bench/metalift/casper/labelled/stats/PlotWriter.java
+while (i < ((double[]) y).length)
+{
+  ((PrintWriter) fileOut).printf("%2.5f %2.5f", ((Object[]) new Object[] {
+                                                                           Double.valueOf(((double[]) x)[i]),
+                                                                           Double.valueOf(((double[]) y)[i]),
+                                                                         }));
+  ((PrintWriter) fileOut).println();
+  i++;
+}haha 
+while (i < ((double[][]) data).length)
+{
+  ((PrintWriter) fileOut).printf("%2.5f %2.5f", ((Object[]) new Object[] {
+                                                                           Double.valueOf(((double[]) ((double[][]) data)[i])[0]),
+                                                                           Double.valueOf(((double[]) ((double[][]) data)[i])[1]),
+                                                                         }));
+  ((PrintWriter) fileOut).println();
+  i++;
+}haha 
+while (i < ((double[]) x).length)
+{
+  ((PrintWriter) fileOut).printf("%2.5f %2.5f %2.5f %2.5f ", ((Object[]) new Object[] {
+                                                                                        Double.valueOf(((double[]) x)[i]),
+                                                                                        Double.valueOf(((double[]) y)[i]),
+                                                                                        Double.valueOf(xError),
+                                                                                        Double.valueOf(((double[]) yError)[i]),
+                                                                                      }));
+  ((PrintWriter) fileOut).println();
+  i++;
+}haha 
+while (i < ((double[]) y).length)
+{
+  ((PrintWriter) fileOut).printf("%2.5f %2.5f %2.5f %2.5f %2.5f", ((Object[]) new Object[] {
+                                                                                             Double.valueOf(((double[]) x)[i]),
+                                                                                             Double.valueOf(((double[]) y)[i]),
+                                                                                             Double.valueOf(((double[]) fit)[i]),
+                                                                                             Double.valueOf(xError),
+                                                                                             Double.valueOf(((double[]) yError)[i]),
+                                                                                           }));
+  ((PrintWriter) fileOut).println();
+  i++;
+}haha 
+while (i < ((double[]) n).length)
+{
+  ((PrintWriter) fileOut).printf("%2.5f ", ((Object[]) new Object[] {
+                                                                      Double.valueOf(((double[]) n)[i]),
+                                                                    }));
+  ((PrintWriter) fileOut).println();
+  i++;
+}haha 
+while (i < ((double[]) y).length)
+{
+  System.out.println(((double[]) amount)[i]);
+  (double[]) calibrate[i] += ((double[]) x)[i] - ((double[]) amount)[i];
+  ((PrintWriter) fileOut).printf("%2.2f %2.2f", ((Object[]) new Object[] {
+                                                                           Double.valueOf(((double[]) calibrate)[i]),
+                                                                           Double.valueOf(((double[]) y)[i]),
+                                                                         }));
+  ((PrintWriter) fileOut).println();
+  i++;
+}haha 
+matches6
