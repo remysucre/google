@@ -44,6 +44,7 @@ p2 = [p| [java| `[ `_ `] |] |]
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog (f . pat)
   where pat res@[java| while ( #i < `_ ) `*( (`_)[#i] `)* |] = Just res
+        pat res@[java| while ( #i < `_ ) `*( ((`_) `_)[#i] = 0.0; `)* |] = Just res
         pat res@[java| while ( #i < `_ ) `*( (`_).get(#i) `)* |] = Just res
         pat res@[java| while (((`_) #i).hasNext()) `*( ((`_) #i).next() `)* |] = Just res
         pat _ = Nothing

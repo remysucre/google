@@ -1,8 +1,7 @@
-/Users/remywang/code-search-bench/metalift/casper/labelled//arith/MaxAbs.java
+/Users/remywang/code-search-bench/metalift/casper/labelled//arith/Sum.java
 while (i < ((List) data).size())
 {
-  int var = ((Integer) ((List) data).get(i)).intValue();
-  maxAbs = Math.max(Math.abs(var), maxAbs);
+  sum += ((Integer) ((List) data).get(i)).intValue();
   i++;
 }haha 
 matches1
@@ -15,10 +14,19 @@ while (i < ((List) data).size())
   i++;
 }haha 
 matches1
-/Users/remywang/code-search-bench/metalift/casper/labelled//arith/Sum.java
+/Users/remywang/code-search-bench/metalift/casper/labelled//arith/MaxAbs.java
 while (i < ((List) data).size())
 {
-  sum += ((Integer) ((List) data).get(i)).intValue();
+  int var = ((Integer) ((List) data).get(i)).intValue();
+  maxAbs = Math.max(Math.abs(var), maxAbs);
+  i++;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled//arith/Max.java
+while (i < ((List) data).size())
+{
+  int var = ((Integer) ((List) data).get(i)).intValue();
+  max = Math.max(var, max);
   i++;
 }haha 
 matches1
@@ -37,11 +45,11 @@ while (i < ((List) data).size())
   i++;
 }haha 
 matches1
-/Users/remywang/code-search-bench/metalift/casper/labelled//arith/Max.java
+/Users/remywang/code-search-bench/metalift/casper/labelled//arith/Min.java
 while (i < ((List) data).size())
 {
   int var = ((Integer) ((List) data).get(i)).intValue();
-  max = Math.max(var, max);
+  min = Math.min(var, min);
   i++;
 }haha 
 matches1
@@ -50,14 +58,6 @@ while (i < ((List) data).size())
 {
   int var = ((Integer) ((List) data).get(i)).intValue();
   max = Math.max(var, max);
-  min = Math.min(var, min);
-  i++;
-}haha 
-matches1
-/Users/remywang/code-search-bench/metalift/casper/labelled//arith/Min.java
-while (i < ((List) data).size())
-{
-  int var = ((Integer) ((List) data).get(i)).intValue();
   min = Math.min(var, min);
   i++;
 }haha 
@@ -107,11 +107,6 @@ while (i < num_rows)
   (int[]) mean[i] = sum / num_cols;
   i++;
 }haha 
-while (j < num_cols)
-{
-  sum += ((Integer) ((Integer[]) ((Integer[][]) matrix)[i])[j]).intValue();
-  j++;
-}haha 
 while (i < num_rows)
 {
   j = i;
@@ -131,25 +126,6 @@ while (i < num_rows)
   }
   i++;
 }haha 
-while (j < num_rows)
-{
-  sum = 0;
-  k = 0;
-  while (k < num_cols)
-  {
-    sum = (sum + ((Integer) ((Integer[]) ((Integer[][]) matrix)[i])[k]).intValue() - ((int[]) mean)[i]) * (((Integer) ((Integer[]) ((Integer[][]) matrix)[j])[k]).intValue() - ((int[]) mean)[j]);
-    k++;
-  }
-  int x = sum / (num_cols - 1);
-  (Integer[]) ((Integer[][]) cov)[i][j] = Integer.valueOf(x);
-  (Integer[]) ((Integer[][]) cov)[i][j] = Integer.valueOf(x);
-  j++;
-}haha 
-while (k < num_cols)
-{
-  sum = (sum + ((Integer) ((Integer[]) ((Integer[][]) matrix)[i])[k]).intValue() - ((int[]) mean)[i]) * (((Integer) ((Integer[]) ((Integer[][]) matrix)[j])[k]).intValue() - ((int[]) mean)[j]);
-  k++;
-}haha 
 matches5
 /Users/remywang/code-search-bench/metalift/casper/labelled//pheonix/StringMatch.java
 while (i < ((List) words).size())
@@ -163,17 +139,6 @@ while (i < ((List) words).size())
   i++;
 }haha 
 matches1
-/Users/remywang/code-search-bench/metalift/casper/labelled//pheonix/LinearRegression.java
-while (i < ((List) points).size())
-{
-  SX_ll += ((Point) ((List) points).get(i)).x;
-  SXX_ll += ((Point) ((List) points).get(i)).x * ((Point) ((List) points).get(i)).x;
-  SY_ll += ((Point) ((List) points).get(i)).y;
-  SYY_ll += ((Point) ((List) points).get(i)).y * ((Point) ((List) points).get(i)).y;
-  SXY_ll += ((Point) ((List) points).get(i)).x * ((Point) ((List) points).get(i)).y;
-  i++;
-}haha 
-matches1
 /Users/remywang/code-search-bench/metalift/casper/labelled//pheonix/Histogram.java
 while (i < ((List) image).size())
 {
@@ -184,6 +149,17 @@ while (i < ((List) image).size())
   ((int[]) hG)[g]++;
   ((int[]) hB)[b]++;
   i += 1;
+}haha 
+matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled//pheonix/LinearRegression.java
+while (i < ((List) points).size())
+{
+  SX_ll += ((Point) ((List) points).get(i)).x;
+  SXX_ll += ((Point) ((List) points).get(i)).x * ((Point) ((List) points).get(i)).x;
+  SY_ll += ((Point) ((List) points).get(i)).y;
+  SYY_ll += ((Point) ((List) points).get(i)).y * ((Point) ((List) points).get(i)).y;
+  SXY_ll += ((Point) ((List) points).get(i)).x * ((Point) ((List) points).get(i)).y;
+  i++;
 }haha 
 matches1
 /Users/remywang/code-search-bench/metalift/casper/labelled//pheonix/KMeansJava.java
@@ -209,16 +185,7 @@ while (i < ((Double[][]) points).length)
   }
   i++;
 }haha 
-while (j < ((Double[][]) means).length)
-{
-  curDist = getSqDist(((Double[]) ((Double[][]) points)[i]), ((Double[]) ((Double[][]) means)[j]));
-  if (((Double) curDist).doubleValue() < ((Double) minDist).doubleValue())
-  {
-    minDist = (Double) curDist;
-    minIdx = j;
-  }
-  j++;
-}haha 
+haha 
 while (ii < ((Double[][]) means).length)
 {
   Double[] sum = (Double[]) new Double[dim];
@@ -246,23 +213,6 @@ while (ii < ((Double[][]) means).length)
   }
   (Double[][]) means[ii] = (Double[]) meansi;
   ii++;
-}haha 
-while (jj < ((Double[][]) points).length)
-{
-  if (((int[]) clusters)[jj] == ii)
-  {
-    sum = add(((Double[]) sum), ((Double[]) ((Double[][]) points)[jj]));
-    groupSize++;
-  }
-  jj++;
-}haha 
-while (kk < dim)
-{
-  if (groupSize != 0)
-  {
-    (Double[]) meansi[kk] = Double.valueOf((((Double) ((Double[]) sum)[kk]).doubleValue() / groupSize));
-  }
-  kk++;
 }haha 
 while (i < ((Double[]) sum).length)
 {
@@ -303,6 +253,19 @@ while (((java.util.Iterator) extfor$iter).hasNext())
   }
 }haha 
 matches1
+/Users/remywang/code-search-bench/metalift/casper/labelled//bigλ/WikiPageCount.java
+while (((java.util.Iterator) extfor$iter).hasNext())
+{
+  Record record = (Record) (Record) ((java.util.Iterator) extfor$iter).next();
+  {
+    if (!((Map) result).containsKey(((Record) record).name))
+    {
+      ((Map) result).put(((Record) record).name, Integer.valueOf(0));
+    }
+    ((Map) result).put(((Record) record).name, Integer.valueOf((((Integer) ((Map) result).get(((Record) record).name)).intValue() + ((Record) record).views)));
+  }
+}haha 
+matches1
 /Users/remywang/code-search-bench/metalift/casper/labelled//bigλ/TwitterCounts.java
 while (((java.util.Iterator) extfor$iter$2).hasNext())
 {
@@ -329,32 +292,20 @@ while (((java.util.Iterator) extfor$iter$2).hasNext())
     }
   }
 }haha 
-while (extfor$iter$1 < ((String[]) extfor$arr).length)
-{
-  String word = (String) ((String[]) extfor$arr)[extfor$iter$1];
-  extfor$iter$1 = extfor$iter$1 + 1;
-  {
-    if (((String) word).charAt(0) == '#')
-    {
-      if (!((Map) result).containsKey(word))
-      {
-        ((Map) result).put(((String) word), Integer.valueOf(0));
-      }
-      ((Map) result).put(((String) word), Integer.valueOf((((Integer) ((Map) result).get(word)).intValue() + 1)));
-    }
-  }
-}haha 
 matches2
-/Users/remywang/code-search-bench/metalift/casper/labelled//bigλ/WikiPageCount.java
+/Users/remywang/code-search-bench/metalift/casper/labelled//bigλ/YelpKids.java
 while (((java.util.Iterator) extfor$iter).hasNext())
 {
   Record record = (Record) (Record) ((java.util.Iterator) extfor$iter).next();
   {
-    if (!((Map) result).containsKey(((Record) record).name))
+    if (!((Map) result).containsKey(((Record) record).city))
     {
-      ((Map) result).put(((Record) record).name, Integer.valueOf(0));
+      ((Map) result).put(((Record) record).city, Integer.valueOf(0));
     }
-    ((Map) result).put(((Record) record).name, Integer.valueOf((((Integer) ((Map) result).get(((Record) record).name)).intValue() + ((Record) record).views)));
+    if (((Record) record).goodForKids)
+    {
+      ((Map) result).put(((Record) record).city, Integer.valueOf((((Integer) ((Map) result).get(((Record) record).city)).intValue() + 1)));
+    }
   }
 }haha 
 matches1
@@ -384,22 +335,6 @@ while (((java.util.Iterator) extfor$iter).hasNext())
   }
 }haha 
 matches1
-/Users/remywang/code-search-bench/metalift/casper/labelled//bigλ/YelpKids.java
-while (((java.util.Iterator) extfor$iter).hasNext())
-{
-  Record record = (Record) (Record) ((java.util.Iterator) extfor$iter).next();
-  {
-    if (!((Map) result).containsKey(((Record) record).city))
-    {
-      ((Map) result).put(((Record) record).city, Integer.valueOf(0));
-    }
-    if (((Record) record).goodForKids)
-    {
-      ((Map) result).put(((Record) record).city, Integer.valueOf((((Integer) ((Map) result).get(((Record) record).city)).intValue() + 1)));
-    }
-  }
-}haha 
-matches1
 /Users/remywang/code-search-bench/metalift/casper/labelled//stats/Calculate.java
 while (i < ((double[]) a).length)
 {
@@ -412,50 +347,6 @@ while (i < ((double[]) a).length)
   i++;
 }haha 
 matches2
-/Users/remywang/code-search-bench/metalift/casper/labelled//stats/PlotUtil.java
-while (i < data.length)
-{
-  x[i] = ((double[]) data[i])[0];
-  i++;
-}haha 
-while (i < data.length)
-{
-  y[i] = ((double[]) data[i])[1];
-  i++;
-}haha 
-matches2
-/Users/remywang/code-search-bench/metalift/casper/labelled//stats/PlotReader.java
-while (i < ((double[][]) data).length)
-{
-  int j = 0;
-  while (j < ((double[]) ((double[][]) data)[0]).length)
-  {
-    (double[]) ((double[][]) data)[i][j] = (float) IOUtil.skipToDouble(((Scanner) scan));
-    j++;
-  }
-  i++;
-}haha 
-while (i < ((double[][]) data).length)
-{
-  int j = 0;
-  while (j < ((double[]) ((double[][]) data)[0]).length)
-  {
-    (double[]) ((double[][]) data)[i][j] = (float) IOUtil.skipToDouble(((Scanner) scan));
-    j++;
-  }
-  i++;
-}haha 
-while (i < ((double[][]) data).length)
-{
-  int j = 0;
-  while (j < ((double[]) ((double[][]) data)[0]).length)
-  {
-    (double[]) ((double[][]) data)[i][j] = (float) IOUtil.skipToDouble(((Scanner) scan));
-    j++;
-  }
-  i++;
-}haha 
-matches3
 /Users/remywang/code-search-bench/metalift/casper/labelled//stats/StatsUtil.java
 while (i < ((double[]) data).length)
 {
@@ -513,4 +404,17 @@ while (i < numberOfSamples)
   tempGaussian += ((double[]) gaussian)[i];
   i++;
 }haha 
-matches11
+while (i < ((double[]) convolved).length)
+{
+  (double[]) convolved[i] = 0.0;
+  int j = i;
+  int k = 0;
+  while ((j < i) + numberOfSamples)
+  {
+    (double[]) convolved[i] += ((int[]) data)[j] * ((double[]) gaussian)[k];
+    j++;
+    k++;
+  }
+  i++;
+}haha 
+matches12
