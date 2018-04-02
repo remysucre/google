@@ -5,6 +5,7 @@
 module Lib where
 
 import JQQ
+import Debug.Trace
 import P1
 import Language.Java.Syntax
 import Data.Generics.Uniplate.Data
@@ -42,9 +43,8 @@ p2 = [p| [java| `[ `_ `] |] |]
 
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog pat
-  where pat [java| 
-while ( `_ ) `*( (`x)[`i] `)*
-|] = True
+  where pat [java| while ( #i < `_ ) `*( (`x)[#i] `)* |] = True
+        pat [java| while ( #i < `_ ) `*( (`_).get(#i) `)* |] = True
         pat _ = False
 
 -- /////////////////////

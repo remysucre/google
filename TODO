@@ -1,6 +1,9 @@
 metalift patterns w/o analysis
 initializations
 
+hasNext
+get
+
 analysis pattern
 run checker
 
