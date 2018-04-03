@@ -87,6 +87,12 @@ antiRefType _ = Nothing
 antiExpPat :: Language.Java.Syntax.Exp -> Maybe (Q Language.Haskell.TH.Pat)
 antiExpPat (MetaExp "_") = Just $ wildP
 antiExpPat (MetaExp s) = Just $ varP (mkName s)
+antiExpPat (EOr p q) = Just (viewP (lamCaseE [c1, c2, c3]) [p|True|])
+  where c1 = match p_ ( normalB [| True |]) []
+        c2 = match q_ ( normalB [| True |]) []
+        c3 = match wildP ( normalB [| False |]) []
+        p_ = dataToPatQ exts p
+        q_ = dataToPatQ exts q
 antiExpPat (ENot p) = Just (viewP (lamCaseE [c1, c2]) [p|True|])
   where c1 = match p_ ( normalB [e| False |]) []
         c2 = match wildP ( normalB [e| True |]) []

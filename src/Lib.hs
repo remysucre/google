@@ -43,7 +43,9 @@ p2 = [p| [java| `[ `_ `] |] |]
 
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog (f . pat)
-  where pat res@[java| while ( #i < `_ ) `*( #i++ `)* |] = Just res
+  where pat res@[java| while ( #i < `_ ) `*( #i++ `| #i += 1  `)* |] = Just res
+        -- pat res@[java| while ( #i < `_ ) `*( (`_)[#i] `)* |] = Just res
+        -- pat res@[java| while ( #i < `_ ) `*( (`_).get(#i) `)* |] = Just res
         pat res@[java| while (((`_) #i).hasNext()) `*( ((`_) #i).next() `)* |] = Just res
         pat _ = Nothing
         f (Just [java| `*( (`_).println() `)* |]) = False
@@ -51,6 +53,7 @@ testj prog = grepj prog (f . pat)
         f (Just [java| `*( printf(`_, `_) `)* |]) = False
         f (Just [java| `*( rand() `)* |]) = False
         f (Just [java| `*( Math.random() `)* |]) = False
+        f (Just [java| `*( IOUtil.#_(`_) `)* |]) = False
         f (Just _) = True
         f Nothing = False
 
