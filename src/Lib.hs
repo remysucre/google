@@ -22,8 +22,11 @@ grepe prog pctnt = [ a | a <- universeBi prog, pctnt a]
 greps :: CompilationUnit -> (Stmt -> Bool) -> [Stmt]
 greps prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
-grepj :: CompilationUnit -> (Stmt -> Bool) -> [Stmt]
-grepj prog pctnt = [ a | a <- universeBi prog, pctnt a]
+mark :: Stmt
+mark = Labeled (Ident "slothmark") Empty
+
+grepj :: CompilationUnit ->  (Stmt -> Bool) -> (CompilationUnit -> Bool) -> [Stmt]
+grepj prog pctnt pctxt = [ a | (a, b) <- contextsBi prog, pctnt a && pctxt (b mark)]
 
 --------------------
 -- patterns here ---
@@ -42,10 +45,8 @@ p2 :: TH.Q TH.Pat
 p2 = [p| [java| `[ `_ `] |] |]
 
 testj :: CompilationUnit -> [Stmt]
-testj prog = grepj prog (f . pat)
+testj prog = grepj prog (f . pat) ctxt
   where pat res@[java| while ( #i < `_ ) `*( #i++ `| #i += 1  `)* |] = Just res
-        -- pat res@[java| while ( #i < `_ ) `*( (`_)[#i] `)* |] = Just res
-        -- pat res@[java| while ( #i < `_ ) `*( (`_).get(#i) `)* |] = Just res
         pat res@[java| while (((`_) #i).hasNext()) `*( ((`_) #i).next() `)* |] = Just res
         pat _ = Nothing
         f (Just [java| `*( (`_).println() `)* |]) = False
@@ -56,6 +57,9 @@ testj prog = grepj prog (f . pat)
         f (Just [java| `*( IOUtil.#_(`_) `)* |]) = False
         f (Just _) = True
         f Nothing = False
+        ctxt p = case [undefined | [java| while (`_) `*( slothmark:; `)* |] <- universeBi p]
+                   of [] -> True
+                      _ -> False
 
 -- /////////////////////
 -- //     Patch 1     //
