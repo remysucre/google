@@ -7,6 +7,7 @@ module Lib where
 import JQQ
 import Debug.Trace
 import P1
+import Data.List
 import Language.Java.Syntax
 import Data.Generics.Uniplate.Data
 import qualified Language.Haskell.TH as TH
@@ -46,21 +47,25 @@ p2 = [p| [java| `[ `_ `] |] |]
 
 testj :: CompilationUnit -> [MethodBody]
 testj prog = grepj prog pat ctxt
-  where pat b = hasCol b && (hasHOF b || hasLoop b)
-        hasLoop b = not $ null [ s::Stmt | s <- universeBi b, access s && not (mutates s)]
-        hasHOF b = not $ null [ s::Stmt | s <- universeBi b, access s && not (mutates s)]
+  where pat b = hasCol b && noUcf b && ({-hasHOF b ||-} hasLoop b) && (not $ labeled b)
+        hasLoop b = not $ null [ s | s@[java| while ( `_ ) `_ |] <- universeBi b, mutates s ]
+        hasHOF b = not $ null [ s::Stmt | s <- universeBi b, access s ]
+        mutates s = (null [ m | MethodCall m _ <- universeBi s, bad m ])
         access s = (not $ null [ m | MethodCall m _ <- universeBi s, good m ])
                    && (null [ m | MethodCall m _ <- universeBi s, bad m ])
-        mutates _ = False
         good (Name m) = (elem (Ident "get") m
                            || elem (Ident "size") m)
-        bad (Name m) = elem (Ident "set") m
-                       || elem (Ident "remove") m
-                       || elem (Ident "save") m
-        hasCol b = null [ c | c <- universeBi b, col c ]
+        bad (Name m) = any (calls "set")  m
+                       || any (calls "remove") m
+                       || any (calls "save") m
+        calls m (Ident i) = m `isPrefixOf` i
+        calls _ _ = False
+        hasCol b = not $ null [ c | c <- universeBi b, col c ]
         col (Ident i) = i == "Collection" || i == "Set" || i == "List"
         col _ = False
+        noUcf s = null [ undefined | Try _ _ _ <- universeBi s]
         ctxt _ = True
+        labeled b =  not $ null [ undefined | Labeled (Ident l) _ <- universeBi b, "labeled" `isPrefixOf` l]
         -- pat res@[java| while ( #i < `_ ) `*( #i++ `| #i += 1  `)* |] = Just res
         -- pat res@[java| while (((`_) #i).hasNext()) `*( ((`_) #i).next() `)* |] = Just res
         -- pat _ = Nothing

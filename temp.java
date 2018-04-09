@@ -1,3 +1,15 @@
+/Users/remywang/metalift/txl/qbs/allbench//GuidanceService.java
+{
+  java.util.Set<wilos.model.spem2.activity.Activity> tmp = new java.util.HashSet<wilos.model.spem2.activity.Activity>();
+  this.guidanceDao.getSessionFactory().getCurrentSession().saveOrUpdate(_guidance);
+  java.util.Iterator extfor$iter = _guidance.getActivities().iterator();
+  while (extfor$iter.hasNext())
+  {
+    wilos.model.spem2.activity.Activity act = (wilos.model.spem2.activity.Activity) extfor$iter.next();
+    tmp.add(act);
+  }
+  return tmp;
+}haha 
 matches1
 /Users/remywang/metalift/txl/qbs/allbench//ConcreteRoleDescriptorService.java
 {
@@ -421,6 +433,7 @@ matches3
   }
 }haha 
 matches3
+/Users/remywang/metalift/txl/qbs/allbench//NotificationServiceImpl.java
 {
   if (logger.isDebugEnabled())
   {
@@ -433,7 +446,7 @@ matches3
     ((org.itracker.model.IssueActivity) iter.next()).setNotificationSent(notificationSent);
   }
 }haha 
-matches2
+matches1
 /Users/remywang/metalift/txl/qbs/allbench//ProcessBean.java
 {
   java.util.List<javax.faces.model.SelectItem> processesList = new java.util.ArrayList<javax.faces.model.SelectItem>();
@@ -448,41 +461,6 @@ matches2
   return processesList;
 }haha 
 matches1
-/Users/remywang/metalift/txl/qbs/allbench//ProjectService.java
-{
-  java.util.Set<wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement> tmp = new java.util.HashSet<wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement>();
-  this.getProjectDao().getSessionFactory().getCurrentSession().saveOrUpdate(_project);
-  this.getProjectDao().getSessionFactory().getCurrentSession().refresh(_project);
-  java.util.Iterator extfor$iter = _project.getConcreteBreakdownElements().iterator();
-  while (extfor$iter.hasNext())
-  {
-    wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-    tmp.add(element);
-  }
-  return tmp;
-}haha 
-{
-  java.util.Set<wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor> tmp = new java.util.HashSet<wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor>();
-  this.activityDao.getSessionFactory().getCurrentSession().saveOrUpdate(_cact);
-  java.util.Iterator extfor$iter = _cact.getConcreteBreakdownElements().iterator();
-  while (extfor$iter.hasNext())
-  {
-    wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-    if (element instanceof wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor)
-    {
-      wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor cwpd = (wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor) element;
-      tmp.add(cwpd);
-    }
-    else
-      if (!(element instanceof wilos.model.misc.concretetask.ConcreteTaskDescriptor) && !(element instanceof wilos.model.misc.concreterole.ConcreteRoleDescriptor) && !(element instanceof wilos.model.misc.concretemilestone.ConcreteMilestone))
-      {
-        wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) element;
-        tmp.addAll(this.getConcreteWorkProductDescriptorsFromProject(cact));
-      }
-  }
-  return tmp;
-}haha 
-matches2
 /Users/remywang/metalift/txl/qbs/allbench//ActivityService.java
 {
   int nbConcreteActivitiesSisters = _nbExistingConcreteActivitiesChildren;
@@ -656,6 +634,41 @@ matches2
   return tmp;
 }haha 
 matches5
+/Users/remywang/metalift/txl/qbs/allbench//ProjectService.java
+{
+  java.util.Set<wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement> tmp = new java.util.HashSet<wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement>();
+  this.getProjectDao().getSessionFactory().getCurrentSession().saveOrUpdate(_project);
+  this.getProjectDao().getSessionFactory().getCurrentSession().refresh(_project);
+  java.util.Iterator extfor$iter = _project.getConcreteBreakdownElements().iterator();
+  while (extfor$iter.hasNext())
+  {
+    wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
+    tmp.add(element);
+  }
+  return tmp;
+}haha 
+{
+  java.util.Set<wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor> tmp = new java.util.HashSet<wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor>();
+  this.activityDao.getSessionFactory().getCurrentSession().saveOrUpdate(_cact);
+  java.util.Iterator extfor$iter = _cact.getConcreteBreakdownElements().iterator();
+  while (extfor$iter.hasNext())
+  {
+    wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
+    if (element instanceof wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor)
+    {
+      wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor cwpd = (wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor) element;
+      tmp.add(cwpd);
+    }
+    else
+      if (!(element instanceof wilos.model.misc.concretetask.ConcreteTaskDescriptor) && !(element instanceof wilos.model.misc.concreterole.ConcreteRoleDescriptor) && !(element instanceof wilos.model.misc.concretemilestone.ConcreteMilestone))
+      {
+        wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) element;
+        tmp.addAll(this.getConcreteWorkProductDescriptorsFromProject(cact));
+      }
+  }
+  return tmp;
+}haha 
+matches2
 /Users/remywang/metalift/txl/qbs/allbench//ConcreteActivityDao.java
 {
   java.util.List<wilos.model.misc.concreteactivity.ConcreteActivity> concreteActivities = new java.util.ArrayList<wilos.model.misc.concreteactivity.ConcreteActivity>();
@@ -668,27 +681,7 @@ matches5
   }
   return concreteActivities;
 }haha 
-{
-  java.util.List concreteactvities = this.getHibernateTemplate().find("from ConcreteActivity a where a.id=?", _id);
-  return concreteactvities.size() > 0;
-}haha 
-{
-  java.util.List concreteactvities = this.getHibernateTemplate().find("from ConcreteActivity a where a.prefix=?", _prefix);
-  if (concreteactvities.size() > 0)
-    return (wilos.model.misc.concreteactivity.ConcreteActivity) concreteactvities.get(0);
-  else
-    return null;
-}haha 
-{
-  if (!_name.equals(""))
-  {
-    java.util.List activities = this.getHibernateTemplate().find("from Activity a where a.name=?", _name);
-    if (activities.size() > 0)
-      return (wilos.model.misc.concreteactivity.ConcreteActivity) activities.get(0);
-  }
-  return null;
-}haha 
-matches4
+matches1
 /Users/remywang/metalift/txl/qbs/allbench//ConcreteWorkProductDescriptorService.java
 {
   _concreteWorkProductDescriptor = this.getConcreteWorkProductDescriptor(_concreteWorkProductDescriptor.getId());
@@ -812,6 +805,7 @@ matches4
   return afficher;
 }haha 
 matches3
+/Users/remywang/metalift/txl/qbs/allbench//UserServiceImpl.java
 {
   boolean hasChanges = false;
   java.util.TreeSet<org.itracker.model.Permission> pSet = new java.util.TreeSet<org.itracker.model.Permission>(org.itracker.model.Permission.PERMISSION_PROPERTIES_COMPARATOR);
@@ -866,8 +860,6 @@ matches3
   }
   return hasChanges;
 }haha 
-haha 
-haha 
 {
   java.util.HashSet<org.itracker.model.User> users = new java.util.HashSet<org.itracker.model.User>();
   java.util.List<org.itracker.model.User> editUsers = getUsersWithProjectPermission(projectId, org.itracker.services.util.UserUtilities.PERMISSION_EDIT, true);
@@ -919,7 +911,7 @@ haha
   }
   return userList;
 }haha 
-matches5
+matches2
 /Users/remywang/metalift/txl/qbs/allbench//ParticipantBean.java
 {
   this.concreteRoleDescriptorsMap = new java.util.HashMap<java.lang.String, java.lang.Boolean>();
@@ -983,33 +975,6 @@ matches1
 matches1
 /Users/remywang/metalift/txl/qbs/allbench//IssueServiceImpl.java
 {
-  java.util.List<org.itracker.model.IssueField> issueFields = issue.getFields();
-  if (fields.size() > 0)
-  {
-    int i = 0;
-    while (i < fields.size())
-    {
-      org.itracker.model.IssueField field = fields.get(i);
-      if (issueFields.contains(field))
-      {
-        issueFields.remove(field);
-      }
-      org.itracker.model.CustomField customField = getCustomFieldDAO().findByPrimaryKey(fields.get(i).getCustomField().getId());
-      field.setCustomField(customField);
-      field.setIssue(issue);
-      issueFields.add(field);
-      i++;
-    }
-  }
-  issue.setFields(issueFields);
-  if (save)
-  {
-    logger.debug("setIssueFields: save was true");
-    getIssueDAO().saveOrUpdate(issue);
-  }
-  return true;
-}haha 
-{
   org.itracker.model.Issue issue = getIssueDAO().findByPrimaryKey(issueId);
   java.util.List<org.itracker.model.Component> components = new java.util.ArrayList<org.itracker.model.Component>(componentIds.size());
   org.itracker.model.User user = userDAO.findByPrimaryKey(userId);
@@ -1047,14 +1012,7 @@ matches1
   }
   return java.util.Arrays.asList(activityArray);
 }haha 
-{
-  int i = 0;
-  org.itracker.model.Issue issue = getIssueDAO().findByPrimaryKey(issueId);
-  java.util.Collection<org.itracker.model.IssueAttachment> attachments = issue.getAttachments();
-  i = attachments.size();
-  return i;
-}haha 
-matches5
+matches3
 /Users/remywang/metalift/txl/qbs/allbench//ConcreteWorkBreakdownElementService.java
 {
   this.projectDao.getSessionFactory().getCurrentSession().saveOrUpdate(_project);
