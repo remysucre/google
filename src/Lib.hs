@@ -22,10 +22,10 @@ grepe prog pctnt = [ a | a <- universeBi prog, pctnt a]
 greps :: CompilationUnit -> (Stmt -> Bool) -> [Stmt]
 greps prog pctnt = [ a | a <- universeBi prog, pctnt a]
 
-mark :: Stmt
-mark = Labeled (Ident "slothmark") Empty
+mark :: MethodBody
+mark = MethodBody . Just $ Block [BlockStmt $ Labeled (Ident "slothmark") Empty]
 
-grepj :: CompilationUnit ->  (Stmt -> Bool) -> (CompilationUnit -> Bool) -> [Stmt]
+grepj :: CompilationUnit ->  (MethodBody -> Bool) -> (CompilationUnit -> Bool) -> [MethodBody]
 grepj prog pctnt pctxt = [ a | (a, b) <- contextsBi prog, pctnt a && pctxt (b mark)]
 
 --------------------
@@ -44,22 +44,37 @@ if (this.#x != null) {
 p2 :: TH.Q TH.Pat
 p2 = [p| [java| `[ `_ `] |] |]
 
-testj :: CompilationUnit -> [Stmt]
-testj prog = grepj prog (f . pat) ctxt
-  where pat res@[java| while ( #i < `_ ) `*( #i++ `| #i += 1  `)* |] = Just res
-        pat res@[java| while (((`_) #i).hasNext()) `*( ((`_) #i).next() `)* |] = Just res
-        pat _ = Nothing
-        f (Just [java| `*( (`_).println() `)* |]) = False
-        f (Just [java| `*( System.out.#_(`_) `)* |]) = False
-        f (Just [java| `*( printf(`_, `_) `)* |]) = False
-        f (Just [java| `*( rand() `)* |]) = False
-        f (Just [java| `*( Math.random() `)* |]) = False
-        f (Just [java| `*( IOUtil.#_(`_) `)* |]) = False
-        f (Just _) = True
-        f Nothing = False
-        ctxt p = case [undefined | [java| while (`_) `*( slothmark:; `)* |] <- universeBi p]
-                   of [] -> True
-                      _ -> False
+testj :: CompilationUnit -> [MethodBody]
+testj prog = grepj prog pat ctxt
+  where pat b = hasCol b && (hasHOF b || hasLoop b)
+        hasLoop b = not $ null [ s::Stmt | s <- universeBi b, access s && not (mutates s)]
+        hasHOF b = not $ null [ s::Stmt | s <- universeBi b, access s && not (mutates s)]
+        access s = (not $ null [ m | MethodCall m _ <- universeBi s, good m ])
+                   && (null [ m | MethodCall m _ <- universeBi s, bad m ])
+        mutates _ = False
+        good (Name m) = (elem (Ident "get") m
+                           || elem (Ident "size") m)
+        bad (Name m) = elem (Ident "set") m
+                       || elem (Ident "remove") m
+                       || elem (Ident "save") m
+        hasCol b = null [ c | c <- universeBi b, col c ]
+        col (Ident i) = i == "Collection" || i == "Set" || i == "List"
+        col _ = False
+        ctxt _ = True
+        -- pat res@[java| while ( #i < `_ ) `*( #i++ `| #i += 1  `)* |] = Just res
+        -- pat res@[java| while (((`_) #i).hasNext()) `*( ((`_) #i).next() `)* |] = Just res
+        -- pat _ = Nothing
+        -- f (Just [java| `*( (`_).println() `)* |]) = False
+        -- f (Just [java| `*( System.out.#_(`_) `)* |]) = False
+        -- f (Just [java| `*( printf(`_, `_) `)* |]) = False
+        -- f (Just [java| `*( rand() `)* |]) = False
+        -- f (Just [java| `*( Math.random() `)* |]) = False
+        -- f (Just [java| `*( IOUtil.#_(`_) `)* |]) = False
+        -- f (Just _) = True
+        -- f Nothing = False
+        -- ctxt p = case [undefined | [java| while (`_) `*( slothmark:; `)* |] <- universeBi p]
+        --            of [] -> True
+        --               _ -> False
 
 -- /////////////////////
 -- //     Patch 1     //

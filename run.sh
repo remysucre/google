@@ -8,7 +8,7 @@ IFS=$(echo -en "\n\b")
 N=4
 for j in $( find $1 -name *.java ); do
   ((i=i%N)); ((i++==0)) && wait
-  stack exec joogle-exe "$j" &
+  stack exec joogle-exe "$j" | grep haha &
 done
 
 IFS=$SAVEIFS
