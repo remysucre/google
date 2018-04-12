@@ -29,6 +29,10 @@ markb = MethodBody . Just $ Block [BlockStmt $ Labeled (Ident "slothmark") Empty
 mark :: Stmt
 mark = Labeled (Ident "slothmark") Empty
 
+
+grepm :: CompilationUnit ->  (MethodBody -> Bool) -> (CompilationUnit -> Bool) -> [MethodBody]
+grepm prog pctnt pctxt = [ a | (a, b) <- contextsBi prog, pctnt a && pctxt (b markb)]
+
 grepj :: CompilationUnit ->  (Stmt -> Bool) -> (CompilationUnit -> Bool) -> [Stmt]
 grepj prog pctnt pctxt = [ a | (a, b) <- contextsBi prog, pctnt a && pctxt (b mark)]
 
@@ -48,16 +52,26 @@ if (this.#x != null) {
 p2 :: TH.Q TH.Pat
 p2 = [p| [java| `[ `_ `] |] |]
 
+testm :: CompilationUnit -> [MethodBody]
+testm prog = grepm prog pat ctxt
+  where pat (MethodBody b) = not $ labeled b
+        labeled p = not $ null [ undefined | Labeled (Ident l) _ <- universeBi p, "labeled" `isPrefixOf` l]
+        ctxt _ = True
+
 testj :: CompilationUnit -> [Stmt]
 testj prog = grepj prog pat ctxt
   where pat [java| while (`_) `b |] = noInstance b && noMutate b
         pat _ = False
-        noMutate b = null [ undefined | MethodCall (Name m) _ <- universeBi b, mutates m ]
-        mutates m = any (calls "set") m
-        calls s (Ident i) = s `isPrefixOf` i
-        calls _ _ = False
+        noMutate b = null [ m :: MethodInvocation | m <- universeBi b, mutates m ]
+        mutates m = not $ null [ undefined | Ident i <- universeBi m , "set" `isPrefixOf` i
+                                                                       || "remove"`isPrefixOf` i
+                                                                       || "save" `isPrefixOf` i ]
         noInstance b = null [ undefined | InstanceOf _ _ <- universeBi b ]
-        ctxt p = null [ undefined | Labeled (Ident l) s <- universeBi p, marked s && "labeled" `isPrefixOf` l]
+        ctxt p = hasCol p && (not $ labeled p)
+        hasCol p = not $ null [ m :: MethodBody | m <- universeBi p, marked m && collects m && nonests m]
+        nonests m = null [l | l@[java| while (`_) `s|] <- universeBi m, marked s]
+        collects m = not $ null [ i | Ident i <- universeBi m, any (== i) ["Collection", "List", "Set"] ]
+        labeled p = not $ null [ undefined | Labeled (Ident l) s <- universeBi p, marked s && "labeled" `isPrefixOf` l]
         marked s = not $ null [ undefined | Labeled (Ident "slothmark") Empty <- universeBi s ]
 
 -- /////////////////////

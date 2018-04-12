@@ -1,34 +1,8 @@
 /Users/remywang/metalift/txl/qbs/allbench//GuidanceService.java
 while (extfor$iter.hasNext())
 {
-  wilos.model.spem2.task.TaskDefinition td = (wilos.model.spem2.task.TaskDefinition) extfor$iter.next();
-  tmp.add(td);
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.spem2.role.RoleDefinition td = (wilos.model.spem2.role.RoleDefinition) extfor$iter.next();
-  tmp.add(td);
-}haha 
-while (extfor$iter.hasNext())
-{
   wilos.model.spem2.activity.Activity act = (wilos.model.spem2.activity.Activity) extfor$iter.next();
   tmp.add(act);
-}haha 
-matches3
-/Users/remywang/metalift/txl/qbs/allbench//MoveIssueFormAction.java
-while (i < projects.size())
-{
-  if (projects.get(i).getId() != null && !projects.get(i).equals(issue.getProject()))
-  {
-    if (org.itracker.services.util.UserUtilities.hasPermission(userPermissions, projects.get(i).getId(), new int[] {
-                                                                                                                     org.itracker.services.util.UserUtilities.PERMISSION_EDIT,
-                                                                                                                     org.itracker.services.util.UserUtilities.PERMISSION_CREATE,
-                                                                                                                   }))
-    {
-      availableProjects.add(projects.get(i));
-    }
-  }
-  i++;
 }haha 
 matches1
 /Users/remywang/metalift/txl/qbs/allbench//ConcreteRoleDescriptorService.java
@@ -37,26 +11,20 @@ while (extfor$iter.hasNext())
   wilos.model.misc.concretetask.ConcreteTaskDescriptor concreteTaskDescriptor = (wilos.model.misc.concretetask.ConcreteTaskDescriptor) extfor$iter.next();
   concreteTaskDescriptors.add(concreteTaskDescriptor);
 }haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concreteactivity.ConcreteActivity ca = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
-  if (ca.getConcreteBreakdownElements().contains(crd))
-  {
-    listToReturn.add(ca);
-  }
-}haha 
-matches2
+matches1
 /Users/remywang/metalift/txl/qbs/allbench//IterationService.java
 while (extfor$iter.hasNext())
 {
   wilos.model.misc.concreteiteration.ConcreteIteration bde = (wilos.model.misc.concreteiteration.ConcreteIteration) extfor$iter.next();
   tmp.add(bde);
 }haha 
-while (extfor$iter.hasNext())
+while (extfor$iter$1.hasNext())
 {
-  wilos.model.misc.concreteiteration.ConcreteIteration cit = (wilos.model.misc.concreteiteration.ConcreteIteration) extfor$iter.next();
-  if (cit.getProject().getId().equals(_project.getId()))
-    tmp.add(cit);
+  wilos.model.misc.concreteiteration.ConcreteIteration tmp = (wilos.model.misc.concreteiteration.ConcreteIteration) extfor$iter$1.next();
+  if (lastConcreteIteration == null || tmp.getInstanciationOrder() > lastConcreteIteration.getInstanciationOrder())
+  {
+    lastConcreteIteration = tmp;
+  }
 }haha 
 matches2
 /Users/remywang/metalift/txl/qbs/allbench//PhaseService.java
@@ -65,26 +33,16 @@ while (extfor$iter.hasNext())
   wilos.model.misc.concretephase.ConcretePhase bde = (wilos.model.misc.concretephase.ConcretePhase) extfor$iter.next();
   tmp.add(bde);
 }haha 
-while (extfor$iter.hasNext())
+while (extfor$iter$1.hasNext())
 {
-  wilos.model.misc.concretephase.ConcretePhase cph = (wilos.model.misc.concretephase.ConcretePhase) extfor$iter.next();
-  if (cph.getProject().getId().equals(_project.getId()))
-    tmp.add(cph);
+  wilos.model.misc.concretephase.ConcretePhase tmp = (wilos.model.misc.concretephase.ConcretePhase) extfor$iter$1.next();
+  if (lastConcretePhase == null || tmp.getInstanciationOrder() > lastConcretePhase.getInstanciationOrder())
+  {
+    lastConcretePhase = tmp;
+  }
 }haha 
 matches2
 /Users/remywang/metalift/txl/qbs/allbench//EditProjectFormActionUtil.java
-while (i < activeUsers.size())
-{
-  skip_0 = false;
-  if (!skip_0)
-    if (owners.contains(activeUsers.get(i)))
-    {
-      skip_0 = true;
-    }
-  if (!skip_0)
-    users.add(activeUsers.get(i));
-  i++;
-}haha 
 while (fieldsIt.hasNext())
 {
   ci = (org.itracker.model.CustomField) fieldsIt.next();
@@ -95,7 +53,7 @@ while (it.hasNext())
   org.itracker.web.ptos.ProjectScriptPTO projectScript = new org.itracker.web.ptos.ProjectScriptPTO(it.next(), locale);
   scriptPTOs.add(projectScript);
 }haha 
-matches3
+matches2
 /Users/remywang/metalift/txl/qbs/allbench//WorkProductSExpTableBean.java
 while (extfor$iter.hasNext())
 {
@@ -129,94 +87,10 @@ while (extfor$iter.hasNext())
 }haha 
 while (extfor$iter.hasNext())
 {
-  java.util.HashMap<java.lang.String, java.lang.Object> hashMap = (java.util.HashMap<java.lang.String, java.lang.Object>) extfor$iter.next();
-  if (hashMap.get("id").equals(workProductId))
-  {
-    if (hashMap.get("nodeType").equals("node"))
-    {
-      hashMap.put("expansionImage", EXPAND_TABLE_ARROW);
-      hashMap.put("isDisabled", true);
-      index = this.expTableContentWorkProduct.indexOf(hashMap);
-      this.expTableContentWorkProduct.addAll((index + 1), this.projectService.getDifferentPathsOfWorkProductDescriptorInProcess(process, workProductName));
-      return;
-    }
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
   wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
   if (!cact.getState().equals(wilos.utils.Constantes.State.FINISHED))
   {
     activityList.add(new javax.faces.model.SelectItem(cact.getId(), cact.getConcreteName()));
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
-  java.util.HashMap hm = (java.util.HashMap) extfor$iter.next();
-  if (!hm.get("in").equals(hm.get("flag_in")))
-  {
-    inputConcreteTasksIDs.add(((java.lang.String) hm.get("ID")));
-  }
-  if (!hm.get("out").equals(hm.get("flag_out")))
-  {
-    outputConcreteTasksIDs.add(((java.lang.String) hm.get("ID")));
-  }
-  if (!hm.get("inOptionnal").equals(hm.get("flag_inOptionnal")))
-  {
-    inputOptionnalConcreteTasksIDs.add(((java.lang.String) hm.get("ID")));
-  }
-}haha 
-matches4
-/Users/remywang/metalift/txl/qbs/allbench//RoleService.java
-while (i < user.size())
-{
-  int a = 0;
-  while (a < role.size())
-  {
-    if (user.get(i).getRole_id().equalsIgnoreCase(role.get(a).getRole_id()))
-    {
-      user.get(i).setRole_name(role.get(a).getName());
-      wilos.model.misc.wilosuser.WilosUser userok = user.get(i);
-      listUser.add(userok);
-    }
-    a++;
-  }
-  i++;
-}haha 
-while (a < role.size())
-{
-  if (user.get(i).getRole_id().equalsIgnoreCase(role.get(a).getRole_id()))
-  {
-    user.get(i).setRole_name(role.get(a).getName());
-    wilos.model.misc.wilosuser.WilosUser userok = user.get(i);
-    listUser.add(userok);
-  }
-  a++;
-}haha 
-matches2
-/Users/remywang/metalift/txl/qbs/allbench//ConcreteRoleAffectationService.java
-while (extfor$iter$1.hasNext())
-{
-  wilos.model.misc.concreterole.ConcreteRoleDescriptor concreteRD = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter$1.next();
-  concreteRD = this.concreteRoleDescriptorService.getConcreteRoleDescriptor(concreteRD.getId());
-  java.util.List<wilos.model.misc.concreteactivity.ConcreteActivity> globalCA = new java.util.ArrayList<wilos.model.misc.concreteactivity.ConcreteActivity>();
-  globalCA.addAll(concreteRD.getSuperConcreteActivities());
-  java.util.Iterator extfor$iter = globalCA.iterator();
-  while (extfor$iter.hasNext())
-  {
-    wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement concreteBreakdownElement = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-    if (concreteBreakdownElement.getId().equals(_activityId))
-    {
-      concreteRDList.add(concreteRD);
-    }
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement concreteBreakdownElement = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  if (concreteBreakdownElement.getId().equals(_activityId))
-  {
-    concreteRDList.add(concreteRD);
   }
 }haha 
 matches2
@@ -228,6 +102,41 @@ while (it.hasNext())
   {
     recList.add(currentUser.getEmailAddress());
   }
+}haha 
+while (i < activity.size())
+{
+  sb.append(org.itracker.services.util.IssueUtilities.getActivityName(activity.get(i).getActivityType())).append(": ").append(activity.get(i).getDescription()).append("\n");
+  i++;
+}haha 
+while (i < components.size())
+{
+  componentString += (i != 0 ? ", " : "") + components.get(i).getName();
+  i++;
+}haha 
+while (i < versions.size())
+{
+  versionString += (i != 0 ? ", " : "") + versions.get(i).getNumber();
+  i++;
+}haha 
+while (it.hasNext())
+{
+  currentUser = it.next().getUser();
+  if (null != currentUser && null != currentUser.getEmailAddress() && null != currentUser.getEmail() && !localeMapping.keySet().contains(currentUser.getEmailAddress()))
+  {
+    try
+    {
+      localeMapping.put(currentUser.getEmailAddress(), org.itracker.core.resources.ITrackerResources.getLocale(currentUser.getPreferences().getUserLocale()));
+    }
+    catch (java.lang.RuntimeException re)
+    {
+      localeMapping.put(currentUser.getEmailAddress(), org.itracker.core.resources.ITrackerResources.getLocale());
+    }
+  }
+}haha 
+while (it.hasNext())
+{
+  javax.mail.internet.InternetAddress internetAddress = (javax.mail.internet.InternetAddress) it.next();
+  localeMapping.put(internetAddress, locale);
 }haha 
 while (iaIt.hasNext())
 {
@@ -242,14 +151,20 @@ while (iaIt.hasNext())
     localeRecipients.put(recipientsLocales.get(internetAddress), addresses);
   }
 }haha 
-while (iterator.hasNext())
+while (i < activity.size())
 {
-  org.itracker.model.Notification notification = iterator.next();
-  org.itracker.model.User notificationUser = notification.getUser();
-  if (!activeOnly || notificationUser.getStatus() == org.itracker.services.util.UserUtilities.STATUS_ACTIVE)
-  {
-    issueNotifications.add(notification);
-  }
+  sb.append(org.itracker.services.util.IssueUtilities.getActivityName(activity.get(i).getActivityType(), currentLocale)).append(": ").append(activity.get(i).getDescription()).append("\n");
+  i++;
+}haha 
+while (i < components.size())
+{
+  componentString += (i != 0 ? ", " : "") + components.get(i).getName();
+  i++;
+}haha 
+while (i < versions.size())
+{
+  versionString += (i != 0 ? ", " : "") + versions.get(i).getNumber();
+  i++;
 }haha 
 while (iterator.hasNext())
 {
@@ -259,7 +174,7 @@ while (iterator.hasNext())
     issueNotifications.add(new org.itracker.model.Notification(projectOwner, issue, org.itracker.model.Notification.Role.PO));
   }
 }haha 
-matches4
+matches11
 /Users/remywang/metalift/txl/qbs/allbench//ProcessBean.java
 while (extfor$iter.hasNext())
 {
@@ -270,45 +185,22 @@ matches1
 /Users/remywang/metalift/txl/qbs/allbench//ProjectService.java
 while (extfor$iter.hasNext())
 {
-  wilos.model.misc.project.Project project = (wilos.model.misc.project.Project) extfor$iter.next();
-  if (!project.getIsFinished())
+  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
+  tmp.add(element);
+}haha 
+matches1
+/Users/remywang/metalift/txl/qbs/allbench//ActivityService.java
+while (extfor$iter$1.hasNext())
+{
+  wilos.model.misc.concreteactivity.ConcreteActivity tmp = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter$1.next();
+  if (lastConcreteActivity == null || tmp.getInstanciationOrder() > lastConcreteActivity.getInstanciationOrder())
   {
-    unfinishedP.add(project);
+    lastConcreteActivity = tmp;
   }
 }haha 
 while (extfor$iter.hasNext())
 {
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  tmp.add(element);
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.project.Project project = (wilos.model.misc.project.Project) extfor$iter.next();
-  if (project.getProcess() == null)
-    projectList.add(project);
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.project.Project project = (wilos.model.misc.project.Project) extfor$iter.next();
-  if (project.getProcess() != null)
-    projectList.add(project);
-}haha 
-matches4
-/Users/remywang/metalift/txl/qbs/allbench//ActivityService.java
-while (extfor$iter.hasNext())
-{
   wilos.model.misc.concreteactivity.ConcreteActivity bde = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
-  tmp.add(bde);
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
-  if (cact.getProject().getId().equals(_project.getId()))
-    tmp.add(cact);
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.spem2.breakdownelement.BreakdownElement bde = (wilos.model.spem2.breakdownelement.BreakdownElement) extfor$iter.next();
   tmp.add(bde);
 }haha 
 while (extfor$iter.hasNext())
@@ -321,104 +213,14 @@ while (extfor$iter.hasNext())
   wilos.model.misc.concreteactivity.ConcreteActivity ca = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
   tmp.add(ca);
 }haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
-  if (cact.getProject().getId().equals(_project.getId()))
-    tmp.add(cact);
-}haha 
-matches6
+matches4
 /Users/remywang/metalift/txl/qbs/allbench//ParticipantBean.java
 while (extfor$iter.hasNext())
 {
-  wilos.model.misc.project.Project currentProject = (wilos.model.misc.project.Project) extfor$iter.next();
-  java.util.HashMap<java.lang.String, java.lang.Object> line = new java.util.HashMap<java.lang.String, java.lang.Object>();
-  line.put("project_id", currentProject.getId());
-  line.put("affected", plist.get(currentProject));
-  if (!plist.get(currentProject))
-  {
-    line.put("selectItem", (currentProject.getId() + "1"));
-  }
-  else
-  {
-    line.put("selectItem", (currentProject.getId() + "2"));
-  }
-  line.put("name", currentProject.getConcreteName());
-  line.put("creationDate", formatter.format(currentProject.getCreationDate()));
-  line.put("launchingDate", formatter.format(currentProject.getLaunchingDate()));
-  line.put("description", currentProject.getDescription());
-  wilos.model.misc.wilosuser.Participant projectManager = currentProject.getProjectManager();
-  java.lang.String name = null;
-  if (projectManager == null)
-  {
-    name = wilos.resources.LocaleBean.getText("component.table1participantprojectManager.noAffectation");
-    line.put("visibleAffectManager", true);
-    line.put("displayOptionProjectManager", true);
-  }
-  else
-  {
-    name = projectManager.getFirstname() + " " + projectManager.getName();
-    if (projectManager.getId().equals(user.getId()))
-    {
-      line.put("selectItem", (currentProject.getId() + "3"));
-      line.put("displayOptionProjectManager", true);
-    }
-    else
-    {
-      line.put("displayOptionProjectManager", false);
-    }
-  }
-  line.put("projectManagerName", name);
-  if (this.checkTasks(line))
-  {
-    line.put("activeTasks", wilos.resources.LocaleBean.getText("component.tableparticipantproject.noActiveTasks"));
-    line.put("disabled", false);
-  }
-  else
-  {
-    line.put("activeTasks", wilos.resources.LocaleBean.getText("component.tableparticipantproject.activeTasks"));
-    line.put("disabled", ((java.lang.Boolean) line.get("affected")));
-  }
-  this.affectedProjectsList.add(line);
+  wilos.model.misc.concreterole.ConcreteRoleDescriptor concreteRoleDescriptor = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter.next();
+  this.concreteRoleDescriptorsMap.put(concreteRoleDescriptor.getConcreteName(), true);
 }haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.project.Project currentProject = (wilos.model.misc.project.Project) extfor$iter.next();
-  wilos.model.misc.wilosuser.Participant projectManager = manageableProjects.get(currentProject);
-  java.util.HashMap<java.lang.String, java.lang.Object> ligne = new java.util.HashMap<java.lang.String, java.lang.Object>();
-  ligne.put("project_id", currentProject.getId());
-  ligne.put("name", currentProject.getConcreteName());
-  ligne.put("creationDate", formatter.format(currentProject.getCreationDate()));
-  ligne.put("launchingDate", formatter.format(currentProject.getLaunchingDate()));
-  ligne.put("description", currentProject.getDescription());
-  if (projectManager == null)
-  {
-    ligne.put("projectManagerName", wilos.resources.LocaleBean.getText("component.table1participantprojectManager.noAffectation"));
-    ligne.put("projectManager_id", "");
-    ligne.put("affected", new java.lang.Boolean(false));
-    ligne.put("hasOtherManager", new java.lang.Boolean(false));
-    this.manageableProjectsList.add(ligne);
-  }
-  else
-  {
-    java.lang.String projectManagerName = projectManager.getFirstname().concat((" " + projectManager.getName()));
-    ligne.put("projectManager_id", projectManager.getId());
-    ligne.put("projectManagerName", projectManagerName);
-    if (projectManager.getId().equals(user.getId()))
-    {
-      ligne.put("affected", new java.lang.Boolean(true));
-      ligne.put("hasOtherManager", new java.lang.Boolean(false));
-      this.manageableProjectsList.add(ligne);
-    }
-    else
-    {
-      ligne.put("affected", new java.lang.Boolean(true));
-      ligne.put("hasOtherManager", new java.lang.Boolean(true));
-      this.manageableProjectsList.add(ligne);
-    }
-  }
-}haha 
-matches2
+matches1
 /Users/remywang/metalift/txl/qbs/allbench//ConcreteActivityDao.java
 while (extfor$iter.hasNext())
 {
@@ -430,28 +232,63 @@ matches1
 /Users/remywang/metalift/txl/qbs/allbench//ConcreteWorkProductDescriptorService.java
 while (extfor$iter.hasNext())
 {
-  wilos.model.misc.concreteactivity.ConcreteActivity ca = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
-  if (ca.getConcreteBreakdownElements().contains(crd))
+  wilos.model.misc.concretetask.ConcreteTaskDescriptor ctd = (wilos.model.misc.concretetask.ConcreteTaskDescriptor) extfor$iter.next();
+  if (ctd.getState().equals(wilos.utils.Constantes.State.STARTED))
   {
-    listToReturn.add(ca);
+    tache_commence = true;
   }
 }haha 
-while (extfor$iter.hasNext() && !break_0)
+while (extfor$iter$2.hasNext())
 {
-  wilos.model.misc.concreterole.ConcreteRoleDescriptor tmpListeRd = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter.next();
-  if (!break_0)
-    if (tmpListeRd.getParticipant() != null)
+  wilos.model.misc.concreterole.ConcreteRoleDescriptor tmpListeRd = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter$2.next();
+  wilos.model.misc.concreterole.ConcreteRoleDescriptor crd = this.concreteRoleDescriptorService.getConcreteRoleDescriptor(tmpListeRd.getId());
+  if (crd.getParticipant() == null)
+  {
+    afficher = false;
+  }
+  else
+  {
+    if (crd.getParticipant().getId().equals(_participant.getId()))
     {
-      if (!break_0)
-        if (tmpListeRd.getParticipant().getId().equals(_user.getId()))
+      java.util.Iterator extfor$iter$1 = crd.getSuperConcreteActivities().iterator();
+      while (extfor$iter$1.hasNext())
+      {
+        wilos.model.misc.concreteactivity.ConcreteActivity cact1 = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter$1.next();
+        java.util.Iterator extfor$iter = _concreteWorkProductDescriptor.getSuperConcreteActivities().iterator();
+        while (extfor$iter.hasNext())
         {
-          this.concreteRoleDescriptorService.getConcreteRoleDescriptorDao().saveOrUpdateConcreteRoleDescriptor(tmpListeRd);
-          _concreteWorkProductDescriptor.addResponsibleConcreteRoleDescriptor(tmpListeRd);
-          break_0 = true;
+          wilos.model.misc.concreteactivity.ConcreteActivity cact2 = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
+          if (cact1.getId().equals(cact2.getId()))
+          {
+            return true;
+          }
         }
+      }
     }
+  }
 }haha 
-matches2
+while (extfor$iter$1.hasNext())
+{
+  wilos.model.misc.concreteactivity.ConcreteActivity cact1 = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter$1.next();
+  java.util.Iterator extfor$iter = _concreteWorkProductDescriptor.getSuperConcreteActivities().iterator();
+  while (extfor$iter.hasNext())
+  {
+    wilos.model.misc.concreteactivity.ConcreteActivity cact2 = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
+    if (cact1.getId().equals(cact2.getId()))
+    {
+      return true;
+    }
+  }
+}haha 
+while (extfor$iter.hasNext())
+{
+  wilos.model.misc.concreteactivity.ConcreteActivity cact2 = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
+  if (cact1.getId().equals(cact2.getId()))
+  {
+    return true;
+  }
+}haha 
+matches4
 /Users/remywang/metalift/txl/qbs/allbench//UserServiceImpl.java
 while (i < projects.size())
 {
@@ -501,50 +338,8 @@ while (idIt.hasNext())
 }haha 
 while (iterator.hasNext())
 {
-  org.itracker.model.Component component = iterator.next();
-  if (!issue.getComponents().contains(component))
-  {
-    addComponentsModifiedActivity(issue, user, new java.lang.StringBuilder(org.itracker.core.resources.ITrackerResources.getString("itracker.web.generic.added")).append(": ").append(component.getName()).toString());
-    issue.getComponents().add(component);
-  }
-}haha 
-while (iterator.hasNext())
-{
-  org.itracker.model.Version version = iterator.next();
-  if (changesBuf.length() > 0)
-  {
-    changesBuf.append(", ");
-  }
-  changesBuf.append(version.getNumber());
-  issue.getVersions().add(version);
-}haha 
-while (versionsIdIt.hasNext())
-{
-  java.lang.Integer id = versionsIdIt.next();
-  versions.add(getVersionDAO().findByPrimaryKey(id));
-}haha 
-while (iterator.hasNext())
-{
-  componentIds.add(((org.itracker.model.Component) iterator.next()).getId());
-}haha 
-while (iterator.hasNext())
-{
-  versionIds.add(((org.itracker.model.Version) iterator.next()).getId());
-}haha 
-matches6
-/Users/remywang/metalift/txl/qbs/allbench//ConcreteActivityService.java
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement cbde = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  tmp.add(cbde);
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
-  if (cact.getProject() != null && cact.getProject().equals(_cact))
-  {
-    tmp.add(cact);
-  }
+  activityArray[i] = (org.itracker.model.IssueActivity) iterator.next();
+  i++;
 }haha 
 matches2
 /Users/remywang/metalift/txl/qbs/allbench//ListProjectsAction.java
@@ -559,52 +354,6 @@ while (projectIt.hasNext())
   ptos.add(createProjectPTO(project, projectService, permissions));
 }haha 
 matches2
-/Users/remywang/metalift/txl/qbs/allbench//ParticipantService.java
-while (extfor$iter$1.hasNext())
-{
-  wilos.model.misc.concreterole.ConcreteRoleDescriptor projectConcreteRole = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter$1.next();
-  java.util.Iterator extfor$iter = participantConcreteRolesList.iterator();
-  while (extfor$iter.hasNext())
-  {
-    wilos.model.misc.concreterole.ConcreteRoleDescriptor concreteRoleDescriptor = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter.next();
-    if (projectConcreteRole.getId().equals(concreteRoleDescriptor.getId()))
-      concreteRolesList.add(concreteRoleDescriptor);
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concreterole.ConcreteRoleDescriptor concreteRoleDescriptor = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter.next();
-  if (projectConcreteRole.getId().equals(concreteRoleDescriptor.getId()))
-    concreteRolesList.add(concreteRoleDescriptor);
-}haha 
-while (extfor$iter$1.hasNext())
-{
-  wilos.model.misc.concreterole.ConcreteRoleDescriptor projectConcreteRole = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter$1.next();
-  java.util.Iterator extfor$iter = participantConcreteRolesList.iterator();
-  while (extfor$iter.hasNext())
-  {
-    wilos.model.misc.concreterole.ConcreteRoleDescriptor concreteRoleDescriptor = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter.next();
-    if (projectConcreteRole.getId().equals(concreteRoleDescriptor.getId()))
-      if (!concreteRoleDescriptor.getRoleDescriptor().getPresentationName().equals(""))
-        concreteRolesList.add(concreteRoleDescriptor.getRoleDescriptor().getName());
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concreterole.ConcreteRoleDescriptor concreteRoleDescriptor = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter.next();
-  if (projectConcreteRole.getId().equals(concreteRoleDescriptor.getId()))
-    if (!concreteRoleDescriptor.getRoleDescriptor().getPresentationName().equals(""))
-      concreteRolesList.add(concreteRoleDescriptor.getRoleDescriptor().getName());
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.project.Project p = (wilos.model.misc.project.Project) extfor$iter.next();
-  if (chargedParticipant.getAffectedProjectList().contains(p))
-  {
-    affectedProjectList.add(p);
-  }
-}haha 
-matches5
 /Users/remywang/metalift/txl/qbs/allbench//ConcreteWorkBreakdownElementService.java
 while (extfor$iter.hasNext())
 {
