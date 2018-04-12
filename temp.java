@@ -1,19 +1,3 @@
-/Users/remywang/metalift/txl/qbs/allbench//MoveIssueFormAction.java
-while (i < projects.size())
-{
-  if (projects.get(i).getId() != null && !projects.get(i).equals(issue.getProject()))
-  {
-    if (org.itracker.services.util.UserUtilities.hasPermission(userPermissions, projects.get(i).getId(), new int[] {
-                                                                                                                     org.itracker.services.util.UserUtilities.PERMISSION_EDIT,
-                                                                                                                     org.itracker.services.util.UserUtilities.PERMISSION_CREATE,
-                                                                                                                   }))
-    {
-      availableProjects.add(projects.get(i));
-    }
-  }
-  i++;
-}haha 
-matches1
 /Users/remywang/metalift/txl/qbs/allbench//GuidanceService.java
 while (extfor$iter.hasNext())
 {
@@ -31,6 +15,22 @@ while (extfor$iter.hasNext())
   tmp.add(act);
 }haha 
 matches3
+/Users/remywang/metalift/txl/qbs/allbench//MoveIssueFormAction.java
+while (i < projects.size())
+{
+  if (projects.get(i).getId() != null && !projects.get(i).equals(issue.getProject()))
+  {
+    if (org.itracker.services.util.UserUtilities.hasPermission(userPermissions, projects.get(i).getId(), new int[] {
+                                                                                                                     org.itracker.services.util.UserUtilities.PERMISSION_EDIT,
+                                                                                                                     org.itracker.services.util.UserUtilities.PERMISSION_CREATE,
+                                                                                                                   }))
+    {
+      availableProjects.add(projects.get(i));
+    }
+  }
+  i++;
+}haha 
+matches1
 /Users/remywang/metalift/txl/qbs/allbench//ConcreteRoleDescriptorService.java
 while (extfor$iter.hasNext())
 {
@@ -58,19 +58,7 @@ while (extfor$iter.hasNext())
   if (cit.getProject().getId().equals(_project.getId()))
     tmp.add(cit);
 }haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement tmp = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  if (tmp instanceof wilos.model.misc.concreteiteration.ConcreteIteration)
-  {
-    if (((wilos.model.misc.concreteiteration.ConcreteIteration) tmp).getIteration().getId().equals(_iteration.getId()))
-    {
-      nbExistingConcreteIterationChildren++;
-      concreteIterationsSisters.add(((wilos.model.misc.concreteiteration.ConcreteIteration) tmp));
-    }
-  }
-}haha 
-matches3
+matches2
 /Users/remywang/metalift/txl/qbs/allbench//PhaseService.java
 while (extfor$iter.hasNext())
 {
@@ -83,19 +71,7 @@ while (extfor$iter.hasNext())
   if (cph.getProject().getId().equals(_project.getId()))
     tmp.add(cph);
 }haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement tmp = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  if (tmp instanceof wilos.model.misc.concretephase.ConcretePhase)
-  {
-    if (((wilos.model.misc.concretephase.ConcretePhase) tmp).getPhase().getId().equals(_phase.getId()))
-    {
-      nbExistingConcretePhaseChildren++;
-      concretePhasesSisters.add(((wilos.model.misc.concretephase.ConcretePhase) tmp));
-    }
-  }
-}haha 
-matches3
+matches2
 /Users/remywang/metalift/txl/qbs/allbench//EditProjectFormActionUtil.java
 while (i < activeUsers.size())
 {
@@ -168,23 +144,6 @@ while (extfor$iter.hasNext())
 }haha 
 while (extfor$iter.hasNext())
 {
-  wilos.model.spem2.breakdownelement.BreakdownElement bde = (wilos.model.spem2.breakdownelement.BreakdownElement) extfor$iter.next();
-  if (bde instanceof wilos.model.spem2.role.RoleDescriptor)
-  {
-    wilos.model.spem2.role.RoleDescriptor rd = (wilos.model.spem2.role.RoleDescriptor) bde;
-    rolesList.add(new javax.faces.model.SelectItem(rd.getId(), rd.getPresentationName()));
-  }
-}haha 
-while (extfor$iter$1.hasNext())
-{
-  wilos.model.spem2.breakdownelement.BreakdownElement bde = (wilos.model.spem2.breakdownelement.BreakdownElement) extfor$iter$1.next();
-  if (bde instanceof wilos.model.spem2.role.RoleDescriptor)
-  {
-    rolesList.add(new javax.faces.model.SelectItem(bde.getId(), bde.getPresentationName()));
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
   wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
   if (!cact.getState().equals(wilos.utils.Constantes.State.FINISHED))
   {
@@ -207,52 +166,7 @@ while (extfor$iter.hasNext())
     inputOptionnalConcreteTasksIDs.add(((java.lang.String) hm.get("ID")));
   }
 }haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement cbde = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  if (cbde instanceof wilos.model.misc.concretetask.ConcreteTaskDescriptor)
-  {
-    wilos.model.misc.concretetask.ConcreteTaskDescriptor ctd = (wilos.model.misc.concretetask.ConcreteTaskDescriptor) cbde;
-    java.util.HashMap<java.lang.String, java.lang.Object> hm = new java.util.HashMap<java.lang.String, java.lang.Object>();
-    hm.put("ID", ctd.getId());
-    hm.put("name", ctd.getConcreteName());
-    hm.put("selected", false);
-    this.producerConcreteTasksSelectable.add(hm);
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement cbde = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  if (cbde instanceof wilos.model.misc.concretetask.ConcreteTaskDescriptor)
-  {
-    wilos.model.misc.concretetask.ConcreteTaskDescriptor ctd = (wilos.model.misc.concretetask.ConcreteTaskDescriptor) cbde;
-    java.util.HashMap<java.lang.String, java.lang.Object> hm = new java.util.HashMap<java.lang.String, java.lang.Object>();
-    hm.put("ID", ctd.getId());
-    hm.put("name", ctd.getConcreteName());
-    hm.put("selected", false);
-    this.optionalUserConcreteTasksSelectable.add(hm);
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement cbde = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  if (cbde instanceof wilos.model.misc.concretetask.ConcreteTaskDescriptor)
-  {
-    wilos.model.misc.concretetask.ConcreteTaskDescriptor ctd = (wilos.model.misc.concretetask.ConcreteTaskDescriptor) cbde;
-    java.util.HashMap<java.lang.String, java.lang.Object> hm = new java.util.HashMap<java.lang.String, java.lang.Object>();
-    hm.put("ID", ctd.getId());
-    hm.put("name", ctd.getConcreteName());
-    hm.put("task", ctd);
-    hm.put("in", false);
-    hm.put("inOptionnal", false);
-    hm.put("out", false);
-    hm.put("flag_in", hm.get("in"));
-    hm.put("flag_inOptionnal", hm.get("inOptionnal"));
-    hm.put("flag_out", hm.get("out"));
-    this.mandatoryUserConcreteTasksSelectable.add(hm);
-  }
-}haha 
-matches9
+matches4
 /Users/remywang/metalift/txl/qbs/allbench//RoleService.java
 while (i < user.size())
 {
@@ -369,21 +283,6 @@ while (extfor$iter.hasNext())
 }haha 
 while (extfor$iter.hasNext())
 {
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  if (element instanceof wilos.model.misc.concreterole.ConcreteRoleDescriptor)
-  {
-    wilos.model.misc.concreterole.ConcreteRoleDescriptor crd = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) element;
-    tmp.add(crd);
-  }
-  else
-    if (!(element instanceof wilos.model.misc.concretetask.ConcreteTaskDescriptor) && !(element instanceof wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor) && !(element instanceof wilos.model.misc.concretemilestone.ConcreteMilestone))
-    {
-      wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) element;
-      tmp.addAll(this.getConcreteRoleDescriptorsFromProject(cact));
-    }
-}haha 
-while (extfor$iter.hasNext())
-{
   wilos.model.misc.project.Project project = (wilos.model.misc.project.Project) extfor$iter.next();
   if (project.getProcess() == null)
     projectList.add(project);
@@ -394,103 +293,8 @@ while (extfor$iter.hasNext())
   if (project.getProcess() != null)
     projectList.add(project);
 }haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.spem2.breakdownelement.BreakdownElement bde = (wilos.model.spem2.breakdownelement.BreakdownElement) extfor$iter.next();
-  if (bde instanceof wilos.model.spem2.role.RoleDescriptor)
-  {
-    if (bde.getPresentationName().equals(_roleName))
-    {
-      path += " / " + bde.getPresentationName();
-      java.util.HashMap<java.lang.String, java.lang.Object> hm = new java.util.HashMap<java.lang.String, java.lang.Object>();
-      hm.put("nodeType", "leaf");
-      hm.put("expansionImage", TABLE_LEAF);
-      hm.put("id", bde.getId());
-      hm.put("name", path);
-      int nbcrd = this.getConcreteRoleDescriptorsFromProject(_project).size();
-      if (nbcrd > 0)
-      {
-        hm.put("nbOccurences", new java.lang.Integer(0));
-      }
-      else
-      {
-        hm.put("nbOccurences", new java.lang.Integer(1));
-      }
-      hm.put("parentId", _roleName);
-      lines.add(hm);
-    }
-  }
-  else
-    if (bde instanceof wilos.model.spem2.activity.Activity)
-    {
-      wilos.model.spem2.activity.Activity act = (wilos.model.spem2.activity.Activity) bde;
-      java.lang.String newPath = path + " / " + act.getPresentationName();
-      lines = this.giveRoleDescriptorsPathName(_project, act, newPath, _roleName, lines);
-    }
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  if (element instanceof wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor)
-  {
-    wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor cwpd = (wilos.model.misc.concreteworkproduct.ConcreteWorkProductDescriptor) element;
-    tmp.add(cwpd);
-  }
-  else
-    if (!(element instanceof wilos.model.misc.concretetask.ConcreteTaskDescriptor) && !(element instanceof wilos.model.misc.concreterole.ConcreteRoleDescriptor) && !(element instanceof wilos.model.misc.concretemilestone.ConcreteMilestone))
-    {
-      wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) element;
-      tmp.addAll(this.getConcreteWorkProductDescriptorsFromProject(cact));
-    }
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.spem2.breakdownelement.BreakdownElement bde = (wilos.model.spem2.breakdownelement.BreakdownElement) extfor$iter.next();
-  if (bde instanceof wilos.model.spem2.workproduct.WorkProductDescriptor)
-  {
-    if (bde.getPresentationName().equals(_workProductName))
-    {
-      _path += " / " + bde.getPresentationName();
-      java.util.HashMap<java.lang.String, java.lang.Object> hm = new java.util.HashMap<java.lang.String, java.lang.Object>();
-      hm.put("nodeType", "leaf");
-      hm.put("expansionImage", TABLE_LEAF);
-      hm.put("id", bde.getId());
-      hm.put("name", _path);
-      int nbcwpd = this.getConcreteWorkProductDescriptorsFromProject(_project).size();
-      if (nbcwpd > 0)
-      {
-        hm.put("nbOccurences", new java.lang.Integer(0));
-      }
-      else
-      {
-        hm.put("nbOccurences", new java.lang.Integer(1));
-      }
-      hm.put("parentId", _workProductName);
-      _lines.add(hm);
-    }
-  }
-  else
-    if (bde instanceof wilos.model.spem2.activity.Activity)
-    {
-      wilos.model.spem2.activity.Activity act = (wilos.model.spem2.activity.Activity) bde;
-      java.lang.String newPath = _path + " / " + act.getPresentationName();
-      _lines = this.giveWorkProductDescriptorsPathName(_project, act, newPath, _workProductName, _lines);
-    }
-}haha 
-matches8
+matches4
 /Users/remywang/metalift/txl/qbs/allbench//ActivityService.java
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement tmp = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
-  if (tmp instanceof wilos.model.misc.concreteactivity.ConcreteActivity)
-  {
-    if (((wilos.model.misc.concreteactivity.ConcreteActivity) tmp).getActivity().getId().equals(_activity.getId()))
-    {
-      nbExistingConcreteActivitiesChildren++;
-      concreteActivitiesSisters.add(((wilos.model.misc.concreteactivity.ConcreteActivity) tmp));
-    }
-  }
-}haha 
 while (extfor$iter.hasNext())
 {
   wilos.model.misc.concreteactivity.ConcreteActivity bde = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
@@ -523,7 +327,7 @@ while (extfor$iter.hasNext())
   if (cact.getProject().getId().equals(_project.getId()))
     tmp.add(cact);
 }haha 
-matches7
+matches6
 /Users/remywang/metalift/txl/qbs/allbench//ParticipantBean.java
 while (extfor$iter.hasNext())
 {
@@ -805,32 +609,6 @@ matches5
 while (extfor$iter.hasNext())
 {
   wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement cwbde = (wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement) extfor$iter.next();
-  wilos.model.spem2.workbreakdownelement.WorkBreakdownElement wbde = cwbde.getWorkBreakdownElement();
-  if (!(cwbde instanceof wilos.model.misc.project.Project) && wbde != null)
-  {
-    java.lang.String id = cwbde.getProject().getId();
-    if (id.equals(_project.getId()) && wbde.getSuccessors().size() != 0)
-    {
-      tmp.add(cwbde);
-    }
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement cwbde = (wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement) extfor$iter.next();
-  wilos.model.spem2.workbreakdownelement.WorkBreakdownElement wbde = cwbde.getWorkBreakdownElement();
-  if (!(cwbde instanceof wilos.model.misc.project.Project) && wbde != null)
-  {
-    java.lang.String id = cwbde.getProject().getId();
-    if (id.equals(_project.getId()))
-    {
-      tmp.add(cwbde);
-    }
-  }
-}haha 
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement cwbde = (wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement) extfor$iter.next();
   tmp.add(cwbde);
 }haha 
 while (extfor$iter.hasNext())
@@ -855,7 +633,7 @@ while (extfor$iter.hasNext())
   hm.put("linkType", cwo.getConcreteLinkType());
   successorHashMap.add(hm);
 }haha 
-matches5
+matches3
 /Users/remywang/metalift/txl/qbs/allbench//WilosUserBean.java
 while (extfor$iter.hasNext())
 {
