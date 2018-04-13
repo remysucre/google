@@ -8,6 +8,7 @@ import JQQ
 import Debug.Trace
 import P1
 import Data.List
+import Data.Data
 import Language.Java.Syntax
 import Data.Generics.Uniplate.Data
 import qualified Language.Haskell.TH as TH
@@ -33,8 +34,11 @@ mark = Labeled (Ident "slothmark") Empty
 grepm :: CompilationUnit ->  (MethodBody -> Bool) -> (CompilationUnit -> Bool) -> [MethodBody]
 grepm prog pctnt pctxt = [ a | (a, b) <- contextsBi prog, pctnt a && pctxt (b markb)]
 
-grepj :: CompilationUnit ->  (Stmt -> Bool) -> (CompilationUnit -> Bool) -> [Stmt]
-grepj prog pctnt pctxt = [ a | (a, b) <- contextsBi prog, pctnt a && pctxt (b mark)]
+grepj :: CompilationUnit ->  (Stmt -> Bool) -> (CompilationUnit -> Bool) -> [(Stmt, MethodBody)]
+grepj prog pctnt pctxt = [ (a, getBody b) | (a, b) <- contextsBi prog, pctnt a && pctxt (b mark)]
+
+getBody :: (Stmt -> CompilationUnit) -> MethodBody
+getBody ctxt = head [ m | m <- universeBi (ctxt mark), marked m]
 
 --------------------
 -- patterns here ---
@@ -58,21 +62,31 @@ testm prog = grepm prog pat ctxt
         labeled p = not $ null [ undefined | Labeled (Ident l) _ <- universeBi p, "labeled" `isPrefixOf` l]
         ctxt _ = True
 
-testj :: CompilationUnit -> [Stmt]
+testj :: CompilationUnit -> [(Stmt, MethodBody)]
 testj prog = grepj prog pat ctxt
-  where pat [java| while (`_) `b |] = noInstance b && noMutate b
+  where pat [java| while (`_) `b |] = noInstance b && noMutate b && not (hash b) && noAddNew b && noArray b
         pat _ = False
+        noArray b = null [undefined | ArrayLhs _ <- universeBi b]
+        noAddNew x = null [ m :: MethodInvocation | m <- universeBi x, adds m && news m ]
+        adds m = not $ null [undefined | "add" <- universeBi m]
+        news m = not $ null [undefined | InstanceCreation _ _ _ _ <- universeBi m]
         noMutate b = null [ m :: MethodInvocation | m <- universeBi b, mutates m ]
         mutates m = not $ null [ undefined | Ident i <- universeBi m , "set" `isPrefixOf` i
                                                                        || "remove"`isPrefixOf` i
+                                                                       || "put"`isPrefixOf` i
+                                                                       || "append" `isPrefixOf` i
                                                                        || "save" `isPrefixOf` i ]
         noInstance b = null [ undefined | InstanceOf _ _ <- universeBi b ]
-        ctxt p = hasCol p && (not $ labeled p)
-        hasCol p = not $ null [ m :: MethodBody | m <- universeBi p, marked m && collects m && nonests m]
+        ctxt p = (not $ labeled p) && (hasCol p)
+        nohashMap p = null [ m :: MethodBody | m <- universeBi p, hash m ]
+        hash m = not $ null [ undefined | "HashMap" <- universeBi m ]
+        hasCol p = not $ null [ m :: MethodBody | m <- universeBi p, nohashMap m && marked m && collects m && nonests m]
         nonests m = null [l | l@[java| while (`_) `s|] <- universeBi m, marked s]
-        collects m = not $ null [ i | Ident i <- universeBi m, any (== i) ["Collection", "List", "Set"] ]
+        collects m = not $ null [ i | i <- universeBi m, any (== i) ["Collection", "List", "Set"] ]
         labeled p = not $ null [ undefined | Labeled (Ident l) s <- universeBi p, marked s && "labeled" `isPrefixOf` l]
-        marked s = not $ null [ undefined | Labeled (Ident "slothmark") Empty <- universeBi s ]
+
+marked :: Data.Data.Data from => from -> Bool
+marked s = not $ null [ undefined | Labeled (Ident "slothmark") Empty <- universeBi s ]
 
 -- /////////////////////
 -- //     Patch 1     //

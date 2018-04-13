@@ -18,9 +18,8 @@ main = do
                of Right pt -> pt
                   _ -> trace fn $ CompilationUnit Nothing [] []
       res = testj java
-      ms = concatMap ((++ "haha \n") . prettyPrint) $ res
+      ms = concatMap (\x -> prettyPrint (fst x) ++ prettyPrint (snd x) ++ "haha \n" ) $ res
       out = fn ++ "\n" ++ ms ++ "matches" ++ (show $ length res) ++ "\n"
-  -- print 
   if length res > 0 then putStr out else return ()
   -- print $ length res
   -- print . map prettyPrint $ tests
