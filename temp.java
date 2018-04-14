@@ -1,4 +1,44 @@
-/Users/remywang/metalift/txl/qbs/allbench//EditProjectFormActionUtil.java
+/Users/rem/metalift/txl/qbs/allbench//GuidanceService.java
+while (extfor$iter.hasNext())
+{
+  wilos.model.spem2.activity.Activity act = (wilos.model.spem2.activity.Activity) extfor$iter.next();
+  tmp.add(act);
+}{
+  java.util.Set<wilos.model.spem2.activity.Activity> tmp = new java.util.HashSet<wilos.model.spem2.activity.Activity>();
+  this.guidanceDao.getSessionFactory().getCurrentSession().saveOrUpdate(_guidance);
+  java.util.Iterator extfor$iter = _guidance.getActivities().iterator();
+  slothmark: ;
+  return tmp;
+}haha 
+matches1
+/Users/rem/metalift/txl/qbs/allbench//ConcreteRoleDescriptorService.java
+while (extfor$iter.hasNext())
+{
+  wilos.model.misc.concretetask.ConcreteTaskDescriptor concreteTaskDescriptor = (wilos.model.misc.concretetask.ConcreteTaskDescriptor) extfor$iter.next();
+  concreteTaskDescriptors.add(concreteTaskDescriptor);
+}{
+  java.util.Set<wilos.model.misc.concretetask.ConcreteTaskDescriptor> concreteTaskDescriptors = new java.util.HashSet<wilos.model.misc.concretetask.ConcreteTaskDescriptor>();
+  this.concreteRoleDescriptorDao.getSessionFactory().getCurrentSession().saveOrUpdate(_concreteRoleDescriptor);
+  this.concreteRoleDescriptorDao.getSessionFactory().getCurrentSession().refresh(_concreteRoleDescriptor);
+  java.util.Iterator extfor$iter = _concreteRoleDescriptor.getPrimaryConcreteTaskDescriptors().iterator();
+  slothmark: ;
+  return concreteTaskDescriptors;
+}haha 
+matches1
+/Users/rem/metalift/txl/qbs/allbench//IterationService.java
+while (extfor$iter.hasNext())
+{
+  wilos.model.misc.concreteiteration.ConcreteIteration bde = (wilos.model.misc.concreteiteration.ConcreteIteration) extfor$iter.next();
+  tmp.add(bde);
+}{
+  java.util.Set<wilos.model.misc.concreteiteration.ConcreteIteration> tmp = new java.util.HashSet<wilos.model.misc.concreteiteration.ConcreteIteration>();
+  this.iterationDao.getSessionFactory().getCurrentSession().saveOrUpdate(_iteration);
+  java.util.Iterator extfor$iter = _iteration.getConcreteIterations().iterator();
+  slothmark: ;
+  return tmp;
+}haha 
+matches1
+/Users/rem/metalift/txl/qbs/allbench//EditProjectFormActionUtil.java
 while (it.hasNext())
 {
   org.itracker.web.ptos.ProjectScriptPTO projectScript = new org.itracker.web.ptos.ProjectScriptPTO(it.next(), locale);
@@ -108,7 +148,20 @@ while (it.hasNext())
   return null;
 }haha 
 matches1
-/Users/remywang/metalift/txl/qbs/allbench//NotificationServiceImpl.java
+/Users/rem/metalift/txl/qbs/allbench//PhaseService.java
+while (extfor$iter.hasNext())
+{
+  wilos.model.misc.concretephase.ConcretePhase bde = (wilos.model.misc.concretephase.ConcretePhase) extfor$iter.next();
+  tmp.add(bde);
+}{
+  java.util.Set<wilos.model.misc.concretephase.ConcretePhase> tmp = new java.util.HashSet<wilos.model.misc.concretephase.ConcretePhase>();
+  this.phaseDao.getSessionFactory().getCurrentSession().saveOrUpdate(_phase);
+  java.util.Iterator extfor$iter = _phase.getConcretePhases().iterator();
+  slothmark: ;
+  return tmp;
+}haha 
+matches1
+/Users/rem/metalift/txl/qbs/allbench//NotificationServiceImpl.java
 while (it.hasNext())
 {
   currentUser = it.next().getUser();
@@ -650,30 +703,67 @@ while (i < versions.size())
   }
 }haha 
 matches3
-/Users/remywang/metalift/txl/qbs/allbench//ParticipantBean.java
-while (extfor$iter.hasNext() && !break_0)
+/Users/rem/metalift/txl/qbs/allbench//ProjectService.java
+while (extfor$iter.hasNext())
 {
-  wilos.model.misc.wilosuser.Participant parti = (wilos.model.misc.wilosuser.Participant) extfor$iter.next();
-  if (!break_0)
-    if (parti.getLogin() != null)
-    {
-      if (!break_0)
-        if (parti.getLogin().equals(loginParticipant))
-        {
-          this.participant = parti;
-          break_0 = true;
-        }
-    }
+  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
+  tmp.add(element);
 }{
-  javax.faces.context.FacesContext context = javax.faces.context.FacesContext.getCurrentInstance();
-  java.util.Map map = context.getExternalContext().getRequestParameterMap();
-  java.lang.String loginParticipant = (java.lang.String) map.get("loginParti");
-  java.util.Iterator extfor$iter = this.participantsList.iterator();
-  boolean break_0 = false;
+  java.util.Set<wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement> tmp = new java.util.HashSet<wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement>();
+  this.getProjectDao().getSessionFactory().getCurrentSession().saveOrUpdate(_project);
+  this.getProjectDao().getSessionFactory().getCurrentSession().refresh(_project);
+  java.util.Iterator extfor$iter = _project.getConcreteBreakdownElements().iterator();
   slothmark: ;
+  return tmp;
 }haha 
 matches1
-/Users/remywang/metalift/txl/qbs/allbench//ConcreteActivityDao.java
+/Users/rem/metalift/txl/qbs/allbench//ActivityService.java
+while (extfor$iter.hasNext())
+{
+  wilos.model.misc.concreteactivity.ConcreteActivity bde = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
+  tmp.add(bde);
+}{
+  java.util.Set<wilos.model.misc.concreteactivity.ConcreteActivity> tmp = new java.util.HashSet<wilos.model.misc.concreteactivity.ConcreteActivity>();
+  this.activityDao.getSessionFactory().getCurrentSession().saveOrUpdate(_act);
+  java.util.Iterator extfor$iter = _act.getConcreteActivities().iterator();
+  slothmark: ;
+  return tmp;
+}haha 
+while (extfor$iter.hasNext())
+{
+  wilos.model.spem2.breakdownelement.BreakdownElement bde = (wilos.model.spem2.breakdownelement.BreakdownElement) extfor$iter.next();
+  tmp.add(bde);
+}{
+  java.util.SortedSet<wilos.model.spem2.breakdownelement.BreakdownElement> tmp = new java.util.TreeSet<wilos.model.spem2.breakdownelement.BreakdownElement>();
+  this.activityDao.getSessionFactory().getCurrentSession().saveOrUpdate(_act);
+  java.util.Iterator extfor$iter = _act.getBreakdownElements().iterator();
+  slothmark: ;
+  return tmp;
+}haha 
+while (extfor$iter.hasNext())
+{
+  wilos.model.spem2.guide.Guidance g = (wilos.model.spem2.guide.Guidance) extfor$iter.next();
+  tmp.add(g);
+}{
+  this.activityDao.getSessionFactory().getCurrentSession().saveOrUpdate(_act);
+  java.util.Set<wilos.model.spem2.guide.Guidance> tmp = new java.util.HashSet<wilos.model.spem2.guide.Guidance>();
+  java.util.Iterator extfor$iter = _act.getGuidances().iterator();
+  slothmark: ;
+  return tmp;
+}haha 
+while (extfor$iter.hasNext())
+{
+  wilos.model.misc.concreteactivity.ConcreteActivity ca = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
+  tmp.add(ca);
+}{
+  this.activityDao.getSessionFactory().getCurrentSession().saveOrUpdate(_act);
+  java.util.List<wilos.model.misc.concreteactivity.ConcreteActivity> tmp = new java.util.ArrayList<wilos.model.misc.concreteactivity.ConcreteActivity>();
+  java.util.Iterator extfor$iter = _act.getConcreteActivities().iterator();
+  slothmark: ;
+  return tmp;
+}haha 
+matches4
+/Users/rem/metalift/txl/qbs/allbench//ConcreteActivityDao.java
 while (extfor$iter.hasNext())
 {
   java.lang.Object obj = (java.lang.Object) extfor$iter.next();
@@ -686,7 +776,7 @@ while (extfor$iter.hasNext())
   return concreteActivities;
 }haha 
 matches1
-/Users/remywang/metalift/txl/qbs/allbench//ConcreteWorkProductDescriptorService.java
+/Users/rem/metalift/txl/qbs/allbench//ConcreteWorkProductDescriptorService.java
 while (extfor$iter.hasNext())
 {
   wilos.model.misc.concretetask.ConcreteTaskDescriptor ctd = (wilos.model.misc.concretetask.ConcreteTaskDescriptor) extfor$iter.next();
@@ -719,8 +809,53 @@ while (extfor$iter.hasNext())
     }
   return null;
 }haha 
-matches1
-/Users/remywang/metalift/txl/qbs/allbench//UserServiceImpl.java
+while (extfor$iter$2.hasNext())
+{
+  wilos.model.misc.concreterole.ConcreteRoleDescriptor tmpListeRd = (wilos.model.misc.concreterole.ConcreteRoleDescriptor) extfor$iter$2.next();
+  wilos.model.misc.concreterole.ConcreteRoleDescriptor crd = this.concreteRoleDescriptorService.getConcreteRoleDescriptor(tmpListeRd.getId());
+  if (crd.getParticipant() == null)
+  {
+    afficher = false;
+  }
+  else
+  {
+    if (crd.getParticipant().getId().equals(_participant.getId()))
+    {
+      java.util.Iterator extfor$iter$1 = crd.getSuperConcreteActivities().iterator();
+      while (extfor$iter$1.hasNext())
+      {
+        wilos.model.misc.concreteactivity.ConcreteActivity cact1 = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter$1.next();
+        java.util.Iterator extfor$iter = _concreteWorkProductDescriptor.getSuperConcreteActivities().iterator();
+        while (extfor$iter.hasNext())
+        {
+          wilos.model.misc.concreteactivity.ConcreteActivity cact2 = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
+          if (cact1.getId().equals(cact2.getId()))
+          {
+            return true;
+          }
+        }
+      }
+    }
+  }
+}{
+  boolean afficher = false;
+  this.concreteWorkProductDescriptorDao.getSessionFactory().getCurrentSession().saveOrUpdate(_concreteWorkProductDescriptor);
+  wilos.model.spem2.workproduct.WorkProductDescriptor tmp = _concreteWorkProductDescriptor.getWorkProductDescriptor();
+  wilos.model.spem2.role.RoleDescriptor tmpRoleDescriptor;
+  wilos.model.spem2.workproduct.WorkProductDescriptor tmp2 = this.workProductDescriptorService.getWorkProductDescriptorById(tmp.getId());
+  if (tmp2.getResponsibleRoleDescriptor() == null)
+  {
+    return false;
+  }
+  tmpRoleDescriptor = tmp2.getResponsibleRoleDescriptor();
+  wilos.model.spem2.role.RoleDescriptor rd = this.roleDescriptorService.getRoleDescriptor(tmpRoleDescriptor.getId());
+  java.util.List<wilos.model.misc.concreterole.ConcreteRoleDescriptor> listeRd = this.concreteRoleDescriptorService.getAllConcreteRoleDescriptorForARoleDescriptor(rd.getId());
+  java.util.Iterator extfor$iter$2 = listeRd.iterator();
+  slothmark: ;
+  return afficher;
+}haha 
+matches2
+/Users/rem/metalift/txl/qbs/allbench//UserServiceImpl.java
 while (i < editUsers.size())
 {
   users.add(editUsers.get(i));
@@ -875,7 +1010,44 @@ while (iter.hasNext())
   return userList;
 }haha 
 matches3
-/Users/remywang/metalift/txl/qbs/allbench//IssueServiceImpl.java
+/Users/rem/metalift/txl/qbs/allbench//ParticipantBean.java
+while (extfor$iter.hasNext() && !break_0)
+{
+  wilos.model.misc.wilosuser.Participant parti = (wilos.model.misc.wilosuser.Participant) extfor$iter.next();
+  if (!break_0)
+    if (parti.getLogin() != null)
+    {
+      if (!break_0)
+        if (parti.getLogin().equals(loginParticipant))
+        {
+          this.participant = parti;
+          break_0 = true;
+        }
+    }
+}{
+  javax.faces.context.FacesContext context = javax.faces.context.FacesContext.getCurrentInstance();
+  java.util.Map map = context.getExternalContext().getRequestParameterMap();
+  java.lang.String loginParticipant = (java.lang.String) map.get("loginParti");
+  java.util.Iterator extfor$iter = this.participantsList.iterator();
+  boolean break_0 = false;
+  slothmark: ;
+}haha 
+matches1
+/Users/rem/metalift/txl/qbs/allbench//ConcreteActivityService.java
+while (extfor$iter.hasNext())
+{
+  wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement cbde = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
+  tmp.add(cbde);
+}{
+  java.util.SortedSet<wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement> tmp = new java.util.TreeSet<wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement>();
+  this.concreteActivityDao.getSessionFactory().getCurrentSession().saveOrUpdate(_cact);
+  java.util.Iterator extfor$iter = _cact.getConcreteBreakdownElements().iterator();
+  slothmark: ;
+  return tmp;
+}haha 
+matches1
+matches2
+/Users/rem/metalift/txl/qbs/allbench//IssueServiceImpl.java
 while (idIt.hasNext())
 {
   java.lang.Integer id = (java.lang.Integer) idIt.next();
@@ -903,53 +1075,16 @@ while (versionsIdIt.hasNext())
   return setIssueVersions(issue, versions, user, true);
 }haha 
 matches2
-/Users/remywang/metalift/txl/qbs/allbench//ListProjectsAction.java
-while (projectIt.hasNext())
+/Users/rem/metalift/txl/qbs/allbench//ConcreteWorkBreakdownElementService.java
+while (extfor$iter.hasNext())
 {
-  org.itracker.model.Project project = projectIt.next();
-  ptos.add(createProjectPTO(project, projectService, permissions));
+  wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement cwbde = (wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement) extfor$iter.next();
+  tmp.add(cwbde);
 }{
-  java.util.List<org.itracker.model.Project> projects = projectService.getAllProjects();
-  java.util.ArrayList<org.itracker.model.Project> projects_tmp = new java.util.ArrayList<org.itracker.model.Project>(projects);
-  java.util.Iterator<org.itracker.model.Project> projectIt = projects.iterator();
-  while (projectIt.hasNext())
-  {
-    org.itracker.model.Project project = (org.itracker.model.Project) projectIt.next();
-    if (!org.itracker.services.util.UserUtilities.hasPermission(permissions, project.getId(), permissionFlags))
-    {
-      projects_tmp.remove(project);
-    }
-  }
-  projects = projects_tmp;
-  java.util.Collections.sort(projects, new org.itracker.model.Project.ProjectComparator());
-  java.util.ArrayList<org.itracker.web.ptos.ProjectPTO> ptos = new java.util.ArrayList<org.itracker.web.ptos.ProjectPTO>(projects_tmp.size());
-  projectIt = projects.iterator();
+  this.concreteWorkBreakdownElementDao.getSessionFactory().getCurrentSession().saveOrUpdate(_cwbde);
+  java.util.List<wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement> tmp = new java.util.ArrayList<wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement>();
+  java.util.Iterator extfor$iter = _cwbde.getSuperConcreteActivities().iterator();
   slothmark: ;
-  return ptos;
+  return tmp;
 }haha 
-while (projectIt.hasNext())
-{
-  org.itracker.model.Project project = projectIt.next();
-  ptos.add(createProjectPTO(project, projectService, permissions));
-}{
-  labeled_1: {
-               java.util.List<org.itracker.model.Project> projects = projectService.getAllAvailableProjects();
-               java.util.ArrayList<org.itracker.model.Project> projects_tmp = new java.util.ArrayList<org.itracker.model.Project>(projects);
-               java.util.Iterator<org.itracker.model.Project> projectIt = projects.iterator();
-               while (projectIt.hasNext())
-               {
-                 org.itracker.model.Project project = (org.itracker.model.Project) projectIt.next();
-                 if (!org.itracker.services.util.UserUtilities.hasPermission(permissions, project.getId(), permissionFlags))
-                 {
-                   projects_tmp.remove(project);
-                 }
-               }
-             }
-  projects = projects_tmp;
-  java.util.Collections.sort(projects, new org.itracker.model.Project.ProjectComparator());
-  java.util.ArrayList<org.itracker.web.ptos.ProjectPTO> ptos = new java.util.ArrayList<org.itracker.web.ptos.ProjectPTO>(projects_tmp.size());
-  projectIt = projects.iterator();
-  slothmark: ;
-  return ptos;
-}haha 
-matches2
+matches1

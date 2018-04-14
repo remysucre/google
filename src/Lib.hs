@@ -77,7 +77,7 @@ testj prog = grepj prog pat ctxt
                                                                        || "append" `isPrefixOf` i
                                                                        || "save" `isPrefixOf` i ]
         noInstance b = null [ undefined | InstanceOf _ _ <- universeBi b ]
-        ctxt p = (not $ labeled p) && (hasCol p)
+        ctxt p = (not (labeled p) && nonests p) && (hasCol p)
         nohashMap p = null [ m :: MethodBody | m <- universeBi p, hash m ]
         hash m = not $ null [ undefined | "HashMap" <- universeBi m ]
         hasCol p = not $ null [ m :: MethodBody | m <- universeBi p, nohashMap m && marked m && collects m && nonests m]
