@@ -17,8 +17,9 @@ main = do
   let java = case parser compilationUnit fc
                of Right pt -> pt
                   _ -> trace fn $ CompilationUnit Nothing [] []
-      res = testj java
-      ms = concatMap (\x -> prettyPrint (fst x) ++ prettyPrint (snd x) ++ "haha \n" ) $ res
+      res = testm java
+      -- ms = concatMap (\x -> prettyPrint (fst x) ++ prettyPrint (snd x) ++ "haha \n" ) $ res
+      ms = concatMap (\x -> prettyPrint x ++ "haha \n" ) $ res
       out = fn ++ "\n" ++ ms ++ "matches" ++ (show $ length res) ++ "\n"
   if length res > 0 then putStr out else return ()
   -- print $ length res
