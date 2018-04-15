@@ -31,8 +31,8 @@ mark :: Stmt
 mark = Labeled (Ident "slothmark") Empty
 
 
-grepm :: CompilationUnit ->  (MethodBody -> Bool) -> (CompilationUnit -> Bool) -> [MethodBody]
-grepm prog pctnt pctxt = [ a | (a, b) <- contextsBi prog, pctnt a && pctxt (b markb)]
+grepm :: CompilationUnit ->  (MethodBody -> Bool) -> [MethodBody]
+grepm prog pctnt = [ a | a <- universeBi prog, pctnt a ]
 
 grepj :: CompilationUnit ->  (Stmt -> Bool) -> (CompilationUnit -> Bool) -> [(Stmt, MethodBody)]
 grepj prog pctnt pctxt = [ (a, getBody b) | (a, b) <- contextsBi prog, pctnt a && pctxt (b mark)]
@@ -57,20 +57,19 @@ p2 :: TH.Q TH.Pat
 p2 = [p| [java| `[ `_ `] |] |]
 
 testm :: CompilationUnit -> [MethodBody]
-testm prog = grepm prog pat ctxt
-  where pat (MethodBody b) = False -- (not (labeled b) && noloop b) && (nohash b && collects b && hof b  && notry b)
+testm prog = grepm prog pat
+  where pat (MethodBody b) = ((labeled b) && noloop b) && not (nohash b && collects b && hof b  && notry b)
         notry b = null [ undefined | Try _ _ _  <- universeBi b ]
         noloop b = null [ l | l@[java| while (`_) `_ |] <- universeBi b ]
         hof b = not $ null [ m :: MethodInvocation | m <- universeBi b, queries m ]
         queries m = not $ null [ undefined | Ident i <- universeBi m , "get" == i || "size" == i ]
         nohash m = null [ undefined | h <- universeBi m, h == "HashMap" || h == "Map" ]
-        collects m = not $ null [ i | i <- universeBi m, any (== i) ["Collection", "List", "Set"] ]
+        collects m = not $ null [ i | Ident i <- universeBi m, i == "Collection" || i == "Set" || i == "List" ]
         labeled p = not $ null [ undefined | Labeled (Ident l) _ <- universeBi p, "labeled" `isPrefixOf` l]
-        ctxt _ = True
 
 testj :: CompilationUnit -> [(Stmt, MethodBody)]
 testj prog = grepj prog pat ctxt
-  where pat [java| while (`_) `b |] = noInstance b && noMutate b && not (hash b) && noAddNew b && noArray b
+  where pat [java| while (`_) `b |] = not $ noInstance b && noMutate b && not (hash b) && noAddNew b && noArray b
         pat _ = False
         noArray b = null [undefined | ArrayLhs _ <- universeBi b]
         noAddNew x = null [ m :: MethodInvocation | m <- universeBi x, adds m && news m ]
@@ -83,9 +82,9 @@ testj prog = grepj prog pat ctxt
                                                                        || "append" `isPrefixOf` i
                                                                        || "save" `isPrefixOf` i ]
         noInstance b = null [ undefined | InstanceOf _ _ <- universeBi b ]
-        ctxt p = (not (labeled p) && nonests p) && hasCol p
+        ctxt p = ((labeled p) && nonests p) && hasCol p
         nohashMap p = null [ m :: MethodBody | m <- universeBi p, hash m ]
-        hash m = not $ null [ undefined | "HashMap" <- universeBi m ]
+        hash m = not $ null [ undefined | i <- universeBi m , i == "HashMap" || i == "Map"]
         hasCol p = not $ null [ m :: MethodBody | m <- universeBi p, nohashMap m && marked m && collects m && nonests m]
         nonests m = null [l | l@[java| while (`_) `s|] <- universeBi m, marked s]
         collects m = not $ null [ i | i <- universeBi m, any (== i) ["Collection", "List", "Set"] ]

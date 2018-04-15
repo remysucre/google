@@ -1,4 +1,4 @@
-/Users/rem/metalift/txl/qbs/allbench//RoleService.java
+/Users/remywang/metalift/txl/qbs/allbench//RoleService.java
 while (i < user.size())
 {
   int a = 0;
@@ -23,7 +23,22 @@ while (i < user.size())
   return listUser;
 }haha 
 matches1
-/Users/rem/metalift/txl/qbs/allbench//ProjectService.java
+/Users/remywang/metalift/txl/qbs/allbench//ProcessManagerBean.java
+{
+  labeled_1: {
+               if (this.getProcessManagerList().size() == 0)
+               {
+                 this.processManagerView = "processManagerView_null";
+               }
+               else
+               {
+                 this.processManagerView = "processManagerView_not_null";
+               }
+             }
+  return this.processManagerView;
+}haha 
+matches1
+/Users/remywang/metalift/txl/qbs/allbench//ProjectService.java
 while (extfor$iter.hasNext())
 {
   wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement element = (wilos.model.misc.concretebreakdownelement.ConcreteBreakdownElement) extfor$iter.next();
@@ -48,7 +63,53 @@ while (extfor$iter.hasNext())
   return tmp;
 }haha 
 matches1
-/Users/rem/metalift/txl/qbs/allbench//ListProjectsAction.java
+/Users/remywang/metalift/txl/qbs/allbench//ParticipantBean.java
+{
+  labeled_2: {
+               if (this.getParticipantsList().size() == 0)
+               {
+                 this.participantView = "participantView_null";
+               }
+               else
+               {
+                 this.participantView = "participantView_not_null";
+               }
+             }
+  return this.participantView;
+}haha 
+matches1
+/Users/remywang/metalift/txl/qbs/allbench//UserServiceImpl.java
+{
+  labeled_2: {
+               java.util.List<org.itracker.model.User> users = new java.util.ArrayList<org.itracker.model.User>();
+               if (projectId != null)
+               {
+                 java.util.List<org.itracker.model.Permission> permissions = permissionDAO.findByProjectIdAndPermission(projectId, permissionType);
+                 for (org.itracker.model.Permission permission : permissions) {
+                                                                                users.add(permission.getUser());
+                                                                              }
+               }
+             }
+  return users;
+}haha 
+matches1
+/Users/remywang/metalift/txl/qbs/allbench//IssueServiceImpl.java
+while (iterator.hasNext())
+{
+  activityArray[i] = (org.itracker.model.IssueActivity) iterator.next();
+  i++;
+}{
+  labeled_3: {
+               int i = 0;
+               java.util.Collection<org.itracker.model.IssueActivity> activity = getIssueActivityDAO().findByIssueIdAndNotification(issueId, notificationSent);
+               org.itracker.model.IssueActivity[] activityArray = new org.itracker.model.IssueActivity[activity.size()];
+               java.util.Iterator<org.itracker.model.IssueActivity> iterator = activity.iterator();
+               slothmark: ;
+             }
+  return java.util.Arrays.asList(activityArray);
+}haha 
+matches1
+/Users/remywang/metalift/txl/qbs/allbench//ListProjectsAction.java
 while (projectIt.hasNext())
 {
   org.itracker.model.Project project = (org.itracker.model.Project) projectIt.next();
@@ -75,23 +136,7 @@ while (projectIt.hasNext())
   return ptos;
 }haha 
 matches1
-/Users/rem/metalift/txl/qbs/allbench//IssueServiceImpl.java
-while (iterator.hasNext())
-{
-  activityArray[i] = (org.itracker.model.IssueActivity) iterator.next();
-  i++;
-}{
-  labeled_3: {
-               int i = 0;
-               java.util.Collection<org.itracker.model.IssueActivity> activity = getIssueActivityDAO().findByIssueIdAndNotification(issueId, notificationSent);
-               org.itracker.model.IssueActivity[] activityArray = new org.itracker.model.IssueActivity[activity.size()];
-               java.util.Iterator<org.itracker.model.IssueActivity> iterator = activity.iterator();
-               slothmark: ;
-             }
-  return java.util.Arrays.asList(activityArray);
-}haha 
-matches1
-/Users/rem/metalift/txl/qbs/allbench//ConcreteWorkBreakdownElementService.java
+/Users/remywang/metalift/txl/qbs/allbench//ConcreteWorkBreakdownElementService.java
 while (extfor$iter.hasNext())
 {
   wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement cwbde = (wilos.model.misc.concreteworkbreakdownelement.ConcreteWorkBreakdownElement) extfor$iter.next();
@@ -112,53 +157,5 @@ while (extfor$iter.hasNext())
                slothmark: ;
              }
   return tmp;
-}haha 
-matches1
-/Users/rem/metalift/txl/qbs/allbench//WorkProductSExpTableBean.java
-while (extfor$iter.hasNext())
-{
-  wilos.model.misc.concreteactivity.ConcreteActivity cact = (wilos.model.misc.concreteactivity.ConcreteActivity) extfor$iter.next();
-  if (cact.getState().equals(wilos.utils.Constantes.State.FINISHED))
-  {
-    numberOfFinishedActivity++;
-  }
-}{
-  int numberOfFinishedActivity = 0;
-  wilos.model.misc.project.Project project = this.projectService.getProject(((java.lang.String) wilos.presentation.web.utils.WebSessionService.getAttribute(wilos.presentation.web.utils.WebSessionService.PROJECT_ID)));
-  if (this.concreteActivityService.getConcreteActivitiesFromProject(project).size() != 0)
-  {
-    labeled_1: {
-                 java.util.Iterator extfor$iter = this.concreteActivityService.getConcreteActivitiesFromProject(project).iterator();
-                 slothmark: ;
-               }
-    labeled_2: {
-                 if (numberOfFinishedActivity == this.concreteActivityService.getConcreteActivitiesFromProject(project).size())
-                 {
-                   this.allConcreteActivitiesAreFinishedWorkProduct = true;
-                 }
-                 else
-                 {
-                   this.allConcreteActivitiesAreFinishedWorkProduct = false;
-                 }
-               }
-  }
-  return this.allConcreteActivitiesAreFinishedWorkProduct;
-}haha 
-matches1
-/Users/rem/metalift/txl/qbs/allbench//ProcessBean.java
-while (extfor$iter.hasNext())
-{
-  wilos.model.spem2.process.Process process = (wilos.model.spem2.process.Process) extfor$iter.next();
-  if (process.getPresentationName().equals(_presentationName) && !_processId.equals(process.getId()))
-    r = true;
-}{
-  labeled_1: {
-               boolean r;
-               r = false;
-               java.util.Iterator extfor$iter = this.processService.getAllProcesses().iterator();
-               slothmark: ;
-               r = false;
-             }
-  return r;
 }haha 
 matches1
