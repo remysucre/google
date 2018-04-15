@@ -17,11 +17,13 @@ main = do
   let java = case parser compilationUnit fc
                of Right pt -> pt
                   _ -> trace fn $ CompilationUnit Nothing [] []
-      res = testm java
+      resb = testm java
+      resl = testj java
       -- ms = concatMap (\x -> prettyPrint (fst x) ++ prettyPrint (snd x) ++ "haha \n" ) $ res
-      ms = concatMap (\x -> prettyPrint x ++ "haha \n" ) $ res
-      out = fn ++ "\n" ++ ms ++ "matches" ++ (show $ length res) ++ "\n"
-  if length res > 0 then putStr out else return ()
+      bs = concatMap (\x -> prettyPrint x ++ "haha \n" ) $ resb
+      ls = concatMap (\x -> prettyPrint (fst x) ++ prettyPrint (snd x) ++ "haha \n" ) $ resl
+      out = fn ++ "\n" ++ ls ++ bs ++ "matches" ++ (show (length resb + length resl))++ "\n"
+  if length resl + length resb > 0 then putStr out else return ()
   -- print $ length res
   -- print . map prettyPrint $ tests
   -- print $ length tests

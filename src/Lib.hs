@@ -58,7 +58,7 @@ p2 = [p| [java| `[ `_ `] |] |]
 
 testm :: CompilationUnit -> [MethodBody]
 testm prog = grepm prog pat ctxt
-  where pat (MethodBody b) = (not $ labeled b) && nohash b && collects b && hof b && noloop b && notry b
+  where pat (MethodBody b) = False -- (not (labeled b) && noloop b) && (nohash b && collects b && hof b  && notry b)
         notry b = null [ undefined | Try _ _ _  <- universeBi b ]
         noloop b = null [ l | l@[java| while (`_) `_ |] <- universeBi b ]
         hof b = not $ null [ m :: MethodInvocation | m <- universeBi b, queries m ]
@@ -83,7 +83,7 @@ testj prog = grepj prog pat ctxt
                                                                        || "append" `isPrefixOf` i
                                                                        || "save" `isPrefixOf` i ]
         noInstance b = null [ undefined | InstanceOf _ _ <- universeBi b ]
-        ctxt p = (not (labeled p) && nonests p) && (hasCol p)
+        ctxt p = (not (labeled p) && nonests p) && hasCol p
         nohashMap p = null [ m :: MethodBody | m <- universeBi p, hash m ]
         hash m = not $ null [ undefined | "HashMap" <- universeBi m ]
         hasCol p = not $ null [ m :: MethodBody | m <- universeBi p, nohashMap m && marked m && collects m && nonests m]
